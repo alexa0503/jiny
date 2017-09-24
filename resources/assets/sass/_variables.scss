@@ -1,0 +1,89 @@
+.icon-contactus {
+    margin-top: 27px;
+}
+header {
+    margin-bottom: 25px;
+}
+.language {
+    height: 39px;
+    line-height: 39px;
+
+}
+.language a,.language span {
+    font-size: 12px;
+}
+.language span.active {
+    color:#e40011;
+}
+.language a,.language a:hover,.language a:active,.language a:focus {
+    color:#221715;
+}
+.language .divider {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.homepage-topper-01 {
+
+}
+.homepage-topper-01 .homepage-list {
+    width: 270px;
+    float: left;
+    margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .homepage-topper-01 .homepage-kv {
+        margin-left: 0px;
+    }
+}
+// Body
+$body-bg: #FFF;
+$screen-lg-min: 1440px;
+$container-lg:1260px;
+// Borders
+$laravel-border-color: darken($body-bg, 10%);
+$list-group-border: $laravel-border-color;
+$navbar-default-border: $laravel-border-color;
+$panel-default-border: $laravel-border-color;
+$panel-inner-border: $laravel-border-color;
+
+// Brands
+$brand-primary: #3097D1;
+$brand-info: #8eb4cb;
+$brand-success: #2ab27b;
+$brand-warning: #cbb956;
+$brand-danger: #bf5329;
+
+// Typography
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$font-family-sans-serif: "微软雅黑","Microsoft YaHei","Raleway", sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.6;
+$text-color: #221715;
+
+// Navbar
+$navbar-default-bg: #1a1416;
+$navbar-inverse-bg: #1a1416;
+$navbar-inverse-brand-color: #ffffff;
+$navbar-border-radius:0;
+$navbar-inverse-link-active-color:#ffffff;
+$navbar-inverse-link-color:#ffffff;
+$navbar-inverse-link-active-bg:#1a1416;
+$navbar-height:62px;
+$font-size-large:24px;
+$navbar-inverse-toggle-border-color:#cf000f;
+$navbar-inverse-toggle-hover-bg:#cf000f;
+$border-radius-base:0;
+$navbar-inverse-link-bg:#cf000f;
+$navbar-inverse-link-active-bg:#a6010d;
+$navbar-inverse-link-hover-bg:#a6010d;
+// Buttons
+$btn-default-color: $text-color;
+
+// Inputs
+$input-border: lighten($text-color, 40%);
+$input-border-focus: lighten($brand-primary, 25%);
+$input-color-placeholder: lighten($text-color, 30%);
+
+// Panels
+$panel-default-heading-bg: #fff;
