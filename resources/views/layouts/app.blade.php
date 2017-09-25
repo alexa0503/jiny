@@ -16,23 +16,11 @@
 </head>
 <body class="jiny">
 <div id="wrapper">
-    <header class="hidden-xs">
-        <div class="container">
-            <div class="row">
-                <div class="text-right language">
-                    <span class="active">中文</span>
-                    <span class="divider">|</span>
-                    <a href="/">English</a>
-                </div>
-            </div>
-            <div class="row">
-                <img src="{{asset('images/logo.png')}}" height="74"/>
-                    <div class="pull-right icon-contactus"><img src="{{asset('images/icon-contactus.png')}}" height="47" /></div></div>
-        </div>
-    </header>
-    <router-view name="menu"></router-view>
+    @include('layouts.header')
     @yield('content')
 </div>
 @yield('scripts')
+<script src="{{asset('js/jquery.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
 </body>
 </html>

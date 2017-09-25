@@ -20,11 +20,11 @@ mix.scripts([
 ], 'public/js/all.js');
 */
 mix.browserSync('jiny.dev');
-mix.copy('bower_components/vue/dist/vue.min.js', 'public/js/vue.min.js');
-mix.copy('bower_components/axios/dist/axios.min.js', 'public/js/axios.min.js');
-mix.copy('bower_components/jquery/dist/jquery.min.js', 'public/js/jquery.min.js');
-mix.copy('bower_components/bootstrap/dist/js/bootstrap.min.js', 'public/js/bootstrap.min.js');
-mix.js('resources/assets/js/login.js', 'public/js');
-mix.js('resources/assets/js/index.js', 'public/js')
-    .js('resource/assets/js/admin.js', 'public/js/admin')
-    .sass('resources/assets/sass/app.scss', 'public/css').version();
+//mix.copy('bower_components/vue/dist/vue.min.js', 'public/js/vue.min.js');
+//mix.copy('bower_components/axios/dist/axios.min.js', 'public/js/axios.min.js');
+mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/jquery.min.js');
+mix.copy('node_modules/bootstrap/dist/js/bootstrap.min.js', 'public/js/bootstrap.min.js');
+//mix.js('resources/assets/js/login.js', 'public/js');
+//mix.js('resources/assets/js/index.js', 'public/js')
+    //.js('resource/assets/js/admin.js', 'public/js/admin')
+mix.sass('resources/assets/sass/app.scss', 'public/css').version();

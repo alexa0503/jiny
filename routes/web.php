@@ -15,10 +15,10 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 Route::get('/', function () {
-    return redirect(url('/v'));
-    //return view('index');
+    //return redirect(url('/v'));
+    return view('index');
 });
-Route::get('/v/{vue_capture?}', 'IndexController@index')->where('vue_capture', '[\/\w\.-]*');
+//Route::get('/v/{vue_capture?}', 'IndexController@index')->where('vue_capture', '[\/\w\.-]*');
 
 
 Route::group(['middleware' => ['role:superadmin,global privileges'], 'prefix' => 'admin'], function () {
@@ -34,7 +34,6 @@ Route::group(['middleware' => ['role:superadmin,global privileges'], 'prefix' =>
         Route::put('profile', 'Admin\ProfileController@update');
     });
     Route::get('/{vue_capture?}', 'Admin\IndexController@index')->where('vue_capture', '[\/\w\.-]*');
-
 });
 
 
