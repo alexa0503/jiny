@@ -22,7 +22,7 @@ class CreatePagesTable extends Migration
             $table->string('type',40);
             $table->integer('sort_id')->default(999);
             $table->binary('body');
-            $table->nullableTimestamps('deleted_at');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

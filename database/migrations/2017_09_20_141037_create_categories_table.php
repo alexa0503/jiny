@@ -17,7 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name',200);
             $table->integer('sort_id')->default(999);
-            $table->nullableTimestamps('deleted_at');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

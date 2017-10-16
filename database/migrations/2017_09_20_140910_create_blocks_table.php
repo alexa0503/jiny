@@ -22,7 +22,7 @@ class CreateBlocksTable extends Migration
             $table->integer('pos_y');
             $table->binary('body');
             $table->integer('sort_id')->default(999);
-            $table->nullableTimestamps('deleted_at');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -22,16 +22,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">产品中心</a>
+          <a class="navbar-brand" href="/items">产品中心</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">首页</a></li>
-            <li><a href="#">关于我们</a></li>
-            <li><a href="#">解决方案</a></li>
-            <li><a href="#">技术支持</a></li>
-            <li><a href="#">新闻资讯</a></li>
-            <li><a href="#">联系我们</a></li>
+            <li><a href="/">首页</a></li>
+            <li><a href="/culture">关于我们</a></li>
+            <li><a href="/solutions">解决方案</a></li>
+            <li><a href="/supports">技术支持</a></li>
+            <li><a href="/news">新闻资讯</a></li>
+            <li><a href="/contactus">联系我们</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

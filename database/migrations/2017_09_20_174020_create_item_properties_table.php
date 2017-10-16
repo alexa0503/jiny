@@ -19,7 +19,7 @@ class CreateItemPropertiesTable extends Migration
             $table->unsignedInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
             $table->binary('body');
-            $table->nullableTimestamps('deleted_at');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

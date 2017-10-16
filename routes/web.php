@@ -15,25 +15,81 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 Route::get('/', function () {
-    //return redirect(url('/v'));
     return view('index');
 });
+Route::get('/culture', function () {
+    return view('culture');
+});
+Route::get('/contactus', function () {
+    return view('contactus');
+});
+Route::get('/items', function () {
+    return view('items');
+});
+Route::get('/item', function () {
+    return view('item');
+});
+//解决方案
+Route::get('/solutions', function () {
+    $categories = App\SolutionCategory::all();
+    return view('solutions.index',[
+        'categories'=>$categories,
+    ]);
+});
+//解决方案列表
+Route::get('/solutions/{id}', function ($id) {
+    $category = App\SolutionCategory::find($id);
+    return view('solutions.list',[
+        'category'=>$category,
+    ]);
+})->name('solutions');
+//具体解决方案
+Route::get('/solution/{id}', function ($id) {
+    $solution = App\Solution::find($id);
+    return view('solutions.show',[
+        'solution'=>$solution,
+    ]);
+})->name('solution');
+//技术支持
+Route::get('supports', function(){
+    $supports[0] = App\Support::where('type_id', 1)->get();
+    $supports[1] = App\Support::where('type_id', 2)->get();
+    return view('supports.index',['supports'=>$supports]);
+});
+Route::get('support/{id}', function($id){
+    $support = App\Support::find($id);
+    return view('supports.show',['support'=>$support]);
+})->name('support');
+//新闻
+Route::get('news', function(){
+    $posts = App\Post::all();
+    return view('news.index',['posts'=>$posts]);
+});
+Route::get('news/{id}', function($id){
+    $post = App\Post::find($id);
+    return view('news.show',['post'=>$post]);
+})->name('post');
 //Route::get('/v/{vue_capture?}', 'IndexController@index')->where('vue_capture', '[\/\w\.-]*');
 
 
-Route::group(['middleware' => ['role:superadmin,global privileges'], 'prefix' => 'admin'], function () {
-    Route::get('/', function(){
-        return redirect('/admin/dashboard');
+Route::group(['middleware' => ['role:superadmin,global privileges','web'], 'prefix' => 'cms'], function () {
+    Route::get('/', function () {
+        return redirect('/cms/dashboard');
     });
-    Route::group(['prefix'=>'api'], function(){
-        Route::resource('page', 'Admin\PageController');
-        Route::resource('block', 'Admin\BlockController');
-        Route::resource('block.content', 'Admin\ContentController');
-        Route::resource('block.field', 'Admin\FieldController');
-        Route::get('profile', 'Admin\ProfileController@index');
-        Route::put('profile', 'Admin\ProfileController@update');
-    });
-    Route::get('/{vue_capture?}', 'Admin\IndexController@index')->where('vue_capture', '[\/\w\.-]*');
+    Route::get('/dashboard', 'Cms\IndexController@index');
+    Route::post('file/delete', 'Cms\FileController@delete');
+    Route::post('file/upload/{name?}', 'Cms\FileController@upload');
+    Route::resource('page.block', 'Cms\BlockController');
+    Route::resource('item', 'Cms\ItemController');
+    Route::resource('type.item', 'Cms\ItemTypeController');
+    Route::resource('category', 'Cms\CategoryController');
+
+    Route::get('users', 'Cms\IndexController@users');
+    Route::get('account', 'Cms\IndexController@account');
+    Route::post('account', 'Cms\IndexController@accountPost');
+    //Route::resource('/work', 'Admin\WorkController');
+    //Route::resource('/wechat/user', 'Admin\WechatUserController');
+    //Route::get('/{vue_capture?}', 'Admin\IndexController@index')->where('vue_capture', '[\/\w\.-]*');
 });
 
 
