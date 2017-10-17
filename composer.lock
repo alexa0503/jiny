@@ -4,8 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "313b0e86ebcc7466c3f7116f5bb71175",
+    "content-hash": "5d62ba6ed80bb358946a3ffc8be1c7db",
     "packages": [
+        {
+            "name": "bestmomo/filemanager",
+            "version": "V1.03",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bestmomo/filemanager.git",
+                "reference": "9f2c495837ec77124411f85245227a49d687da23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bestmomo/filemanager/zipball/9f2c495837ec77124411f85245227a49d687da23",
+                "reference": "9f2c495837ec77124411f85245227a49d687da23",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bestmomo\\Filemanager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simon Georget",
+                    "email": "simon@linea21.com",
+                    "homepage": "http://www.empreinte-urbaine.eu",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Bestmomo",
+                    "email": "grandheretique@free.fr",
+                    "homepage": "http://laravel.sillo.org"
+                }
+            ],
+            "description": "To add filemanager to Laravel 5.1",
+            "homepage": "http://github.com/bestmomo/filemanager",
+            "time": "2015-11-30T14:24:12+00:00"
+        },
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
             "version": "3.0.3",

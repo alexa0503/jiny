@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('cms.layout')
 
 @section('content')
     <div class="page-content sidebar-page right-sidebar-page clearfix">

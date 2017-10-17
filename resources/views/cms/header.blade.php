@@ -1,225 +1,101 @@
-<header class="top-nav">
-    <div class="top-nav-inner">
-        <div class="nav-header">
-            <button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleSM">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <ul class="nav-notification pull-right">
-                <li>
-                    <a href="{{asset('/admin')}}" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-lg"></i></a>
-                    <span class="badge badge-danger bounceIn">1</span>
-                    <ul class="dropdown-menu dropdown-sm pull-right user-dropdown">
-                        <li class="user-avatar">
-                            <img src="{{asset('images/profile/profile1.jpg')}}" alt="" class="img-circle">
-                            <div class="user-content">
-                                <h5 class="no-m-bottom">{{Auth::user()->name}}</h5>
-                                <div class="m-top-xs">
-                                    <a href="{{url('/admin/profile')}}" class="m-right-sm">Profile</a>
-                                    <a href="{{url('/logout')}}">Log out</a>
-                                </div>
-                            </div>
-                        </li>
-                        <!--<li>
-                            <a href="{{url('/admin/inbox')}}">
-                                Inbox
-                                <span class="badge badge-danger bounceIn animation-delay2 pull-right">1</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Notification
-                                <span class="badge badge-purple bounceIn animation-delay3 pull-right">2</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="sidebarRight-toggle">
-                                Message
-                                <span class="badge badge-success bounceIn animation-delay4 pull-right">7</span>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">Setting</a>
-                        </li>-->
-                    </ul>
-                </li>
-            </ul>
-
-            <a href="{{url('/admin')}}" class="brand">
-                <i class="fa fa-database"></i><span class="brand-name">ADMIN</span>
-            </a>
-        </div>
-        <div class="nav-container">
-            <button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleLG">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <ul class="nav-notification">
-                <li class="search-list">
-                    <div class="search-input-wrapper">
-                        <div class="search-input">
-                            <input type="text" class="form-control input-sm inline-block">
-                            <a href="#" class="input-icon text-normal"><i class="ion-ios7-search-strong"></i></a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <div class="pull-right m-right-sm">
-                <div class="user-block hidden-xs">
-                    <a href="#" id="userToggle" data-toggle="dropdown">
-                        <img src="{{asset('images/profile/profile1.jpg')}}" alt="" class="img-circle inline-block user-profile-pic">
-                        <div class="user-detail inline-block">
-                            {{Auth::user()->name}}
-                            <i class="fa fa-angle-down"></i>
-                        </div>
-                    </a>
-                    <div class="panel border dropdown-menu user-panel">
-                        <div class="panel-body paddingTB-sm">
-                            <ul>
-                                <li>
-                                    <a href="{{url('/admin/profile')}}">
-                                        <i class="fa fa-edit fa-lg"></i><span class="m-left-xs">My Profile</span>
-                                    </a>
-                                </li>
-                                <!--<li>
-                                    <a href="{{url('/admin/inbox')}}">
-                                        <i class="fa fa-inbox fa-lg"></i><span class="m-left-xs">Inboxes</span>
-                                        <span class="badge badge-danger bounceIn animation-delay3">2</span>
-                                    </a>
-                                </li>-->
-                                <li>
-                                    <a href="{{url('/logout')}}">
-                                        <i class="fa fa-power-off fa-lg"></i><span class="m-left-xs">Sign out</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            <!--<ul class="nav-notification">
+<div id="header" class="page-navbar">
+    <!-- .navbar-brand -->
+    <a href="{{url('/')}}" class="navbar-brand hidden-xs hidden-sm">
+        <img src="{{asset('assets/cms/img/logo.png')}}" class="logo hidden-xs" alt="O.M.P.">
+        <img src="{{asset('assets/cms/img/logosm.png')}}" class="logo-sm hidden-lg hidden-md" alt="O.M.P.">
+    </a>
+    <!-- / navbar-brand -->
+    <!-- .no-collapse -->
+    <div id="navbar-no-collapse" class="navbar-no-collapse">
+        <!-- top left nav -->
+        <ul class="nav navbar-nav">
+            <li class="toggle-sidebar">
+                <a href="#">
+                    <i class="fa fa-reorder"></i>
+                    <span class="sr-only">Collapse sidebar</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="reset-layout tipB" title="Reset panel position for this page"><i class="fa fa-history"></i></a>
+            </li>
+        </ul>
+        <!-- / top left nav -->
+        <!-- top right nav -->
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="{{url('/admin/account')}}">
+                    <span>{{Auth::guard('web')->user()->name}}, Welcome</span>
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="index.html#" data-toggle="dropdown">
+                    <i class="fa fa-language"></i>
+                    <span class="sr-only">语言</span>
+                </a>
+                <ul class="dropdown-menu right dropdown-notification" role="menu">
                     <li>
-                        <a href="#" data-toggle="dropdown"><i class="fa fa-envelope fa-lg"></i></a>
-                        <span class="badge badge-purple bounceIn animation-delay5 active">2</span>
-                        <ul class="dropdown-menu message pull-right">
-                            <li><a>You have 4 new unread messages</a></li>
-                            <li>
-                                <a class="clearfix" href="#">
-                                    <img src="{{asset('images/profile/profile2.jpg')}}" alt="User Avatar">
-                                    <div class="detail">
-                                        <strong>John Doe</strong>
-                                        <p class="no-margin">
-                                            Lorem ipsum dolor sit amet...
-                                        </p>
-                                        <small class="text-muted"><i class="fa fa-check text-success"></i> 27m ago</small>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="clearfix" href="#">
-                                    <img src="{{asset('images/profile/profile3.jpg')}}}" alt="User Avatar">
-                                    <div class="detail">
-                                        <strong>Jane Doe</strong>
-                                        <p class="no-margin">
-                                            Lorem ipsum dolor sit amet...
-                                        </p>
-                                        <small class="text-muted"><i class="fa fa-check text-success"></i> 5hr ago</small>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="clearfix" href="#">
-                                    <img src="{{asset('images/profile/profile4.jpg')}}" alt="User Avatar">
-                                    <div class="detail m-left-sm">
-                                        <strong>Bill Doe</strong>
-                                        <p class="no-margin">
-                                            Lorem ipsum dolor sit amet...
-                                        </p>
-                                        <small class="text-muted"><i class="fa fa-reply"></i> Yesterday</small>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="clearfix" href="#">
-                                    <img src="{{asset('images/profile/profile5.jpg')}}" alt="User Avatar">
-                                    <div class="detail">
-                                        <strong>Baby Doe</strong>
-                                        <p class="no-margin">
-                                            Lorem ipsum dolor sit amet...
-                                        </p>
-                                        <small class="text-muted"><i class="fa fa-reply"></i> 9 Feb 2013</small>
-                                    </div>
-                                </a>
-                            </li>
-                            <li><a href="#">View all messages</a></li>
-                        </ul>
+                        <a href="index.html#" class="dropdown-menu-header">语言选择</a>
                     </li>
                     <li>
-                        <a href="#" data-toggle="dropdown"><i class="fa fa-bell fa-lg"></i></a>
-                        <span class="badge badge-info bounceIn animation-delay6 active">4</span>
-                        <ul class="dropdown-menu notification dropdown-3 pull-right">
-                            <li><a href="#">You have 5 new notifications</a></li>
-                            <li>
-                                <a href="#">
-												<span class="notification-icon bg-warning">
-													<i class="fa fa-warning"></i>
-												</span>
-                                    <span class="m-left-xs">Server #2 not responding.</span>
-                                    <span class="time text-muted">Just now</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-												<span class="notification-icon bg-success">
-													<i class="fa fa-plus"></i>
-												</span>
-                                    <span class="m-left-xs">New user registration.</span>
-                                    <span class="time text-muted">2m ago</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-												<span class="notification-icon bg-danger">
-													<i class="fa fa-bolt"></i>
-												</span>
-                                    <span class="m-left-xs">Application error.</span>
-                                    <span class="time text-muted">5m ago</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-												<span class="notification-icon bg-success">
-													<i class="fa fa-usd"></i>
-												</span>
-                                    <span class="m-left-xs">2 items sold.</span>
-                                    <span class="time text-muted">1hr ago</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-												<span class="notification-icon bg-success">
-													<i class="fa fa-plus"></i>
-												</span>
-                                    <span class="m-left-xs">New user registration.</span>
-                                    <span class="time text-muted">1hr ago</span>
-                                </a>
-                            </li>
-                            <li><a href="#">View all notifications</a></li>
-                        </ul>
+                        <a href="{{url('/_locale',['locale'=>'en','url'=>base64_encode(Request::getUri())])}}">@if (App::getLocale() == 'en')<i class="fa fa-check-square-o"></i>@else <i class="fa fa-square-o"></i> @endif 英文</a>
                     </li>
-                    <li class="chat-notification">
-                        <a href="#" class="sidebarRight-toggle"><i class="fa fa-comments fa-lg"></i></a>
-                        <span class="badge badge-danger bounceIn">1</span>
-
-                        <div class="chat-alert">
-                            Hello, Are you there?
+                    <li>
+                        <a href="{{url('/_locale',['locale'=>'zh-cn','url'=>base64_encode(Request::getUri())])}}">@if (App::getLocale() == 'zh-cn')<i class="fa fa-check-square-o"></i>@else <i class="fa fa-square-o"></i> @endif 中文</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown">
+                    <i class="fa fa-cog"></i>
+                    <span class="sr-only">Settings</span>
+                </a>
+                <ul class="dropdown-menu dropdown-form dynamic-settings right" role="menu">
+                    <li>
+                        <a href="#" class="dropdown-menu-header">Template settings</a>
+                    </li>
+                    <li>
+                        <div class="toggle-custom">
+                            <label class="toggle" data-on="ON" data-off="OFF">
+                                <input type="checkbox" id="fixed-header-toggle" name="fixed-header-toggle" checked>
+                                <span class="button-checkbox"></span>
+                            </label>
+                            <label for="fixed-header-toggle">Fixed header</label>
                         </div>
                     </li>
-                </ul>-->
-            </div>
-        </div>
-    </div><!-- ./top-nav-inner -->
-</header>
+                    <li>
+                        <div class="toggle-custom">
+                            <label class="toggle" data-on="ON" data-off="OFF">
+                                <input type="checkbox" id="fixed-left-sidebar" name="fixed-left-sidebar" checked>
+                                <span class="button-checkbox"></span>
+                            </label>
+                            <label for="fixed-left-sidebar">Fixed Left Sidebar</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="toggle-custom">
+                            <label class="toggle" data-on="ON" data-off="OFF">
+                                <input type="checkbox" id="fixed-right-sidebar" name="fixed-right-sidebar" checked>
+                                <span class="button-checkbox"></span>
+                            </label>
+                            <label for="fixed-right-sidebar">Fixed Right Sidebar</label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="{{url('/admin/logout')}}">
+                    <i class="fa fa-power-off"></i>
+                    <span class="sr-only">Logout</span>
+                </a>
+            </li>
+            <li>
+                <a id="toggle-right-sidebar" href="#" class="tipB" title="Toggle right sidebar">
+                    <i class="l-software-layout-sidebar-right"></i>
+                    <span class="sr-only">Toggle right sidebar</span>
+                </a>
+            </li>
+        </ul>
+        <!-- / top right nav -->
+    </div>
+    <!-- / collapse -->
+</div>

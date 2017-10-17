@@ -183,6 +183,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Lavary\Menu\ServiceProvider::class,
+        Bestmomo\Filemanager\FilemanagerServiceProvider::class,
     ],
 
     /*

@@ -7,7 +7,6 @@ header {
 .language {
     height: 39px;
     line-height: 39px;
-
 }
 .language a,.language span {
     font-size: 12px;
@@ -311,8 +310,11 @@ footer .copyright {
 footer .copyright p {
     margin-bottom: 5px;
 }
-.col-one,.col-two {
-    margin-top: 60px;
+.col-two {
+    margin-top: 50px;
+}
+.col-one {
+    margin-top: 20px;
 }
 .col-one .nav {
     border-left: 2px solid #980c0a;

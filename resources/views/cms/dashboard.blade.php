@@ -1,61 +1,49 @@
 @extends('cms.layout')
 
 @section('content')
-
-    <div class="padding-md">
-        <!--
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="page-title">
-                    Dashboard
+    <div class="page-content sidebar-page right-sidebar-page clearfix">
+        <!-- .page-content-wrapper -->
+        <div class="page-content-wrapper">
+            <div class="page-content-inner">
+                <!-- Start .page-content-inner -->
+                <div id="page-header" class="clearfix">
+                    <div class="page-header">
+                        <h2>控制面板首页</h2>
+                        <span class="txt">点击左侧菜单查看详细</span>
+                    </div>
+                    <div class="header-stats">
+                        <div class="spark clearfix">
+                        </div>
+                        <!--<div class="spark clearfix">
+                            <div class="spark-info"><span class="number">17345</span>Views</div>
+                            <div id="spark-templateviews" class="sparkline"></div>
+                        </div>
+                        <div class="spark clearfix">
+                            <div class="spark-info"><span class="number">3700$</span>Sales</div>
+                            <div id="spark-sales" class="sparkline"></div>
+                        </div>-->
+                    </div>
                 </div>
-                <div class="page-sub-header">
-                    Welcome Back, John Doe , <i class="fa fa-map-marker text-danger"></i> London
+                <!-- Start .row -->
+                <div class="row" style="text-align: center;">
                 </div>
+                <!-- End .row -->
             </div>
-            <div class="col-sm-6 text-right text-left-sm p-top-sm">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        Select Project <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu pull-right" role="menu">
-                        <li><a href="index.html#">Project1</a></li>
-                        <li><a href="index.html#">Project2</a></li>
-                        <li><a href="index.html#">Project3</a></li>
-                        <li class="divider"></li>
-                        <li><a href="index.html#">Setting</a></li>
-                    </ul>
-                </div>
-
-                <a class="btn btn-default"><i class="fa fa-cog"></i></a>
-            </div>
+            <!-- End .page-content-inner -->
         </div>
-        -->
-    </div><!-- ./padding-md -->
+        <!-- / page-content-wrapper -->
+    </div>
 @endsection
 @section('scripts')
-    <!-- Flot -->
-    <script src="{{asset('cms/js/jquery.flot.min.js')}}"></script>
-    <!-- Morris -->
-    <script src="{{asset('cms/js/rapheal.min.js')}}"></script>
-    <script src="{{asset('cms/js/morris.min.js')}}"></script>
-    <!-- Datepicker -->
-    <script src="{{asset('cms/js/uncompressed/datepicker.js')}}"></script>
-    <!-- Sparkline -->
-    <script src="{{asset('cms/js/sparkline.min.js')}}"></script>
-    <!-- Skycons -->
-    <script src="{{asset('cms/js/uncompressed/skycons.js')}}"></script>
-    <!-- Easy Pie Chart -->
-    <script src="{{asset('cms/js/jquery.easypiechart.min.js')}}"></script>
-    <!-- Sortable -->
-    <script src="{{asset('cms/js/uncompressed/jquery.sortable.js')}}"></script>
-    <!-- Owl Carousel -->
-    <script src="{{asset('cms/js/owl.carousel.min.js')}}"></script>
-    <!-- Modernizr -->
-    <script src="{{asset('cms/js/modernizr.min.js')}}"></script>
-    <script src="{{asset('cms/js/simplify/simplify_dashboard.js')}}"></script>
     <script>
-        $(function()	{
-        });
+        $().ready(function () {
+            $('#spark-visitors').sparkline([5,8,10,8,7,12,11,6,13,8,5,8,10,11,7,12,11,6,13,8], {
+                type: 'bar',
+                width: '100%',
+                height: '20px',
+                barColor: '#dfe2e7',
+                zeroAxis: false,
+            });
+        })
     </script>
 @endsection

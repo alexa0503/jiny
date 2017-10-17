@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $rows = \App\Category::orderby('sort_id', 'ASC')->paginate(20);
-        return view('admin/category/index', [
+        return view('cms.category.index', [
             'rows' => $rows,
             'categories' => \App\Category::all(),
         ]);
@@ -29,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin/category/create', [
+        return view('cms.category.create', [
         ]);
     }
 
@@ -68,7 +68,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = \App\Category::find($id);
-        return view('admin/category/edit', [
+        return view('cms.category.edit', [
            'category' => $category,
         ]);
     }

@@ -26,7 +26,7 @@ class GenerateMenus
             $page = $menu->add('页面管理',['url'=>url('cms/page/block/index'),'class'=>'openable bg-palette4']);
             $pages = \App\Page::all();
             foreach($pages as $v){
-                $page->add($v->name, ['url'=>route('page.block.index',['page'=>$v->id]),'class'=>'bg-palette4']);
+                $page->add($v->title, ['url'=>route('page.block.index',['page'=>$v->id]),'class'=>'bg-palette4']);
             }
             //$menu->add('作品管理', ['route'=>('work.index'),'class'=>'bg-palette2']);
         });

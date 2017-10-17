@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/cms';
 
     /**
      * Create a new controller instance.
@@ -52,9 +52,5 @@ class LoginController extends Controller
     {
         Auth::logout();
         return redirect()->intended('/login');
-    }
-    public function username()
-    {
-        return 'name';
     }
 }

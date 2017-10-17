@@ -1,80 +1,124 @@
-<!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<!doctype html>
+<!--[if lt IE 8]><html class="no-js lt-ie8"> <![endif]-->
+<html class="no-js">
 <head>
     <meta charset="utf-8">
-    <title>后台管理 - {{ config('app.name', 'Laravel') }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSRF Token -->
+    <title>{{env('APP_NAME')}} - 后台管理</title>
+    <!-- Mobile specific metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+    <!-- Force IE9 to render in normal mode -->
+    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    <meta name="author" content="" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="application-name" content="" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- ionicons -->
-    <link rel="icon" type="image/png" href="{{asset('favicon.png')}}">
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="{{asset('cms/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('cms/css/bootstrap-theme.min.css')}}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" type="text/css" href="{{asset('cms/css/font-awesome.4.6.0.css')}}">
-    <!-- Morris -->
-    <link href="{{asset('cms/css/morris.css')}}" rel="stylesheet"/>
-    <!-- Datepicker -->
-    <link href="{{asset('cms/css/datepicker.css')}}" rel="stylesheet"/>
-    <!-- Animate -->
-    <link href="{{asset('cms/css/animate.min.css')}}" rel="stylesheet">
-    <!-- Owl Carousel -->
-    <link href="{{asset('cms/css/owl.carousel.min.css')}}" rel="stylesheet">
-    <link href="{{asset('cms/css/owl.theme.default.min.css')}}" rel="stylesheet">
-    <link href="{{asset('plugins/select2/css/select2.min.css')}}" rel="stylesheet">
-    <link href="{{asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker3.standalone.css')}}" rel="stylesheet">
-    <!-- Simplify -->
-    <link href="{{asset('cms/css/simplify.css')}}" rel="stylesheet">
-    <!-- Scripts -->
-    <!-- Jquery -->
-    <script src="{{asset('cms/js/jquery-2.1.1.min.js')}}"></script>
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-        $().ready(function(){
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': window.Laravel
-                }
-            });
-        })
-    </script>
+    <!-- Import google fonts - Heading first/ text second -->
+    <link href="{{asset('assets/cms/css/font.css')}}" rel='stylesheet' type='text/css'>
+    <!-- Css files -->
+    <!-- Icons -->
+    <link href="{{asset('assets/cms/css/icons.css')}}" rel="stylesheet" />
+    <!-- Bootstrap stylesheets (included template modifications) -->
+    <link href="{{asset('assets/cms/css/bootstrap.css')}}" rel="stylesheet" />
+    <!-- Plugins stylesheets (all plugin custom css) -->
+    <link href="{{asset('assets/cms/css/plugins.css')}}" rel="stylesheet" />
+    <!-- Main stylesheets (template main css file) -->
+    <link href="{{asset('assets/cms/css/main.css')}}" rel="stylesheet" />
+    <!-- Custom stylesheets ( Put your own changes here ) -->
+    <link href="{{asset('assets/cms/css/custom.css')}}" rel="stylesheet" />
+    <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
+    <link href="{{asset('assets/cms/css/fileinput.css')}}" media="all" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('assets/cms/themes/explorer/theme.css')}}" media="all" rel="stylesheet" type="text/css"/>
+    <meta name="msapplication-TileColor" content="#3399cc" />
 </head>
-<body class="overflow-hidden">
-<div class="wrapper preload">
-    @include('cms.sidebar-right')
-    @include('cms.header')
-    @include('cms.aside')
-        <div class="main-container">
-            <div class="padding-md">
-                <ul class="breadcrumb">
-    				<li><span class="primary-font"><i class="icon-home"></i></span><a href="/admin"> Home</a></li>
-    				<!--<li>Table</li>
-    				<li>Static Table</li>-->
-    			</ul>
-                @yield('content')
-            </div><!-- ./padding-md -->
-        </div><!-- /main-container -->
-        @include('cms.footer')
+<body>
+<!--[if lt IE 9]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- .page-navbar -->
+@include('cms.header')
+<!-- / page-navbar -->
+<!-- #wrapper -->
+<div id="wrapper">
+    <!-- .page-sidebar -->
+    @include('cms.sidebar')
+    <!-- / page-sidebar -->
+    <!-- Start #right-sidebar -->
+    @include('cms.rightSidebar')
+    <!-- End #right-sidebar -->
+    <!-- .page-content -->
+    @yield('content')
+    <!-- / page-content -->
 </div>
-    <a href="#" class="scroll-to-top hidden-print"><i class="fa fa-chevron-up fa-lg"></i></a>
-    @yield('popup')
-    <!-- Bootstrap -->
-    <script src="{{asset('cms/js/bootstrap.min.js')}}"></script>
-    <!-- Slimscroll -->
-    <script src="{{asset('cms/js/jquery.slimscroll.min.js')}}"></script>
-    <!-- Popup Overlay -->
-    <script src="{{asset('cms/js/jquery.popupoverlay.min.js')}}"></script>
-    <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
-    <script src="{{asset('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
-    <!-- Simplify -->
-    <script src="{{asset('cms/js/simplify/simplify.js')}}"></script>
-    @yield('scripts')
+<!-- / #wrapper -->
+@include('cms.footer')
+<!-- End #footer  -->
+<!-- Back to top -->
+<div id="back-to-top"><a href="#">Back to Top</a>
 </div>
-
+<!-- Javascripts -->
+<!-- Load pace first -->
+<script src="{{asset('assets/cms/plugins/core/pace/pace.min.js')}}"></script>
+<!-- Important javascript libs(put in all pages) -->
+<script src="{{asset('assets/cms/js/jquery-2.1.1.min.js')}}"></script>
+<script src="{{asset('assets/cms/js/jquery-ui.js')}}"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="{{asset('assets/cms/js/libs/excanvas.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/cms/js/html5.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/cms/js/libs/respond.min.js')}}"></script>
+<![endif]-->
+<!-- Bootstrap plugins -->
+<script src="{{asset('assets/cms/js/bootstrap/bootstrap.js')}}"></script>
+<!-- Core plugins ( not remove ) -->
+<script src="{{asset('assets/cms/js/libs/modernizr.custom.js')}}"></script>
+<!-- Handle responsive view functions -->
+<script src="{{asset('assets/cms/js/jRespond.min.js')}}"></script>
+<!-- Custom scroll for sidebars,tables and etc. -->
+<script src="{{asset('assets/cms/plugins/core/slimscroll/jquery.slimscroll.min.js')}}"></script>
+<script src="{{asset('assets/cms/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js')}}"></script>
+<!-- Remove click delay in touch -->
+<script src="{{asset('assets/cms/plugins/core/fastclick/fastclick.js')}}"></script>
+<!-- Increase jquery animation speed -->
+<script src="{{asset('assets/cms/plugins/core/velocity/jquery.velocity.min.js')}}"></script>
+<!-- Quick search plugin (fast search for many widgets) -->
+<script src="{{asset('assets/cms/plugins/core/quicksearch/jquery.quicksearch.js')}}"></script>
+<!-- Bootbox fast bootstrap modals -->
+<script src="{{asset('assets/cms/plugins/ui/bootbox/bootbox.js')}}"></script>
+<!-- Other plugins ( load only nessesary plugins for every page) -->
+<script src="{{asset('assets/cms/plugins/charts/sparklines/jquery.sparkline.js')}}"></script>
+<script src="{{asset('assets/cms/js/jquery.dynamic.js')}}"></script>
+<script src="{{asset('assets/cms/plugins/forms/bootstrap-timepicker/bootstrap-timepicker.js')}}"></script>
+<script src="{{asset('assets/cms/plugins/forms/bootstrap-filestyle/bootstrap-filestyle.js')}}"></script>
+<script src="{{asset('assets/cms/js/jquery.form.js')}}"></script>
+<script src="{{asset('assets/cms/plugins/forms/select2/select2.js')}}"></script>
+<script src="{{asset('assets/cms/plugins/forms/spinner/jquery.bootstrap-touchspin.js')}}"></script>
+<script src="{{asset('assets/cms/js/main.js')}}"></script>
+<script src="{{asset('assets/cms/js/pages/blank.js')}}"></script>
+<script src="{{asset('assets/cms/plugins/sortable.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/cms/js/fileinput.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/cms/themes/explorer/theme.js')}}" type="text/javascript"></script>
+<script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('/vendor/unisharp/laravel-ckeditor/adapters/jquery.js')}}"></script>
+<script>
+    $('.article-ckeditor').ckeditor({
+        filebrowserBrowseUrl: '{!! url('filemanager/index.html') !!}'
+    });
+</script>
+<script>
+    $().ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        /*
+        $.get('/admin/user/logs',function (data) {
+            $('#userLogs').html(data);
+        });
+        */
+        $('.active').parents('ul').addClass('show');
+    })
+</script>
+@yield('scripts')
 </body>
 </html>

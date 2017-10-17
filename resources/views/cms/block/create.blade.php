@@ -184,7 +184,7 @@ $(document).ready(function() {
     @if ($name == 'kv' || $name == 'graphic')
     var file_config_header = {
         theme: 'explorer',
-        uploadUrl: '{{url("admin/file/upload/file1")}}',
+        uploadUrl: '{{url("cms/file/upload/file1")}}',
         uploadAsync: false,
         maxFileCount: 1,
         allowedFileTypes: ["image", "video"],

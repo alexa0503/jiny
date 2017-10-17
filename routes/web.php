@@ -15,7 +15,12 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 Route::get('/', function () {
-    return view('index');
+    $categories = App\Category::orderBy('sort_id', 'ASC')->get();
+    $page = App\Page::find(1);
+    return view('index',[
+      'categories'=>$categories,
+      'page' => $page,
+    ]);
 });
 Route::get('/culture', function () {
     return view('culture');
@@ -23,9 +28,9 @@ Route::get('/culture', function () {
 Route::get('/contactus', function () {
     return view('contactus');
 });
-Route::get('/items', function () {
+Route::get('/items/{id}', function ($id) {
     return view('items');
-});
+})->name('items');
 Route::get('/item', function () {
     return view('item');
 });

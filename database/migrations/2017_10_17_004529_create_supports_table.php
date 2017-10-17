@@ -21,7 +21,7 @@ class CreateSupportsTable extends Migration
             $table->string('attachment', 200);
             $table->integer('type_id')->default(1);
             $table->integer('sort_id')->default(999);
-            $table->text('body');
+            $table->binary('body');
             $table->softDeletes();
             $table->timestamps();
         });
