@@ -60,7 +60,7 @@
                                     </div>
                                     <!-- End .form-group  -->
                                     @endif
-                                    @if ($name == 'kv' || $name == 'graphic')
+                                    @if (in_array($name ,['kv','graphic','latest']))
                                     <div class="form-group">
                                         <label class="col-lg-2 col-md-3 control-label" for="">头图</label>
                                         <div class="col-lg-10 col-md-9">
@@ -181,7 +181,7 @@ $(document).ready(function() {
 
         }
     });
-    @if ($name == 'kv' || $name == 'graphic')
+    @if (in_array($name ,['kv','graphic','latest']))
     var file_config_header = {
         theme: 'explorer',
         uploadUrl: '{{url("cms/file/upload/file1")}}',

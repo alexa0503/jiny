@@ -58,7 +58,7 @@
                                     </div>
                                     <!-- End .form-group  -->
                                     @endif
-                                    @if ($row->name == 'kv' || $row->name == 'graphic')
+                                    @if ( in_array($row->name ,['kv','graphic','latest']))
                                     <div class="form-group">
                                         <label class="col-lg-2 col-md-3 control-label" for="">头图</label>
                                         <div class="col-lg-10 col-md-9">
@@ -86,7 +86,7 @@
                                         <div class="col-lg-10 col-md-9" id="div-gallery">
                                             <input id="gallery-explorer" name="file3[]" type="file" multiple >
                                             <label class="help-block" for="gallery[]"></label>
-                                            @if($row->gallery && is_array($row->gallery))
+                                            @if($row->gallery AND is_array($row->gallery))
                                                 @foreach($row->gallery as $image)
                                             <input name="gallery[]" value="{{$image}}" type="hidden" />
                                                 @endforeach
@@ -179,7 +179,7 @@ $(document).ready(function() {
 
         }
     });
-    @if ($row->name == 'kv' || $row->name == 'graphic')
+    @if ( in_array($row->name ,['kv','graphic','latest']) )
     var file_config_header = {
         theme: 'explorer',
         uploadUrl: '{{url("cms/file/upload/file1")}}',

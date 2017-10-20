@@ -1,3 +1,58 @@
+// Body
+$body-bg: #FFF;
+$screen-lg-min: 1440px;
+$container-lg:1260px;
+// Borders
+$laravel-border-color: darken($body-bg, 10%);
+$list-group-border: $laravel-border-color;
+$navbar-default-border: $laravel-border-color;
+$panel-default-border: $laravel-border-color;
+$panel-inner-border: $laravel-border-color;
+
+// Brands
+$brand-primary: #3097D1;
+$brand-info: #8eb4cb;
+$brand-success: #2ab27b;
+$brand-warning: #cbb956;
+$brand-danger: #bf5329;
+
+// Typography
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$font-family-sans-serif: "微软雅黑","Microsoft YaHei","Raleway", sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.6;
+$text-color: #221715;
+
+// Navbar
+$navbar-default-bg: #1a1416;
+$navbar-inverse-bg: #1a1416;
+$navbar-inverse-brand-color: #ffffff;
+$navbar-border-radius:0;
+$navbar-inverse-link-active-color:#ffffff;
+$navbar-inverse-link-color:#ffffff;
+$navbar-inverse-link-active-bg:#1a1416;
+$navbar-height:62px;
+$font-size-large:24px;
+$navbar-inverse-toggle-border-color:#cf000f;
+$navbar-inverse-toggle-hover-bg:#cf000f;
+$border-radius-base:0;
+$navbar-inverse-link-bg:#cf000f;
+$navbar-inverse-link-active-bg:#a6010d;
+$navbar-inverse-link-hover-bg:#a6010d;
+$navbar-margin-bottom: 5px;
+// Buttons
+$btn-default-color: $text-color;
+$btn-primary-bg:#e40011;
+$btn-primary-color:#FFF;
+$btn-border-radius-large:0;
+
+// Inputs
+$input-border: lighten($text-color, 40%);
+$input-border-focus: lighten($brand-primary, 25%);
+$input-color-placeholder: lighten($text-color, 30%);
+
+// Panels
+$panel-default-heading-bg: #fff;
 .icon-contactus {
     margin-top: 27px;
 }
@@ -28,49 +83,8 @@ header {
     color:#221715;
     font-size: 15px;
 }
-@media (min-width: 992px) {
-    .homepage-topper-01 .homepage-list {
-        width: 200px;
-        float: left;
-        margin: 0;
-    }
-    .navbar-brand {
-        width: 200px;
-        float: left;
-    }
-    .homepage-topper-01 .homepage-kv {
-        margin: 0 0 0 auto;
-        width: 770px;
-    }
-}
-@media (min-width: 1440px) {
-    .homepage-topper-01 .homepage-list {
-        width: 270px;
-        float: left;
-        margin: 0;
-    }
-    .navbar-brand {
-        width: 270px;
-        float: left;
-    }
-    .homepage-topper-01 .homepage-kv {
-        margin: 0 0 0 auto;
-        width: 990px;
-    }
-    .list-group-item {
-         padding: 13px 15px!important;
-    }
-    .list-group-item:last-child{
-        padding: 15px 15px!important;
-    }
-    .list-group-item:first-child{
-        padding: 15px 15px!important;
-    }
-}
-@media screen and (max-width: 767px) {
-    .homepage-topper-01 .homepage-kv {
-        margin-left: 0px;
-    }
+.col-two .arrow-prev,.col-two .arrow-next {
+    display: none;
 }
 .nav-header-01 .navbar-nav {
     padding-left: 160px!important;
@@ -270,6 +284,19 @@ header {
     margin-top: 30px;
     margin-bottom: 30px;
 }
+#items-menu {
+    position: relative;
+}
+#items-menu ul {
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 999;
+}
+#items-menu .list-group .list-group-item,#items-menu .list-group .list-group-item a {
+    color:#221715;
+    font-size: 15px;
+}
 .iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
 .iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
 footer {
@@ -306,12 +333,13 @@ footer .copyright {
     color: #fff;
     font-size: 14px;
     font-weight: normal;
+    text-align: center;
 }
 footer .copyright p {
     margin-bottom: 5px;
 }
 .col-two {
-    margin-top: 50px;
+    margin-bottom: 100px;
 }
 .col-one {
     margin-top: 20px;
@@ -322,12 +350,15 @@ footer .copyright p {
     padding-left: 15px;
     height: 27px;
     line-height: 27px;
+    font-size:27px;
 }
 .col-two .nav {
     height: 60px;
     line-height: 60px;
     background: url(/images/bkg-triangle.jpg) 0 0 no-repeat;
     color: #fff;
+    margin-top: 50px;
+    font-size:27px;
 }
 .col-two .nav span {
     padding-left: 40px;
@@ -365,57 +396,83 @@ footer .copyright p {
     position: absolute;
     color: #fff;
 }
-// Body
-$body-bg: #FFF;
-$screen-lg-min: 1440px;
-$container-lg:1260px;
-// Borders
-$laravel-border-color: darken($body-bg, 10%);
-$list-group-border: $laravel-border-color;
-$navbar-default-border: $laravel-border-color;
-$panel-default-border: $laravel-border-color;
-$panel-inner-border: $laravel-border-color;
-
-// Brands
-$brand-primary: #3097D1;
-$brand-info: #8eb4cb;
-$brand-success: #2ab27b;
-$brand-warning: #cbb956;
-$brand-danger: #bf5329;
-
-// Typography
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$font-family-sans-serif: "微软雅黑","Microsoft YaHei","Raleway", sans-serif;
-$font-size-base: 16px;
-$line-height-base: 1.6;
-$text-color: #221715;
-
-// Navbar
-$navbar-default-bg: #1a1416;
-$navbar-inverse-bg: #1a1416;
-$navbar-inverse-brand-color: #ffffff;
-$navbar-border-radius:0;
-$navbar-inverse-link-active-color:#ffffff;
-$navbar-inverse-link-color:#ffffff;
-$navbar-inverse-link-active-bg:#1a1416;
-$navbar-height:62px;
-$font-size-large:24px;
-$navbar-inverse-toggle-border-color:#cf000f;
-$navbar-inverse-toggle-hover-bg:#cf000f;
-$border-radius-base:0;
-$navbar-inverse-link-bg:#cf000f;
-$navbar-inverse-link-active-bg:#a6010d;
-$navbar-inverse-link-hover-bg:#a6010d;
-// Buttons
-$btn-default-color: $text-color;
-$btn-primary-bg:#e40011;
-$btn-primary-color:#FFF;
-$btn-border-radius-large:0;
-
-// Inputs
-$input-border: lighten($text-color, 40%);
-$input-border-focus: lighten($brand-primary, 25%);
-$input-color-placeholder: lighten($text-color, 30%);
-
-// Panels
-$panel-default-heading-bg: #fff;
+@media (min-width: 992px) {
+    .homepage-topper-01 .homepage-list {
+        width: 200px;
+        float: left;
+        margin: 0;
+    }
+    .navbar-brand {
+        width: 200px;
+        float: left;
+    }
+    .homepage-topper-01 .homepage-kv {
+        margin: 0 0 0 auto;
+        width: 770px;
+    }
+}
+@media (min-width: 1440px) {
+    .homepage-topper-01 .homepage-list {
+        width: 270px;
+        float: left;
+        margin: 0;
+    }
+    .navbar-brand {
+        width: 270px;
+        float: left;
+    }
+    .homepage-topper-01 .homepage-kv {
+        margin: 0 0 0 auto;
+        width: 990px;
+    }
+    .list-group-item {
+         padding: 13px 15px!important;
+    }
+    .list-group-item:last-child{
+        padding: 15px 15px!important;
+    }
+    .list-group-item:first-child{
+        padding: 15px 15px!important;
+    }
+}
+@media screen and (max-width: 767px) {
+    #slick-one {
+        margin:20px 15px;
+    }
+    .homepage-topper-01 {
+        margin-top: 20px;
+    }
+    .homepage-topper-01 .homepage-kv {
+        margin-left: 0px;
+    }
+    .col-two {
+        margin:0 20px;
+        position: relative;
+    }
+    .col-two .content {
+        margin:0 55px;
+    }
+    .col-two .pull-right {
+        display: none;
+    }
+    .col-two .arrow-prev,.col-two .arrow-next {
+        position: absolute;
+        top: 50%;
+        display: block;
+    }
+    .col-two .arrow-prev {
+        left:25px;
+    }
+    .col-two .arrow-next {
+        right:25px;
+    }
+    footer .part1,footer .part2 {
+        height:auto;
+        border: 0;
+    }
+    footer .copyright {
+        text-align: left;
+        padding: 20px 15px;
+        font-size: 14px;
+    }
+}

@@ -24,6 +24,7 @@
 </div>
 <script src="{{asset('js/jquery-2.2.4.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/app.js')}}" type="text/javascript"></script>
 <script>
 var w = $( window ).width();
 $( window ).resize(function() {

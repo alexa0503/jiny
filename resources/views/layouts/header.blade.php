@@ -19,15 +19,20 @@
             <a class="navbar-brand hidden-sm hidden-md hidden-lg" href="/">
                 <img src="{{asset('images/logo.png')}}" height="74"/>
             </a>
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/items">产品中心</a>
+          @if( url()->current() == url('/') )
+          <a class="navbar-brand" href="#" >产品中心</a>
+          @else
+          <a class="navbar-brand" href="#" id="items-button">产品中心</a>
+          @endif
+
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+        <div class="collapse navbar-collapse" id="menu">
           <ul class="nav navbar-nav">
             <li><a href="/">首页</a></li>
             <li><a href="/culture">关于我们</a></li>
@@ -37,5 +42,12 @@
             <li><a href="/contactus">联系我们</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
+        <div class=" hidden-xs hidden-sm hidden" id="items-menu">
+            <ul class="list-group">
+                @foreach ( session('categories') as $category)
+                <li class="list-group-item"><a href="{{route('items',$category->id)}}">{{$category->name}}</a></li>
+                @endforeach
+            </ul>
+        </div>
       </div><!-- /.container-fluid -->
     </nav>

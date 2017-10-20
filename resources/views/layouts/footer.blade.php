@@ -24,14 +24,14 @@
                 <p>邮编：200245</p>
             </div>
         </div>
-        <div class="col-md-4 col-lg-4">
+        <div class="col-md-4 col-lg-4 hidden-xs">
             <div class="part3">
                 <p>官方微信</p>
                 <img src="{{asset('images/icon-wechat.jpg')}}" />
             </div>
         </div>
     </div>
-    <div class="copyright text-center">
+    <div class="copyright">
         <p>Copyright &copy;2006-2017 上海杰尼机电技术有限公司 All rights resevered.</p>
         <p>沪ICP备06049470号-1</p>
     </div>
