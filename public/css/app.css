@@ -88,7 +88,7 @@ header {
 }
 
 .culture .content {
-  padding: 70px 36px 30px;
+  padding: 15px 36px 50px;
   font-size: 15px;
   color: #342427;
   line-height: 30px;
@@ -97,6 +97,19 @@ header {
 .culture .content p {
   margin: 0;
   padding: 0;
+}
+
+.culture .img-culture {
+  padding: 0 0 50px;
+}
+
+.contactus .contactusMap {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.contactus .contactusMap #dituContent {
+  height: 550px;
 }
 
 .items .items-list {
@@ -286,8 +299,9 @@ header {
 
 #items-menu ul {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 6px;
+  left: -15px;
+  width: 200px;
   z-index: 999;
 }
 
@@ -317,7 +331,6 @@ header {
 footer {
   background: #c4c6c3;
   border-top: #e8eae7 18px solid;
-  border-bottom: #343232 58px solid;
 }
 
 footer .part1,
@@ -533,6 +546,71 @@ footer .copyright p {
     text-align: left;
     padding: 20px 15px;
     font-size: 14px;
+  }
+
+  .nav-header-01 {
+    margin-top: 0;
+    background: #FFF;
+    padding-top: 35px;
+    padding-bottom: 0;
+  }
+
+  .nav-header-01 .navbar-nav {
+    padding-left: 160px !important;
+  }
+
+  .culture .navbar-nav,
+  .nav-header-01 .navbar-nav {
+    padding-left: 0 !important;
+    margin: 0 8%;
+  }
+
+  .culture .navbar-nav,
+  .nav-header-01 .navbar-nav li {
+    float: left;
+    height: 40px;
+    text-align: center;
+    width: 30%;
+  }
+
+  .culture .navbar-nav,
+  .nav-header-01 .navbar-nav li.split {
+    width: 5%;
+  }
+
+  .culture .navbar-nav li a,
+  .nav-header-01 .navbar-nav li a {
+    color: #342427;
+    font-size: 24px;
+    display: block;
+    padding: 0;
+    line-height: 24px;
+  }
+
+  .culture .navbar-nav,
+  .nav-header-01 .navbar-nav li.active a {
+    color: #e50011;
+  }
+
+  .culture .navbar-nav li span,
+  .nav-header-01 .navbar-nav li span {
+    font-size: 24px;
+    display: block;
+    padding: 0;
+    line-height: 24px;
+    color: #ccc;
+  }
+
+  .culture .img-culture {
+    padding: 0 15px 50px;
+  }
+
+  .contactus .contactusMap {
+    margin: 30px 15px 50px;
+  }
+
+  .contactus .contactusMap #dituContent {
+    height: 250px;
   }
 }
 

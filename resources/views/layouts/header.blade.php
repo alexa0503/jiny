@@ -30,7 +30,6 @@
           @else
           <a class="navbar-brand" href="#" id="items-button">产品中心</a>
           @endif
-
         </div>
         <div class="collapse navbar-collapse" id="menu">
           <ul class="nav navbar-nav">

@@ -5,22 +5,24 @@
         <h2>联系我们</h2>
         <h4>上海杰尼机电技术有限公司</h4>
         <div class="rows">
-            <div class="col-md-4">
-                <p>销售热线：400-8833-700</p>
-                <p>客户经理：王艳、杨国辉</p>
-                <p>电话：021-5486 8522</p>
-                <p>传真：021-5486 8661</p>
+            <div class="row contactusMap">
+                <div style="width:100%;border:#ccc solid 1px;" id="dituContent"></div>
             </div>
-            <div class="col-md-8">
-                <p>mail：<a href="mailto:sales@jiny.cn">sales@jiny.cn</a></p>
-                <p>地址：上海市闵行区景谷路398-2号</p>
-                <p>邮编：200245</p>
-                <p>网址：http://www.jiny.cn</p>
+            <div class="rows">
+                <div class="col-md-4">
+                    <p>销售热线：400-8833-700</p>
+                    <p>客户经理：王艳、杨国辉</p>
+                    <p>电话：021-5486 8522</p>
+                    <p>传真：021-5486 8661</p>
+                </div>
+                <div class="col-md-8">
+                    <p>mail：<a href="mailto:sales@jiny.cn">sales@jiny.cn</a></p>
+                    <p>地址：上海市闵行区景谷路398-2号</p>
+                    <p>邮编：200245</p>
+                    <p>网址：http://www.jiny.cn</p>
+                </div>
+                <div class="clearfix"></div>
             </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="row" style="margin-top:30px;">
-            <div style="width:100%;height:550px;border:#ccc solid 1px;" id="dituContent"></div>
         </div>
     </div>
 </div>
