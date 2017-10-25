@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="nav-header-01">
+<div class="nav-header-01 hidden-xs">
     <div class="container">
         <div class="row">
             <ul class="nav navbar-nav">
@@ -15,13 +15,13 @@
     <div class="row">
         <div class="col-md-8">
             <h2>技术资料</h2>
-            @foreach ($supports[0] as $support)
+            @foreach ($supports[0] as $k => $support)
             <div class="rows">
-                <h3>{{$support->name}}</h3>
+                <h3{!! $k==0 ? ' class="first"' : '' !!}>{{$support->name}}</h3>
                 @if( $support->thumb )
                 <div class="row supports-list">
                     <div class="col-md-4">
-                        <img src="{{$support->thumb}}" class="img-responsive" />
+                        <img src="{{$support->thumb}}" class="center-block img-responsive" />
                     </div>
                     <div class="col-md-8">
                         <p>{{$support->desc}}</p>
@@ -31,13 +31,13 @@
                 @else
                 <div class="rows">
                     <p>{{$support->desc}}</p>
-                    <div class="text-right"><a href="{{route('support', $support->id)}}" class="btn-lg btn btn-primary">更多内容</a></div>
+                    <div class="supports-text-more"><a href="{{route('support', $support->id)}}" class="btn-lg btn btn-primary">更多内容</a></div>
                 </div>
                 @endif
             </div>
             @endforeach
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 hidden-xs">
             <h2>样本下载</h2>
             <h5>分类一</h5>
             @foreach ($supports[1] as $support)
