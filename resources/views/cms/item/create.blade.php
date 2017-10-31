@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('cms.layout')
 
 @section('content')
     <div class="page-content sidebar-page right-sidebar-page clearfix">
@@ -39,14 +39,6 @@
                                         </div>
                                     </div>
                                     <!-- End .form-group  -->
-                                    <div class="form-group">
-                                        <label for="text" class="col-lg-2 col-md-3 control-label">产品描述</label>
-                                        <div class="col-lg-10 col-md-9">
-                                            <textarea name="description" class="form-control" rows="5" placeholder="请输入"></textarea>
-                                            <label class="help-block" for="description"></label>
-                                        </div>
-                                    </div>
-                                    <!-- End .form-group  -->
                                     @foreach ($attributes as $name=>$attribute)
                                     <div class="form-group">
                                         <label for="text" class="col-lg-2 col-md-3 control-label">{{$attribute}}</label>
@@ -60,14 +52,6 @@
                                     @endforeach
                                     <!-- End .form-group  -->
                                     <div class="form-group">
-                                        <label for="text" class="col-lg-2 col-md-3 control-label">天猫链接</label>
-                                        <div class="col-lg-10 col-md-9">
-                                            <input type="text" name="tmall_url" class="form-control" value="">
-                                            <label class="help-block" for="tmall_url"></label>
-                                        </div>
-                                    </div>
-                                    <!-- End .form-group  -->
-                                    <div class="form-group">
                                         <label class="col-lg-2 col-md-3 control-label" for="">产品缩略图</label>
                                         <div class="col-lg-10 col-md-9">
                                             <div class="thumb-preview">
@@ -78,34 +62,10 @@
                                     </div>
                                     <!-- End .form-group  -->
                                     <div class="form-group">
-                                        <label class="col-lg-2 col-md-3 control-label" for="">产品详图</label>
+                                        <label for="text" class="col-lg-2 col-md-3 control-label">产品详情</label>
                                         <div class="col-lg-10 col-md-9">
-                                            <div class="thumb-preview">
-                                            </div>
-                                            <input type="file" name="image" class="filestyle" data-buttonText="Find file" data-buttonName="btn-danger" data-iconName="fa fa-plus">
-                                            <label class="help-block" for="image"></label>
-                                        </div>
-                                    </div>
-                                <!-- End .form-group  -->
-                                <div class="form-group">
-                                    <label class="col-lg-2 col-md-3 control-label" for="">ICON</label>
-                                    <div class="col-lg-10 col-md-9">
-                                        <input id="file-explorer" name="file-icon" type="file" >
-                                        <input name="icon" value="" type="hidden" />
-                                        <label class="help-block" for="image_bkg"></label>
-                                    </div>
-                                </div>
-                                    <!-- End .form-group  -->
-                                    <div class="form-group">
-                                        <label for="text" class="col-lg-2 col-md-3 control-label">页面模板</label>
-                                        <div class="col-lg-10 col-md-9">
-                                            <select name="template" class="select2 form-control">
-                                                <option value="">选择页面模板</option>
-                                                @foreach ($templates as $key=>$template)
-                                                <option value="{{$key}}">{{$template}}</option>
-                                                @endforeach
-                                            </select>
-                                            <label class="help-block" for="template"></label>
+                                            <textarea name="description" class="form-control" rows="5" placeholder="请输入"></textarea>
+                                            <label class="help-block" for="description"></label>
                                         </div>
                                     </div>
                                     <!-- End .form-group  -->
@@ -143,8 +103,12 @@ $(document).ready(function() {
             location.href='{{route("item.index")}}';
         },
         error: function(xhr){
+            if( xhr.status != 422){
+                alert('服务器发送错误');
+                return;
+            }
             var json = jQuery.parseJSON(xhr.responseText);
-            var keys = Object.keys(json);
+            var keys = Object.keys(json.errors);
             $('#form .form-group .help-block').empty();
             $('#form .form-group').removeClass('has-error');
             $('#form .form-group').each(function(){

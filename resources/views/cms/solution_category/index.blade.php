@@ -19,28 +19,29 @@
                         <!-- col-lg-12 start here -->
                         <div class="panel panel-default">
                             <!-- Start .panel -->
-                            <div class="panel-heading white-bg"></div>
+                            <!--<div class="panel-heading white-bg">
+                                <div class="panel-controls panel-controls-right"><a href="#" class="panel-refresh"><i class="fa fa-circle-o"></i></a><a href="#" class="toggle panel-minimize"><i class="fa fa-angle-up"></i></a><a href="#" class="panel-close"><i class="fa fa-times"></i></a></div></div>-->
                             <div class="panel-body">
                                 <table id="basic-datatables" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                     <thead>
                                     <tr>
+                                        <th>缩略图</th>
                                         <th>分类名</th>
+                                        <th>描述</th>
                                         <th>排序</th>
-                                        <th>创建时间</th>
-                                        <th>更新时间</th>
                                         <th>操作</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($rows as $row)
                                         <tr>
+                                            <td><a href="{{ asset($row->thumb) }}"><img style="max-width:200px;max-height:200px;" src="{{ asset($row->thumb) }}" target="_blank" title="点击查看大图" /></a></td>
                                             <td>{{ $row->name }}</td>
+                                            <td>{{ $row->desc }}</td>
                                             <td>{{ $row->sort_id }}</td>
-                                            <td>{{ $row->created_at }}</td>
-                                            <td>{{ $row-> updated_at }}</td>
                                             <td>
-                                                <a href="{{route('category.edit',['id'=>$row->id])}}" class="label label-info">编辑</a>
-                                                <a href="{{route('category.destroy',['id'=>$row->id])}}" class="delete label label-info">删除</a></td>
+                                                <a href="{{route('solution_category.edit',['id'=>$row->id])}}" class="label label-info">编辑</a>
+                                                <a href="{{route('solution_category.destroy',['id'=>$row->id])}}" class="delete label label-info">删除</a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

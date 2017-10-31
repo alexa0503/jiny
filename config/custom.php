@@ -10,17 +10,18 @@ return [
         'bggreen' => '绿色',
     ],
     'attributes' => [
-        'specification' => '包装规格',
-        'features' => '孕期功效/产品特点',
-        'contains' => 'contains/每粒胶囊含',
-        'method' => '服用方法/使用建议/使用说明',
-        'artg' => '澳大利亚治疗商品管理局TGA编号',
+        'specification' => '',
+        'features' => '',
+        'contains' => '',
+        'method' => '',
+        'artg' => '',
     ],
     'blocks' => [
         'kv' => 'KV',
         'graphic' => '图文',
-        'gallery' => '图库',
-        'video' => '视频',
+        'text' => '文本',
+        //'gallery' => '图库',
+        //'video' => '视频',
         'latest' => '最新应用',
     ]
 ];

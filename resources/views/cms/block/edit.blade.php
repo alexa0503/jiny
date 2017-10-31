@@ -40,15 +40,7 @@
                                         </div>
                                     </div>
                                     <!-- End .form-group  -->
-                                    <div class="form-group">
-                                        <label for="text" class="col-lg-2 col-md-3 control-label">描述</label>
-                                        <div class="col-lg-10 col-md-9">
-                                            <textarea name="description" class="form-control" rows="5" placeholder="请输入">{{$row->description}}</textarea>
-                                            <label class="help-block" for="description"></label>
-                                        </div>
-                                    </div>
-                                    <!-- End .form-group  -->
-                                    @if ($row->name == 'graphic')
+                                    @if ($row->name == 'graphic' || $row->name == 'text')
                                     <div class="form-group">
                                         <label for="text" class="col-lg-2 col-md-3 control-label">内容</label>
                                         <div class="col-lg-10 col-md-9">
@@ -60,7 +52,7 @@
                                     @endif
                                     @if ( in_array($row->name ,['kv','graphic','latest']))
                                     <div class="form-group">
-                                        <label class="col-lg-2 col-md-3 control-label" for="">头图</label>
+                                        <label class="col-lg-2 col-md-3 control-label" for="">图片</label>
                                         <div class="col-lg-10 col-md-9">
                                             <input id="header-explorer" name="file1" type="file" multiple >
                                             <input name="header_image" value="{{$row->header_image}}" type="hidden" />
@@ -69,7 +61,15 @@
                                     </div>
                                     <!-- End .form-group  -->
                                     @endif
-                                    @if ($row->name == 'graphic')
+                                    <!-- End .form-group  -->
+                                    <div class="form-group">
+                                        <label for="text" class="col-lg-2 col-md-3 control-label">描述</label>
+                                        <div class="col-lg-10 col-md-9">
+                                            <textarea name="description" class="form-control" rows="5" placeholder="请输入">{{$row->description}}</textarea>
+                                            <label class="help-block" for="description"></label>
+                                        </div>
+                                    </div>
+                                    @if ($row->name == 'graphic111')
                                     <div class="form-group">
                                         <label class="col-lg-2 col-md-3 control-label" for="">背景图/大图</label>
                                         <div class="col-lg-10 col-md-9">

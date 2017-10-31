@@ -17,4 +17,8 @@ class Item extends Model
         })->all();
         return count($attributes) > 0 ? array_values($attributes)[0] : (object)(['title'=>'','content'=>'']);
     }
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
 }

@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('cms.layout')
 
 @section('content')
     <div class="page-content sidebar-page right-sidebar-page clearfix">
@@ -146,8 +146,12 @@ $(document).ready(function() {
             location.href='{{route("item.index")}}';
         },
         error: function(xhr){
+            if( xhr.status != 422){
+                alert('服务器发送错误');
+                return;
+            }
             var json = jQuery.parseJSON(xhr.responseText);
-            var keys = Object.keys(json);
+            var keys = Object.keys(json.errors);
             $('#form .form-group .help-block').empty();
             $('#form .form-group').removeClass('has-error');
             $('#form .form-group').each(function(){

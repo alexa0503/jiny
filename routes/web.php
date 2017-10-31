@@ -89,10 +89,14 @@ Route::group(['middleware' => ['role:superadmin,global privileges','web'], 'pref
     Route::get('/dashboard', 'Cms\IndexController@index');
     Route::post('file/delete', 'Cms\FileController@delete');
     Route::post('file/upload/{name?}', 'Cms\FileController@upload');
-    Route::resource('page.block', 'Cms\BlockController');
-    Route::resource('item', 'Cms\ItemController');
-    Route::resource('type.item', 'Cms\ItemTypeController');
-    Route::resource('category', 'Cms\CategoryController');
+    Route::resources([
+        'page.block' => 'Cms\BlockController',
+        'item' => 'Cms\ItemController',
+        //'type.item' => 'Cms\ItemTypeController',
+        'category' => 'Cms\CategoryController',
+        'solution_category' => 'Cms\SolutionCategoryController',
+        'solution' => 'Cms\SolutionController',
+    ]);
 
     Route::get('users', 'Cms\IndexController@users');
     Route::get('account', 'Cms\IndexController@account');

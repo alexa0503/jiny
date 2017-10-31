@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('cms.layout')
 
 @section('content')
     <div class="page-content sidebar-page right-sidebar-page clearfix">
@@ -39,6 +39,7 @@
                                     <tr>
                                         <th>缩略图</th>
                                         <th>产品名称</th>
+                                        <th>所属分类</th>
                                         <th>创建时间</th>
                                         <th>操作</th>
                                     </tr>
@@ -46,8 +47,11 @@
                                     <tbody>
                                     @foreach ($rows as $row)
                                     <tr>
-                                        <td><a href="{{ asset($row->image) }}" target="_blank"><img  style="max-width:100px;max-height:100px;" title="点击查看原图" src="{{ asset($row->image) }}" /></a></td>
+                                        <td>
+                                            <a href="{{ asset($row->thumb) }}" target="_blank"><img  style="max-width:100px;max-height:100px;" title="点击查看原图" src="{{ asset($row->thumb) }}" /></a>
+                                        </td>
                                         <td>{{ $row->name }}</td>
+                                        <td>{{ $row->category->name }}</td>
                                         <td>{{ $row->created_at }}</td>
                                         <td>
                                             <a href="{{route('item.edit',['id'=>$row->id])}}" class="label label-info">编辑</a>
