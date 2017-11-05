@@ -17,11 +17,7 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         if( null != $request->get('category')){
-            //$rows = \App\Item::where()->paginate(20);
-            $items = \App\ItemCategory::where('category_id', $request->get('category'))->get()->map(function($item){
-                return $item->item_id;
-            })->toArray();
-            $rows = \App\Item::whereIn('id',$items)->paginate(20);
+            $rows = \App\Item::where('category_id',$request->get('category'))->paginate(20);
         }
         else{
             $rows = \App\Item::paginate(20);
