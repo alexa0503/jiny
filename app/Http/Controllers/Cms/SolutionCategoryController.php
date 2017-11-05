@@ -18,7 +18,7 @@ class SolutionCategoryController extends Controller
         $rows = \App\SolutionCategory::orderby('sort_id', 'ASC')->paginate(20);
         return view('cms.solution_category.index', [
             'rows' => $rows,
-            'categories' => \App\SolutionCategory::all(),
+            //'categories' => \App\SolutionCategory::all(),
         ]);
     }
 
@@ -41,38 +41,13 @@ class SolutionCategoryController extends Controller
      */
     public function store(SolutionCategory $request)
     {
-        $image = '';
-        if ($request->hasFile('image')) {
-            if ($request->file('image')->getError() != 0) {
-                return Response(['image' => $request->file('image')->getErrorMessage()], 422);
-            }
-            $file = $request->file('image');
 
-            $entension = $file->getClientOriginalExtension();
-            $file_name = uniqid().'.'.$entension;
-            $path = 'uploads/'.date('Ymd').'/';
-            $file->move(public_path($path), $file_name);
-            $image = $path.$file_name;
-        }
-        $thumb = '';
-        if ($request->hasFile('thumb')) {
-            if ($request->file('thumb')->getError() != 0) {
-                return Response(['thumb' => $request->file('thumb')->getErrorMessage()], 422);
-            }
-            $file = $request->file('thumb');
-
-            $entension = $file->getClientOriginalExtension();
-            $file_name = uniqid().'.'.$entension;
-            $path = 'uploads/'.date('Ymd').'/';
-            $file->move(public_path($path), $file_name);
-            $thumb = $path.$file_name;
-        }
         $category = new \App\SolutionCategory();
         $category->name = $request->input('name');
         $category->sort_id = $request->input('sort_id');
         $category->desc = $request->input('desc');
-        $category->image = $image;
-        $category->thumb = $thumb;
+        $category->image = $request->input('image');
+        $category->thumb = $request->input('thumb');
         $category->save();
         return response([]);
     }
@@ -115,30 +90,8 @@ class SolutionCategoryController extends Controller
         $category->name = $request->input('name');
         $category->sort_id = $request->input('sort_id');
         $category->desc = $request->input('desc');
-        if ($request->hasFile('image')) {
-            if ($request->file('image')->getError() != 0) {
-                return Response(['image' => $request->file('image')->getErrorMessage()], 422);
-            }
-            $file = $request->file('image');
-
-            $entension = $file->getClientOriginalExtension();
-            $file_name = uniqid().'.'.$entension;
-            $path = 'uploads/'.date('Ymd').'/';
-            $file->move(public_path($path), $file_name);
-            $category->image = $path.$file_name;
-        }
-        if ($request->hasFile('thumb')) {
-            if ($request->file('thumb')->getError() != 0) {
-                return Response(['thumb' => $request->file('thumb')->getErrorMessage()], 422);
-            }
-            $file = $request->file('thumb');
-
-            $entension = $file->getClientOriginalExtension();
-            $file_name = uniqid().'.'.$entension;
-            $path = 'uploads/'.date('Ymd').'/';
-            $file->move(public_path($path), $file_name);
-            $category->thumb = $path.$file_name;
-        }
+        $category->thumb = $request->input('thumb');
+        $category->image = $request->input('image');
         $category->save();
         return response([]);
     }

@@ -1,142 +1,131 @@
 @extends('cms.layout')
 
 @section('content')
-    <div class="page-content sidebar-page right-sidebar-page clearfix">
-        <!-- .page-content-wrapper -->
-        <div class="page-content-wrapper">
-            <div class="page-content-inner">
-                <!-- Start .page-content-inner -->
-                <div id="page-header" class="clearfix">
-                    <div class="page-header">
-                        <h2>产品管理 - 编辑</h2>
-                    </div>
+<div class="page-content sidebar-page right-sidebar-page clearfix">
+    <!-- .page-content-wrapper -->
+    <div class="page-content-wrapper">
+        <div class="page-content-inner">
+            <!-- Start .page-content-inner -->
+            <div id="page-header" class="clearfix">
+                <div class="page-header">
+                    <h2>产品管理 - 编辑</h2>
                 </div>
-                <!-- Start .row -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- col-lg-12 start here -->
-                        <div class="panel panel-default">
-                            <!-- Start .panel -->
-                            <div class="panel-body pt0 pb0">
-                                {{ Form::open(array('route' => ['item.update',$item->id], 'class'=>'form-horizontal group-border stripped', 'method'=>'PUT', 'id'=>'form')) }}
-                                    <div class="form-group">
-                                        <label for="text" class="col-lg-2 col-md-3 control-label">产品名称</label>
-                                        <div class="col-lg-10 col-md-9">
-                                            <input type="text" name="name" class="form-control" value="{{$item->name}}">
-                                            <label class="help-block" for="name"></label>
-                                        </div>
-                                    </div>
-                                    <!-- End .form-group  -->
-                                    <div class="form-group">
-                                        <label for="text" class="col-lg-2 col-md-3 control-label">产品分类</label>
-                                        <div class="col-lg-10 col-md-9">
-                                            <select name="categories[]" class="select2 form-control" multiple="multiple">
-                                                @foreach ($categories as $category)
-                                                <option value="{{$category->id}}" @if (in_array($category->id, $item->category_keys)){{'selected="selected"'}}@endif>{{$category->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            <label class="help-block" for="categories[]"></label>
-                                        </div>
-                                    </div>
-                                    <!-- End .form-group  -->
-                                    <div class="form-group">
-                                        <label for="text" class="col-lg-2 col-md-3 control-label">产品描述</label>
-                                        <div class="col-lg-10 col-md-9">
-                                            <textarea name="description" class="form-control" rows="5" placeholder="请输入">{{$item->description}}</textarea>
-                                            <label class="help-block" for="description"></label>
-                                        </div>
-                                    </div>
-                                    <!-- End .form-group  -->
-                                    @foreach ($attributes as $name=>$attribute)
-                                    <?php $item_attribute = $item->getItemAttribute($name);?>
-                                    <div class="form-group">
-                                        <label for="text" class="col-lg-2 col-md-3 control-label">{{$attribute}}</label>
-                                        <div class="col-lg-10 col-md-9">
-                                            <input type="text" name="{{$name}}_title" class="form-control" value="{{$item_attribute->title}}" placeholder="输入标题">
-                                            <textarea name="{{$name}}_content" class="form-control" rows="5" placeholder="内容">{{$item_attribute->content}}</textarea>
-                                            <label class="help-block" for="{{$name}}"></label>
-                                        </div>
-                                    </div>
-                                    <!-- End .form-group  -->
-                                    @endforeach
-                                    <!-- End .form-group  -->
-                                    <div class="form-group">
-                                        <label for="text" class="col-lg-2 col-md-3 control-label">天猫链接</label>
-                                        <div class="col-lg-10 col-md-9">
-                                            <input type="text" name="tmall_url" class="form-control" value="{{$item->tmall_url}}">
-                                            <label class="help-block" for="tmall_url"></label>
-                                        </div>
-                                    </div>
-                                    <!-- End .form-group  -->
-                                    <div class="form-group">
-                                        <label class="col-lg-2 col-md-3 control-label" for="">产品缩略图</label>
-                                        <div class="col-lg-10 col-md-9">
-                                            <div class="thumb-preview">
-                                                <a href="{{ asset($item->thumbnail) }}" target="_blank"><img title="点击查看原图" src="{{ asset($item->thumbnail) }}" /></a>
+            </div>
+            <!-- Start .row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- col-lg-12 start here -->
+                    <div class="panel panel-default">
+                        <!-- Start .panel -->
+                        <div class="panel-body pt0 pb0">
+                            {{ Form::open(array('route' => ['item.update',$item->id], 'class'=>'form-horizontal group-border stripped', 'method'=>'PUT', 'id'=>'form')) }}
+                            <div class="form-group">
+                                <label for="text" class="col-lg-2 col-md-3 control-label">产品名称</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <input type="text" name="name" class="form-control" value="{{$item->name}}">
+                                    <label class="help-block" for="name"></label>
+                                </div>
+                            </div>
+                            <!-- End .form-group  -->
+                            <div class="form-group">
+                                <label for="text" class="col-lg-2 col-md-3 control-label">产品分类</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <select name="category" class="select2 form-control">
+                                        @foreach ($categories as $category)
+                                        <option value="{{$category->id}}" @if ($category->id == $item->category_id)){{' selected="selected"'}}@endif>{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <label class="help-block" for="categories"></label>
+                                </div>
+                            </div>
+                            <!-- End .form-group  -->
+                            <div class="form-group">
+                                <label for="text" class="col-lg-2 col-md-3 control-label">产品属性</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <div class="rows">
+                                        @foreach ($attributes as $name=>$value)
+                                        <?php $attribute = $item->getItemAttribute($name);?>
+                                        <div class="col-md-4">
+                                            <label for="text" class="col-lg-3 col-md-4 control-label">{{$value}}</label>
+                                            <div class="col-lg-9 col-md-8">
+                                                <textarea name="attributes[{{$name}}]" class="form-control" rows="2" placeholder="请输入">{{$attribute->body}}</textarea>
+                                                <label class="help-block" for=""></label>
                                             </div>
-                                            <input type="file" name="thumbnail" class="filestyle" data-buttonText="Find file" data-buttonName="btn-danger" data-iconName="fa fa-plus">
-                                            <label class="help-block" for="thumbnail"></label>
                                         </div>
-                                    </div>
-                                    <!-- End .form-group  -->
-                                    <div class="form-group">
-                                        <label class="col-lg-2 col-md-3 control-label" for="">产品详图</label>
-                                        <div class="col-lg-10 col-md-9">
-                                            <div class="thumb-preview">
-                                                <a href="{{ asset($item->image) }}" target="_blank"><img title="点击查看原图" src="{{ asset($item->image) }}" /></a>
-                                            </div>
-                                            <input type="file" name="image" class="filestyle" data-buttonText="Find file" data-buttonName="btn-danger" data-iconName="fa fa-plus">
-                                            <label class="help-block" for="image"></label>
-                                        </div>
-                                    </div>
-                                <!-- End .form-group  -->
-                                <div class="form-group">
-                                    <label class="col-lg-2 col-md-3 control-label" for="">ICON</label>
-                                    <div class="col-lg-10 col-md-9">
-                                        <input id="file-explorer" name="file-icon" type="file" >
-                                        <input name="icon" value="{{$item->icon}}" type="hidden" />
-                                        <label class="help-block" for="image_bkg"></label>
+                                        @endforeach
+                                        <div class="clearfix"></div>
                                     </div>
                                 </div>
-                                    <!-- End .form-group  -->
-                                    <div class="form-group">
-                                        <label for="text" class="col-lg-2 col-md-3 control-label">页面模板</label>
-                                        <div class="col-lg-10 col-md-9">
-                                            <select name="template" class=" form-control">
-                                                <option value="">选择页面模板</option>
-                                                @foreach ($templates as $key=>$template)
-                                                <option value="{{$key}}"{{ ($key && $key==$item->template) ? ' selected="selected"' : ''}}>{{$template}}</option>
-                                                @endforeach
-                                            </select>
-                                            <label class="help-block" for="template"></label>
-                                        </div>
-                                    </div>
-                                    <!-- End .form-group  -->
-                                    <div class="form-group">
-                                        <label class="col-lg-2 col-md-3 control-label"></label>
-                                        <div class="col-lg-10 col-md-9">
-                                            <button class="btn btn-default ml15" type="submit">提 交</button>
-                                            <a class="btn btn-default ml15" href="{{url('admin/page/index')}}">返回</a>
-                                        </div>
-                                    </div>
-                                    <!-- End .form-group  -->
-                                    {{ Form::close() }}
                             </div>
+                            <!-- End .form-group  -->
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-3 control-label" for="">详情图</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <input name="thumb" value="{{$item->thumb}}" type="hidden" />
+                                    <input id="thumb-explorer" name="file1" type="file" multiple >
+                                    <label class="help-block" for="thumb"></label>
+                                </div>
+                            </div>
+                            <!-- End .form-group  -->
+                            <div class="form-group">
+                                <label for="text" class="col-lg-2 col-md-3 control-label">产品详情</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <textarea name="detail" class="form-control article-ckeditor" rows="20" placeholder="请输入">{{$item->detail}}</textarea>
+                                    <label class="help-block" for="detail"></label>
+                                </div>
+                            </div>
+                            <!-- End .form-group  -->
+                            <div class="form-group">
+                                <label for="text" class="col-lg-2 col-md-3 control-label">标准配置</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <textarea name="standard" class="form-control article-ckeditor" rows="20" placeholder="请输入">{{$item->standard}}</textarea>
+                                    <label class="help-block" for="standard"></label>
+                                </div>
+                            </div>
+                            <!-- End .form-group  -->
+                            <div class="form-group">
+                                <label for="text" class="col-lg-2 col-md-3 control-label">可选配置</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <select name="optional[]" class="select2 form-control" multiple="multiple">
+
+                                    </select>
+                                    <label class="help-block" for="optional"></label>
+                                </div>
+                            </div>
+
+                            <!-- End .form-group  -->
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-3 control-label"></label>
+                                <div class="col-lg-10 col-md-9">
+                                    <button class="btn btn-default ml15" type="submit">提 交</button>
+                                    <a class="btn btn-default ml15" href="{{url('admin/page/index')}}">返回</a>
+                                </div>
+                            </div>
+                            <!-- End .form-group  -->
+                            {{ Form::close() }}
                         </div>
-                        <!-- End .panel -->
                     </div>
-                    <!-- col-lg-12 end here -->
+                    <!-- End .panel -->
                 </div>
-                <!-- End .row -->
+                <!-- col-lg-12 end here -->
             </div>
-            <!-- End .page-content-inner -->
+            <!-- End .row -->
         </div>
-        <!-- / page-content-wrapper -->
+        <!-- End .page-content-inner -->
     </div>
+    <!-- / page-content-wrapper -->
+</div>
 @endsection
 @section('scripts')
+<script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+<script src="{{asset('js/jquery.form.js')}}"></script>
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script src="{{asset('/vendor/unisharp/laravel-ckeditor/adapters/jquery.js')}}"></script>
 <script>
 $(document).ready(function() {
+    $('.article-ckeditor').ckeditor({
+        filebrowserBrowseUrl: '{!! url("/filemanager?type=items") !!}'
+    });
     $('.select2').select2();
     $('#form').ajaxForm({
         dataType: 'json',
@@ -164,44 +153,31 @@ $(document).ready(function() {
             })
         }
     });
-    $('.filestyle').change(function(){
-        var preview = $(this).parent().find('.thumb-preview');
-        preview.html('');
-        var reader = new FileReader();
-        reader.onload = function (event) {
-            preview.append('<img src="'+event.target.result+'" />');
-        }
-        reader.readAsDataURL(this.files[0]);
-    });
-    var file_config_bkg = {
+    var file_config = {
         theme: 'explorer',
-        uploadUrl: '{{url("admin/file/upload/file-icon")}}',
+        uploadUrl: '{{url("cms/file/upload/file1")}}',
         uploadAsync: false,
         maxFileCount: 1,
-        allowedFileTypes: ["image", "video"],
+        //allowedFileTypes: ["text"],
+        //allowedFileExtensions: ["xlsx","xls","csv","ppt","pptx","zip","tar","doc","docx","txt","pdf"],
         overwriteInitial: true,
         initialPreviewAsData: true,
+        browseLabel:'选择文件',
         fileActionSettings: {
-            showUpload: false
-        }
+            showUpload: true,
+        },
+        initialPreview: [
+            '{{asset($item->thumb)}}',
+        ],
+        initialPreviewConfig: [
+            {caption: "", size: "{{ filesize(public_path($item->thumb)) }}", width: "400px", url: "{{url('cms/file/delete')}}", key: 1,extra:{name:'{{$item->thumb}}'}}
+        ]
     };
-    @if($item->icon)
-    var obj2 = {
-            initialPreview: [
-                "{{asset($item->icon)}}"
-            ],
-            initialPreviewConfig: [
-                {caption: "", size: "{{ filesize($item->icon) }}", width: "400px", url: "{{url('admin/file/delete')}}", key: 1,extra:{name:'{{$item->icon}}'}}
-            ]
-        };
-    $.extend( file_config_bkg, obj2 );
-    @endif
-    $("#file-explorer").fileinput(file_config_bkg).on('filebatchuploadsuccess', function(event, data) {
-        $('input[name="icon"]').val(data.response.initialPreviewConfig[0].value);
+    $("#thumb-explorer").fileinput(file_config).on('filebatchuploadsuccess', function(event, data) {
+        $('input[name="thumb"]').val(data.response.initialPreviewConfig[0].value);
     }).on('filedeleted',function () {
-        $('input[name="icon"]').val('');
+        $('input[name="thumb"]').val('');
     });
-
 });
 </script>
 @endsection

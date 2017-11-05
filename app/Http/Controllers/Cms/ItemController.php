@@ -59,60 +59,24 @@ class ItemController extends Controller
      */
     public function store(ItemPost $request)
     {
-        $image = '';
-        if ($request->hasFile('image')) {
-            if ($request->file('image')->getError() != 0) {
-                return Response(['image' => $request->file('image')->getErrorMessage()], 422);
-            }
-            $file = $request->file('image');
 
-            $entension = $file->getClientOriginalExtension();
-            $file_name = uniqid().'.'.$entension;
-            $path = 'uploads/'.date('Ymd').'/';
-            $file->move(public_path($path), $file_name);
-            $image = $path.$file_name;
-        }
-        $thumbnail = '';
-        if ($request->hasFile('thumbnail')) {
-            if ($request->file('thumbnail')->getError() != 0) {
-                return Response(['thumbnail' => $request->file('thumbnail')->getErrorMessage()], 422);
-            }
-            $file = $request->file('thumbnail');
-
-            $entension = $file->getClientOriginalExtension();
-            $file_name = uniqid().'.'.$entension;
-            $path = 'uploads/'.date('Ymd').'/';
-            $file->move(public_path($path), $file_name);
-            $thumbnail = $path.$file_name;
-        }
         DB::beginTransaction();
         try{
             $item = new \App\Item();
             $item->name = $request->input('name');
-            $item->image = $image;
-            $item->thumbnail = $thumbnail;
-            $item->tmall_url = $request->input('tmall_url');
-            $item->description = $request->input('description');
-            $item->template = $request->input('template');
-            $item->icon = $request->input('icon');
+            $item->thumb = $request->input('thumb');
+            $item->detail = $request->input('detail');
+            $item->standard = $request->input('standard');
+            $item->body = '';
+            $item->category_id = $request->input('category');
             $item->save();
 
             foreach(config('custom.attributes') as $name => $attribute){
-                if(null != $request->input($name.'_title') || null != $request->input($name.'_content')){
+                if(null != $request->input('attributes') && null != $request->input('attributes')[$name] ){
                     $model = new \App\ItemAttribute;
                     $model->name = $name;
-                    $model->title = $request->input($name.'_title');
                     $model->item_id = $item->id;
-                    $model->content = $request->input($name.'_content');
-                    $model->save();
-                }
-            }
-            if( $request->input('categories')  && is_array($request->input('categories'))){
-                foreach( $request->input('categories') as $category){
-                    $model = new \App\ItemCategory;
-                    $model->item_id = $item->id;
-                    $model->category_id = $category;
-                    $model->sort_id = 0;
+                    $model->body = $request->input('attributes')[$name];
                     $model->save();
                 }
             }
@@ -151,7 +115,6 @@ class ItemController extends Controller
         return view('cms.item.edit', [
             'attributes' => config('custom.attributes'),
             'categories' => $categories,
-            'templates' => config('custom.templates'),
             'item'=>$item,
         ]);
     }
@@ -167,61 +130,24 @@ class ItemController extends Controller
     public function update(ItemPost $request, $id)
     {
         $item = \App\Item::find($id);
-        $image = $item->image;
-        if ($request->hasFile('image')) {
-            if ($request->file('image')->getError() != 0) {
-                return Response(['image' => $request->file('image')->getErrorMessage()], 422);
-            }
-            $file = $request->file('image');
 
-            $entension = $file->getClientOriginalExtension();
-            $file_name = uniqid().'.'.$entension;
-            $path = 'uploads/'.date('Ymd').'/';
-            $file->move(public_path($path), $file_name);
-            $image = $path.$file_name;
-        }
-        $thumbnail = $item->thumbnail;
-        if ($request->hasFile('thumbnail')) {
-            if ($request->file('thumbnail')->getError() != 0) {
-                return Response(['thumbnail' => $request->file('thumbnail')->getErrorMessage()], 422);
-            }
-            $file = $request->file('thumbnail');
-
-            $entension = $file->getClientOriginalExtension();
-            $file_name = uniqid().'.'.$entension;
-            $path = 'uploads/'.date('Ymd').'/';
-            $file->move(public_path($path), $file_name);
-            $thumbnail = $path.$file_name;
-        }
         DB::beginTransaction();
         try{
             $item->name = $request->input('name');
-            $item->image = $image;
-            $item->thumbnail = $thumbnail;
-            $item->tmall_url = $request->input('tmall_url');
-            $item->description = $request->input('description');
-            $item->template = $request->input('template');
-            $item->icon = $request->input('icon');
+            $item->thumb = $request->input('thumb');
+            $item->detail = $request->input('detail');
+            $item->standard = $request->input('standard');
+            $item->body = '';
+            $item->category_id = $request->input('category');
             $item->save();
 
             \App\ItemAttribute::where('item_id',$item->id)->delete();
             foreach(config('custom.attributes') as $name => $attribute){
-                if(null != $request->input($name.'_title') || null != $request->input($name.'_content')){
+                if(null != $request->input('attributes') && null != $request->input('attributes')[$name] ){
                     $model = new \App\ItemAttribute;
                     $model->name = $name;
-                    $model->title = $request->input($name.'_title');
                     $model->item_id = $item->id;
-                    $model->content = $request->input($name.'_content');
-                    $model->save();
-                }
-            }
-            if( $request->input('categories')  && is_array($request->input('categories'))){
-                \App\ItemCategory::where('item_id',$item->id)->delete();
-                foreach( $request->input('categories') as $category){
-                    $model = new \App\ItemCategory;
-                    $model->item_id = $item->id;
-                    $model->category_id = $category;
-                    $model->sort_id = 0;
+                    $model->body = $request->input('attributes')[$name];
                     $model->save();
                 }
             }

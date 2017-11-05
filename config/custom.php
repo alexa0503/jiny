@@ -2,19 +2,19 @@
 
 return [
     'templates' => [
-        'bgred' => '红色',
-        'bgyellow' => '黄色',
-        'bgbrown' => '棕色',
-        'bgblue' => '蓝色',
-        'bggray' => '黑色',
-        'bggreen' => '绿色',
     ],
     'attributes' => [
-        'specification' => '',
-        'features' => '',
-        'contains' => '',
-        'method' => '',
-        'artg' => '',
+        'a1' => '类别',
+        'a2' => '型号',
+        'a3' => '品牌',
+        'a4' => '驱动方式',
+        'a5' => '安装方式',
+        'a6' => '订货号',
+        'b1' => '工作压力',
+        'b2' => '马达功率',
+        'b3' => '包装尺寸',
+        'b4' => '工作流量',
+        'b5' => '设备重量',
     ],
     'blocks' => [
         'kv' => 'KV',

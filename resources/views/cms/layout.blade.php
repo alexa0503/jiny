@@ -27,8 +27,8 @@
     <!-- Custom stylesheets ( Put your own changes here ) -->
     <link href="{{asset('assets/cms/css/custom.css')}}" rel="stylesheet" />
     <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
-    <link href="{{asset('assets/cms/css/fileinput.css')}}" media="all" rel="stylesheet" type="text/css"/>
-    <link href="{{asset('assets/cms/themes/explorer/theme.css')}}" media="all" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('assets/cms/plugins/bootstrap-fileinput/css/fileinput.css')}}" media="all" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('assets/cms/plugins/bootstrap-fileinput/themes/explorer/theme.css')}}" media="all" rel="stylesheet" type="text/css"/>
     <meta name="msapplication-TileColor" content="#3399cc" />
 </head>
 <body>
@@ -95,15 +95,9 @@
 <script src="{{asset('assets/cms/js/main.js')}}"></script>
 <script src="{{asset('assets/cms/js/pages/blank.js')}}"></script>
 <script src="{{asset('assets/cms/plugins/sortable.js')}}" type="text/javascript"></script>
-<script src="{{asset('assets/cms/js/fileinput.js')}}" type="text/javascript"></script>
-<script src="{{asset('assets/cms/themes/explorer/theme.js')}}" type="text/javascript"></script>
-<script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
-<script src="{{asset('/vendor/unisharp/laravel-ckeditor/adapters/jquery.js')}}"></script>
-<script>
-    $('.article-ckeditor').ckeditor({
-        filebrowserBrowseUrl: '{!! url('filemanager/index.html') !!}'
-    });
-</script>
+<script src="{{asset('assets/cms/plugins/bootstrap-fileinput/js/fileinput.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/cms/plugins/bootstrap-fileinput/js/locales/zh.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/cms/plugins/bootstrap-fileinput/themes/explorer/theme.js')}}" type="text/javascript"></script>
 <script>
     $().ready(function () {
         $.ajaxSetup({

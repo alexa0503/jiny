@@ -33,11 +33,14 @@ Route::group(['middleware' => ['web']], function () {
         return view('contactus');
     });
     Route::get('/items/{id}', function ($id) {
-        return view('items');
+        $category = App\Category::find($id);
+        //$items = App\Item::where('category_id', $id)->get();
+        return view('items', ['category'=>$category]);
     })->name('items');
-    Route::get('/item', function () {
-        return view('item');
-    });
+    Route::get('/item/{id}', function ($id) {
+        $item = App\Item::find($id);
+        return view('item', ['item'=>$item]);
+    })->name('item');
     //解决方案
     Route::get('/solutions', function () {
         $categories = App\SolutionCategory::all();

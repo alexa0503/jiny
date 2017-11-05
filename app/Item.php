@@ -15,7 +15,12 @@ class Item extends Model
         $attributes = $this->itemAttributes->filter(function($value, $key) use($name){
             return $value->name == $name;
         })->all();
-        return count($attributes) > 0 ? array_values($attributes)[0] : (object)(['title'=>'','content'=>'']);
+        return count($attributes) > 0 ? array_values($attributes)[0] : (object)(['name'=>'','body'=>'']);
+    }
+    public function getAttributeBody($name)
+    {
+        $obj = $this->getItemAttribute($name);
+        return $obj->body;
     }
     public function category()
     {
