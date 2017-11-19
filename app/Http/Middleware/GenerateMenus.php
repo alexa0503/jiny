@@ -33,6 +33,14 @@ class GenerateMenus
             $item->add('查看', ['url'=>route('solution.index'),'class'=>'bg-palette3']);
             $item->add('添加', ['url'=>route('solution.create'),'class'=>'bg-palette3']);
 
+            $item = $menu->add('技术资料',['url'=>route('support.type.index',1) ,'class'=>'openable bg-palette3']);
+            $item->add('查看', ['url'=>route('support.type.index',1),'class'=>'bg-palette3']);
+            $item->add('添加', ['url'=>route('support.type.create',1),'class'=>'bg-palette3']);
+
+            $item = $menu->add('样本下载',['url'=>route('support.type.index',2) ,'class'=>'openable bg-palette3']);
+            $item->add('查看', ['url'=>route('support.type.index',2),'class'=>'bg-palette3']);
+            $item->add('添加', ['url'=>route('support.type.create',2),'class'=>'bg-palette3']);
+
             $page = $menu->add('页面管理',['url'=>url('cms/page/block/index'),'class'=>'openable bg-palette4']);
             $pages = \App\Page::all();
             foreach($pages as $v){

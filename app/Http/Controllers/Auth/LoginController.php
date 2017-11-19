@@ -42,6 +42,7 @@ class LoginController extends Controller
     }
     public function showLoginForm()
     {
+        session(['url.intended' => url()->previous()]);
         return view('auth.login');
     }
     protected function guard()

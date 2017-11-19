@@ -1,7 +1,7 @@
 //------------- login.js -------------//
 $(document).ready(function() {
 
-	//validate login form 
+	//validate login form
 	$("#login-form").validate({
 		ignore: null,
 		ignore: 'input[type="hidden"]',
@@ -30,10 +30,10 @@ $(document).ready(function() {
 		},
 		messages: {
 			password: {
-				required: "Please provide a password",
-				minlength: "Your password must be at least 5 characters long"
+				required: "请输入密码",
+				minlength: "你的密码不能少于5个字符"
 			},
-			email: "Please type your email",
+			email: "请输入Email",
 		},
 		highlight: function( label ) {
 			$(label).closest('.form-group').removeClass('has-success').addClass('has-error');

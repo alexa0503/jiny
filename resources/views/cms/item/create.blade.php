@@ -118,7 +118,7 @@
 @endsection
 @section('scripts')
 <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
-<script src="{{asset('js/jquery.form.js')}}"></script>
+<script src="{{asset('assets/cms/js/jquery.form.js')}}"></script>
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script src="{{asset('/vendor/unisharp/laravel-ckeditor/adapters/jquery.js')}}"></script>
 <script>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSupportsTable extends Migration
+class CreateSupportBodiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateSupportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('supports', function (Blueprint $table) {
+        Schema::create('support_bodies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 200);
-            $table->string('thumb', 200);
-            $table->text('desc');
-            $table->string('attachment', 200);
-            $table->integer('type_id')->default(1);
+            $table->string('title',200);
+            $table->string('image',200);
+            $table->binary('txt');
+            $table->unsignedInteger('support_id')->nullable();
+            $table->foreign('support_id')->references('id')->on('supports')->onDelete('cascade');
             $table->integer('sort_id')->default(999);
-            //$table->binary('body');
-            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ class CreateSupportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('supports');
+        Schema::dropIfExists('support_bodies');
     }
 }

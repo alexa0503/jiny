@@ -18,6 +18,9 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
+            if( session('url.intended') ){
+                return redirect(session('url.intended'));
+            }
             return redirect('/cms');
         }
         return $next($request);

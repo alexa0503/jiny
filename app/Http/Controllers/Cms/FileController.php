@@ -24,7 +24,7 @@ class FileController extends Controller
                     asset($path.$file_name),
                 ],
                 'initialPreviewConfig' => [
-                    ['caption' => $file_name, 'size' => $file->getClientSize(), 'width' => '400px', 'url' => url('admin/file/delete'), 'key' => $file_name, 'value'=>$path.$file_name, 'extra'=>['name'=>$path.$file_name]],
+                    ['caption' => $file_name, 'size' => $file->getClientSize(), 'width' => '400px', 'url' => url('cms/file/delete'), 'key' => $file_name, 'value'=>$path.$file_name, 'extra'=>['name'=>$path.$file_name]],
                 ],
                 'append' => false, // whether to append these configurations to initialPreview.
                 // if set to false it will overwrite initial preview
@@ -43,7 +43,7 @@ class FileController extends Controller
                 $file_name = uniqid().'.'.$entension;
                 $v->move(public_path($path), $file_name);
                 $preview[] = asset($path.$file_name);
-                $config[] = ['caption' => $file_name, 'size' => $v->getClientSize(), 'width' => '400px', 'url' => url('admin/file/delete'), 'key' => $path.$file_name, 'value'=>$path.$file_name, 'extra'=>['name'=>$path.$file_name]];
+                $config[] = ['caption' => $file_name, 'size' => $v->getClientSize(), 'width' => '400px', 'url' => url('cms/file/delete'), 'key' => $path.$file_name, 'value'=>$path.$file_name, 'extra'=>['name'=>$path.$file_name]];
             }
             return [
                 'initialPreview' => $preview,

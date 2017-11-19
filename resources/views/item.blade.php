@@ -17,12 +17,12 @@
         </ul>
         <div class="row">
             <div class="col-md-4 hidden-xs hidden-sm">
-                <img src="/images/item-01.jpg" class="img-responsive img-item" />
+                <img src="{{asset($item->thumb)}}" class="img-responsive img-item" />
             </div>
             <div class="col-md-8">
                 <h2>{{$item->name}}</h2>
                 <div class=" hidden-md hidden-lg item-border">
-                    <img src="/images/item-01.jpg" class="img-responsive center-block img-item" />
+                    <img src="{{asset($item->thumb)}}" class="img-responsive center-block img-item" />
                 </div>
                 <ul class="list-unstyled list-item">
                     <li><span>名称：</span>{{$item->getAttributeBody('a1')}}</li>
@@ -41,6 +41,7 @@
         <h4>设备型号<span>{{$item->getAttributeBody('a2')}}</span></h4>
         <div class="item-description-01">
             {!! $item->detail !!}
+            <div class="clearfix"></div>
         </div>
         <h4>标准配置</h4>
         <div class="item-description-01">

@@ -83,7 +83,7 @@
                 </ul>
             </li>
             <li>
-                <a href="{{url('/admin/logout')}}">
+                <a href="{{url('/logout')}}">
                     <i class="fa fa-power-off"></i>
                     <span class="sr-only">Logout</span>
                 </a>

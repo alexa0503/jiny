@@ -17,7 +17,7 @@
             <h2>技术资料</h2>
             @foreach ($supports[0] as $k => $support)
             <div class="rows">
-                <h3{!! $k==0 ? ' class="first"' : '' !!}>{{$support->name}}</h3>
+                <h3{!! $k==0 ? ' class="first"' : '' !!}>{{$support->title}}</h3>
                 @if( $support->thumb )
                 <div class="row supports-list">
                     <div class="col-md-4">
@@ -49,7 +49,7 @@
                     </a>
                     </div>
                     <div class="media-body">
-                    <h4 class="media-heading">{{$support->name}}</h4>
+                    <h4 class="media-heading">{{$support->title}}</h4>
                     <p>{{$support->desc}}</p>
                     </div>
                 </div>

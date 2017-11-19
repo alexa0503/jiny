@@ -99,7 +99,10 @@ Route::group(['middleware' => ['role:superadmin,global privileges','web'], 'pref
         'category' => 'Cms\CategoryController',
         'solution_category' => 'Cms\SolutionCategoryController',
         'solution' => 'Cms\SolutionController',
+        'support.type' => 'Cms\SupportController',
+        'support.body' => 'Cms\SupportBodyController',
     ]);
+    //Route::resource('support/{type?}', 'Cms\SupportController');
 
     Route::get('users', 'Cms\IndexController@users');
     Route::get('account', 'Cms\IndexController@account');

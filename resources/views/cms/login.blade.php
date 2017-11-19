@@ -39,7 +39,7 @@
             </h4>
         </div>
         <div class="panel-body">
-            <form class="form-horizontal mt0" method="post" action="{{ url('/admin/login') }}" id="login-form" role="form">
+            <form class="form-horizontal mt0" method="post" action="{{ url('/login') }}" id="login-form" role="form">
                 {!! csrf_field() !!}
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <div class="col-lg-12">

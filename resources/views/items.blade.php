@@ -19,7 +19,7 @@
         <div class="items-list">
             @foreach($category->items as $item)
             <div class="col-md-4">
-                <a href="{{route('item', $item->id)}}"><img src="{{$item->thumb}}" class="img-responsive center-block" /></a>
+                <a href="{{route('item', $item->id)}}"><img src="{{asset($item->thumb)}}" class="img-responsive center-block" /></a>
                 <h3>{{$item->name}}</h3>
                 <div class="item-description rows hidden-xs hidden-sm">
                     <ul>

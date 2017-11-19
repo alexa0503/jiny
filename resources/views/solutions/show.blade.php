@@ -4,7 +4,11 @@
     <div class="row">
         <h2>{{$solution->name}}</h2>
         <div class="content">
+            @if($solution->video_uri)
+            <iframe class="video-iframe" src="{{$solution->video_uri}}" frameborder=0 "allowfullscreen"></iframe>
+            @else
             <img src="{{$solution->image}}" class="img-responsive" />
+            @endif
             <div class="solutions-desc">
                 {{$solution->desc}}
             </div>

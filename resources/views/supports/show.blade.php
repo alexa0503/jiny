@@ -2,23 +2,33 @@
 @section('content')
 <div class="container support">
     <div class="row">
-        <h2>{{$support->name}}</h2>
+        <h2>{{$support->title}}</h2>
         <div class="content">
-            <!--{!! $support->body !!}-->
+            @if( count($support->bodies) > 0)
+            @foreach($support->bodies as $k=> $body)
+            @if( $k%2 == 0)
             <div class="row">
                 <div class="col-md-6">
-                    <img class="img-responsive" src="/images/support-02.jpg">
+                    <img class="img-responsive" src="{{asset($body->image)}}">
                 </div>
                 <div class="col-md-6 support-desc">
-                    <h4>第一代产品</h4>
-                    <ul>
-                        <li>同步皮带传动。</li>
-                        <li>普通Y型进水过滤器。</li>
-                        <li>两轮设计。</li>
-                    </ul>
-                </div>
+                    <h4>{{$body->title}}</h4>
+                    {!! $body->txt !!}
                 </div>
             </div>
+            @else
+            <div class="row">
+                <div class="col-md-6 support-desc">
+                    <h4>{{$body->title}}</h4>
+                    {!! $body->txt !!}
+                </div>
+                <div class="col-md-6">
+                    <img class="img-responsive" src="{{asset($body->image)}}">
+                </div>
+            </div>
+            @endif
+            @endforeach
+            @endif
         </div>
     </div>
 </div>

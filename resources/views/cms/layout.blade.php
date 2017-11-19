@@ -24,11 +24,11 @@
     <link href="{{asset('assets/cms/css/plugins.css')}}" rel="stylesheet" />
     <!-- Main stylesheets (template main css file) -->
     <link href="{{asset('assets/cms/css/main.css')}}" rel="stylesheet" />
-    <!-- Custom stylesheets ( Put your own changes here ) -->
-    <link href="{{asset('assets/cms/css/custom.css')}}" rel="stylesheet" />
     <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
     <link href="{{asset('assets/cms/plugins/bootstrap-fileinput/css/fileinput.css')}}" media="all" rel="stylesheet" type="text/css"/>
     <link href="{{asset('assets/cms/plugins/bootstrap-fileinput/themes/explorer/theme.css')}}" media="all" rel="stylesheet" type="text/css"/>
+    <!-- Custom stylesheets ( Put your own changes here ) -->
+    <link href="{{asset('assets/cms/css/custom.css')}}" rel="stylesheet" />
     <meta name="msapplication-TileColor" content="#3399cc" />
 </head>
 <body>

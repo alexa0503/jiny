@@ -25,3 +25,6 @@
     bottom: 5px;
     right: 10px;
 }
+#support-body .row {
+    margin-bottom: 10px!important;
+}
