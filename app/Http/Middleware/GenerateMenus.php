@@ -46,6 +46,7 @@ class GenerateMenus
             foreach($pages as $v){
                 $page->add($v->title, ['url'=>route('page.block.index',['page'=>$v->id]),'class'=>'bg-palette4']);
             }
+            //
             //$menu->add('作品管理', ['route'=>('work.index'),'class'=>'bg-palette2']);
         });
         return $next($request);
