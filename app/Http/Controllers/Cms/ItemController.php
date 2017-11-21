@@ -172,7 +172,7 @@ class ItemController extends Controller
     {
         DB::beginTransaction();
         try{
-            \App\ItemCategory::where('item_id', $id)->delete();
+            \App\Category::where('item_id', $id)->delete();
             \App\ItemAttribute::where('item_id', $id)->delete();
             \App\Item::destroy($id);
             DB::commit();

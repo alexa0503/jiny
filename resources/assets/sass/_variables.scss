@@ -81,7 +81,7 @@ header {
 }
 .homepage-list .list-group .list-group-item,.homepage-list .list-group .list-group-item a {
     color:#221715;
-    font-size: 15px;
+    font-size: 18px;
 }
 .col-two .arrow-prev,.col-two .arrow-next {
     display: none;
@@ -162,6 +162,12 @@ header {
     border-left: 2px solid #ee000d;
     padding-left: 10px;
     margin-left: 4px;
+}
+.item {
+    margin-top:30px;
+}
+.item h2 {
+    margin-top: 5px;
 }
 .item .img-item {
     border: 1px solid #dddddd;
