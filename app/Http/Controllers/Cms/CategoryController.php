@@ -97,7 +97,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $count = \App\ItemCategory::where('category_id', $id)->count();
+        $count = \App\Item::where('category_id', $id)->count();
         if($count > 0){
             return response(['ret'=>1001,'msg'=>'抱歉，该分类下有产品~']);
         }

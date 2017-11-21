@@ -83,6 +83,15 @@ header {
     color:#221715;
     font-size: 18px;
 }
+.homepage-list .list-group .list-group-item {
+    padding:5px 15px;
+}
+.homepage-list .list-group .list-group-item:first-child {
+    padding:8px 15px;
+}
+.homepage-list .list-group .list-group-item:last-child {
+    padding:7px 15px;
+}
 .col-two .arrow-prev,.col-two .arrow-next {
     display: none;
 }
@@ -467,15 +476,6 @@ footer .copyright p {
     .homepage-topper-01 .homepage-kv {
         margin: 0 0 0 auto;
         width: 990px;
-    }
-    .list-group-item {
-         padding: 13px 15px!important;
-    }
-    .list-group-item:last-child{
-        padding: 15px 15px!important;
-    }
-    .list-group-item:first-child{
-        padding: 15px 15px!important;
     }
 }
 @media screen and (max-width: 767px) {

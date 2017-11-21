@@ -79,6 +79,9 @@
                             if(json.ret == 0){
                                 obj.remove();
                             }
+                            else{
+                                alert(json.msg)
+                            }
                         },
                         error: function(){
                             alert('请求失败~');
