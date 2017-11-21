@@ -85,12 +85,15 @@
                             <div class="form-group">
                                 <label for="text" class="col-lg-2 col-md-3 control-label">可选配置</label>
                                 <div class="col-lg-10 col-md-9">
-                                    <select name="optional[]" class="select2 form-control" multiple="multiple">
-
+                                    <select name="options[]" class="select2 form-control" multiple="multiple">
+                                        @foreach($options as $option)
+                                        <option value="{{$option->id}}">{{$option->name}}</option>
+                                        @endforeach
                                     </select>
-                                    <label class="help-block" for="optional"></label>
+                                    <label class="help-block" for=""></label>
                                 </div>
                             </div>
+                            <!-- End .form-group  -->
                             <div class="form-group">
                                 <label for="text" class="col-lg-2 col-md-3 control-label">案例分享</label>
                                 <div class="col-lg-10 col-md-9">

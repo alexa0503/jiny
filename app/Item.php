@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     protected $casts = [
-        'cases'=>'array'
+        'cases'=>'array',
+        'options'=>'array'
     ];
     public function itemAttributes()
     {

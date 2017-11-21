@@ -64,14 +64,19 @@
         <h4>可选配置</h4>
         <div class="item-choosable">
             <div class="slick" id="slick-choosable">
-                @for ($i=0;$i<12;$i++)
+                @foreach( $item->options as $option)
+                @php
+                $_item = \App\Item::find($option);
+                @endphp
                 <div class="col-md-2 col-xs-4 col-sm-4  text-center">
-                    <a href="/item"><img src="/images/choosable-0{{$i%6+1}}.jpg" class="img-responsive" /></a>
+                    <a href="/item"><img src="{{asset($_item->thumb)}}" class="img-responsive" /></a>
                 </div>
-                @endfor
+                @endforeach
             </div>
+            @if(count($item->options)>6)
             <a class="arrow-prev" data-target-id="slick-choosable" href="#"><img src="/images/arrow-prev.png" /></a>
             <a class="arrow-next" data-target-id="slick-choosable" href="#"><img src="/images/arrow-next.png" /></a>
+            @endif
         </div>
     </div>
 </div>

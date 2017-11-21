@@ -43,6 +43,7 @@ class ItemController extends Controller
             'attributes' => config('custom.attributes'),
             'categories' => $categories,
             'templates' => config('custom.templates'),
+            'options' => \App\Item::all(),
         ]);
     }
 
@@ -66,6 +67,7 @@ class ItemController extends Controller
             $item->body = '';
             $item->category_id = $request->input('category');
             $item->cases = $request->input('cases');
+            $item->options = $request->input('options') ? : [];
             $item->save();
 
             foreach(config('custom.attributes') as $name => $attribute){
@@ -113,6 +115,7 @@ class ItemController extends Controller
             'attributes' => config('custom.attributes'),
             'categories' => $categories,
             'item'=>$item,
+            'options' => \App\Item::all(),
         ]);
     }
 
@@ -136,6 +139,7 @@ class ItemController extends Controller
             $item->standard = $request->input('standard');
             $item->body = '';
             $item->cases = $request->input('cases');
+            $item->options = $request->input('options') ? : [];
             $item->category_id = $request->input('category');
             $item->save();
 
