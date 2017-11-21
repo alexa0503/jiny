@@ -65,6 +65,7 @@ class ItemController extends Controller
             $item->standard = $request->input('standard');
             $item->body = '';
             $item->category_id = $request->input('category');
+            $item->cases = $request->input('cases');
             $item->save();
 
             foreach(config('custom.attributes') as $name => $attribute){
@@ -134,6 +135,7 @@ class ItemController extends Controller
             $item->detail = $request->input('detail');
             $item->standard = $request->input('standard');
             $item->body = '';
+            $item->cases = $request->input('cases');
             $item->category_id = $request->input('category');
             $item->save();
 

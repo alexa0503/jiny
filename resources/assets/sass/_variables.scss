@@ -429,6 +429,10 @@ footer .copyright p {
 .item-choosable .arrow-prev img,.item-choosable .arrow-next img {
     border: 0px solid #fff!important;
 }
+#row-cases iframe {
+    width:100%;
+    height:160px;
+}
 @media (min-width: 992px) {
     .homepage-topper-01 .homepage-list {
         width: 200px;
@@ -685,5 +689,9 @@ footer .copyright p {
     }
     .item .item-detail {
         margin: 0 15px;
+    }
+    #row-cases iframe {
+        width:100%;
+        height:300px;
     }
 }

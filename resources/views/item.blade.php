@@ -47,6 +47,20 @@
         <div class="item-description-01">
             {!! $item->standard !!}
         </div>
+        <h4>案例分享</h4>
+        <div class="item-description-01">
+            <div class="row" id="row-cases">
+                @foreach($item->cases as $case)
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    @if( isset($case["url"]) AND isset($case["title"]) )
+                    <iframe  src='{{$case["url"]}}' frameborder=0 'allowfullscreen'></iframe>
+                    <h5>{{$case["title"]}}</h5>
+                    @endif
+                </div>
+                @endforeach
+                <div class="clearfix"></div>
+            </div>
+        </div>
         <h4>可选配置</h4>
         <div class="item-choosable">
             <div class="slick" id="slick-choosable">

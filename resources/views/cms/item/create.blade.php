@@ -91,7 +91,25 @@
                                     <label class="help-block" for="optional"></label>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label for="text" class="col-lg-2 col-md-3 control-label">案例分享</label>
+                                <div class="col-lg-10 col-md-9">
+                                    @for($i=0; $i<6; $i++)
+                                    <div class="row" style="margin-bottom:10px;">
+                                        <div class="col-lg-2 col-md-2">
+                                            案例{{$i+1}}:
+                                        </div>
+                                        <div class="col-lg-4 col-md-4">
+                                            <input type="text" name="cases[$i][title]" class="form-control" value="" placeholder="输入标题">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <input type="text" name="cases[{{$i}}][url]" class="form-control" value="" placeholder="输入视频URL">
+                                        </div>
+                                    </div>
+                                    @endfor
+                                    <label class="help-block" for=""></label>
+                                </div>
+                            </div>
 
                             <!-- End .form-group  -->
                             <div class="form-group">
