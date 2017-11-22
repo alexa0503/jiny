@@ -53,7 +53,7 @@
                 @foreach($item->cases as $case)
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     @if( isset($case["url"]) AND isset($case["title"]) )
-                    <iframe src='http://player.youku.com/embed/XMzE3NTY4NzU3Ng==' frameborder=0 allowfullscreen></iframe>
+                    <iframe src='{{$case["url"]}}' frameborder=0 allowfullscreen></iframe>
                     <h5>{{$case["title"]}}</h5>
                     @endif
                 </div>
