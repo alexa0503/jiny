@@ -104,10 +104,10 @@
                                             案例{{$i+1}}:
                                         </div>
                                         <div class="col-lg-4 col-md-4">
-                                            <input type="text" name="cases[{{$i}}][title]" class="form-control" value="@if(isset($item->cases[$i])){{$item->cases[$i]['title']}}@endif" placeholder="输入标题">
+                                            <input type="text" name="cases[{{$i}}][title]" class="form-control" value="@if(isset($item->cases[$i]) AND isset($item->cases[$i]['title']) ){{$item->cases[$i]['title']}}@endif" placeholder="输入标题">
                                         </div>
                                         <div class="col-lg-6 col-md-6">
-                                            <input type="text" name="cases[{{$i}}][url]" class="form-control" value="@if(isset($item->cases[$i])){{$item->cases[$i]['url']}}@endif" placeholder="输入视频URL">
+                                            <input type="text" name="cases[{{$i}}][url]" class="form-control" value="@if(isset($item->cases[$i]) AND isset($item->cases[$i]['url'])){{$item->cases[$i]['url']}}@endif" placeholder="输入视频URL">
                                         </div>
                                     </div>
                                     @endfor
