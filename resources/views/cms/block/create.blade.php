@@ -125,7 +125,7 @@
                                         <label class="col-lg-2 col-md-3 control-label"></label>
                                         <div class="col-lg-10 col-md-9">
                                             <button class="btn btn-default ml15" type="submit">提 交</button>
-                                            <a class="btn btn-default ml15" href="{{url('admin/page/index')}}">返回</a>
+                                            <a class="btn btn-default ml15" href="{{url('cms/page/index')}}">返回</a>
                                         </div>
                                     </div>
                                     <!-- End .form-group  -->
@@ -204,7 +204,7 @@ $(document).ready(function() {
     @if ($name == 'graphic')
     var file_config_bkg = {
         theme: 'explorer',
-        uploadUrl: '{{url("admin/file/upload/file2")}}',
+        uploadUrl: '{{url("cms/file/upload/file2")}}',
         uploadAsync: false,
         maxFileCount: 1,
         allowedFileTypes: ["image", "video"],
@@ -227,7 +227,7 @@ $(document).ready(function() {
     @if ($name == 'gallery')
     var file_config_gallery = {
         theme: 'explorer',
-        uploadUrl: '{{url("admin/file/upload/file3")}}',
+        uploadUrl: '{{url("cms/file/upload/file3")}}',
         uploadAsync: false,
         allowedFileTypes: ["image", "video"],
         overwriteInitial: false,

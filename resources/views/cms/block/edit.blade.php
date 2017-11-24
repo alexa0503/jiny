@@ -198,7 +198,7 @@ $(document).ready(function() {
             "{{asset($row->header_image)}}"
         ],
         initialPreviewConfig: [
-            {caption: "", size: "{{ filesize($row->header_image) }}", width: "400px", url: "{{url('admin/file/delete')}}", key: 1,extra:{name:'{{$row->header_image}}'}}
+            {caption: "", size: "{{ filesize($row->header_image) }}", width: "400px", url: "{{url('cms/file/delete')}}", key: 1,extra:{name:'{{$row->header_image}}'}}
         ]
     };
     $.extend( file_config_header, obj1 );
