@@ -42,7 +42,7 @@
             <a class="arrow-next" data-target-id="slick-two" href="#"><img src="/images/arrow-next.png" /></a>
         </div>
         <div class="col-two">
-            <div class="nav"><span>标准设备</span>
+            <div class="nav"><span>热销产品</span>
                 <div class="pull-right"><a href="#" class="btn-prev" data-target-id="slick-three"><img style="margin-right:55px;" src="{{asset('/images/btn-prev.jpg')}}" /></a><a href="#" class="btn-next" data-target-id="slick-three"><img src="{{asset('/images/btn-next.jpg')}}" /></a>
                 </div>
             </div>
@@ -67,7 +67,7 @@ $().ready(function(){
         dots: true,
         infinite: true,
         arrows: false,
-        autoplay:false
+        autoplay:true
     });
 
     if($( window ).width() < 768 ){
@@ -79,7 +79,13 @@ $().ready(function(){
         });
     }
     else{
-        $('.slick').slick({
+        $('#slick-one').slick({
+            infinite: true,
+            arrows: false,
+            autoplay:true,
+            slidesToShow:3
+        });
+        $('#slick-two,#slick-three').slick({
             infinite: true,
             arrows: false,
             autoplay:false,

@@ -368,10 +368,11 @@ footer .copyright p {
     margin-bottom: 5px;
 }
 .col-two {
-    margin-bottom: 100px;
+    margin-top:-20px;
+    margin-bottom: 30px;
 }
 .col-one {
-    margin-top: 20px;
+    margin-top: 0px;
 }
 .col-one .nav {
     border-left: 2px solid #980c0a;
@@ -418,12 +419,11 @@ footer .copyright p {
     position: relative;
 }
 .col-one .content .center {
-    top: 50%;
-    left: 0;
-    width: 100%;
     text-align: center;
-    position: absolute;
-    color: #fff;
+    height: 30px;
+    color: #333;
+    width: 100%;
+    display: block;
 }
 
 .item-choosable {
