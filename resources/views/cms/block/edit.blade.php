@@ -95,7 +95,7 @@
                 </div>
                 <!-- End .form-group  -->
                 @endif
-                @if($row->name == 'video' || $row->name == 'kv')
+                @if($row->name == 'video' || $row->name == 'kv' || $row->name == 'latest')
                 <div class="form-group">
                     <label for="text" class="col-lg-2 col-md-3 control-label">链接</label>
                     <div class="col-lg-10 col-md-9">
