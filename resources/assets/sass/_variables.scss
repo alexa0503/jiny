@@ -473,6 +473,15 @@ footer .copyright p {
         margin: 0 0 0 auto;
         width: 990px;
     }
+    .homepage-list .list-group .list-group-item {
+        padding:12px 15px;
+    }
+    .homepage-list .list-group .list-group-item:first-child {
+        padding:9px 15px;
+    }
+    .homepage-list .list-group .list-group-item:last-child {
+        padding:9px 15px;
+    }
 }
 @media screen and (max-width: 767px) {
     .jiny {

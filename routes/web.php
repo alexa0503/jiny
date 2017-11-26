@@ -28,7 +28,8 @@ Route::group(['middleware' => ['web']], function () {
         ]);
     });
     Route::get('/culture', function () {
-        return view('culture');
+        $page = App\Page::find(2);
+        return view('culture',['page'=>$page]);
     });
     Route::get('/contactus', function () {
         return view('contactus');

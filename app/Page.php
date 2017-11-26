@@ -30,4 +30,8 @@ class Page extends Model
     {
         return $this->hasMany('App\Block')->where('is_posted', 1)->where('name','latest')->orderBy('sort_id', 'ASC');
     }
+    public function texts()
+    {
+        return $this->hasMany('App\Block')->where('is_posted', 1)->where('name','text')->orderBy('sort_id', 'ASC');
+    }
 }
