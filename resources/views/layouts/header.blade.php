@@ -34,6 +34,7 @@
         <div class="collapse navbar-collapse" id="menu">
           <ul class="nav navbar-nav">
             <li><a href="/">首页</a></li>
+            <li class="hidden-md hidden-lg"><a href="/items">产品中心</a></li>
             <li><a href="/culture">关于我们</a></li>
             <li><a href="/solutions">解决方案</a></li>
             <li><a href="/supports">技术支持</a></li>
