@@ -5,8 +5,6 @@
         <div class="row">
             <ul class="nav navbar-nav">
             <li><a href="#supports">技术资料</a></li>
-            <li><span>|</span></li>
-            <li><a href="#sample">样本下载</a></li>
           </ul>
         </div>
     </div>
@@ -42,18 +40,8 @@
             <h5>分类一</h5>
             @foreach ($supports[1] as $support)
             <div class="rows">
-                <div class="media">
-                    <div class="media-left">
-                    <a href="#">
-                    <img class="media-object" src="{{asset($support->thumb)}}" alt="...">
-                    </a>
-                    </div>
-                    <div class="media-body">
-                    <h4 class="media-heading">{{$support->title}}</h4>
-                    <p>{{$support->desc}}</p>
-                    </div>
-                </div>
-
+                <h4 class="media-heading"><a href="{{route('support', $support->id)}}">{{$support->title}}</a></h4>
+                <p>{{$support->desc}}</p>
             </div>
             @endforeach
         </div>

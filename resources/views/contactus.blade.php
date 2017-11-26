@@ -5,9 +5,6 @@
         <h2>联系我们</h2>
         <h4>上海杰尼机电技术有限公司</h4>
         <div class="rows">
-            <div class="row contactusMap">
-                <div style="width:100%;border:#ccc solid 1px;" id="dituContent"></div>
-            </div>
             <div class="rows">
                 <div class="col-md-4">
                     <p>销售热线：400-8833-700</p>
@@ -22,6 +19,9 @@
                     <p>网址：http://www.jiny.cn</p>
                 </div>
                 <div class="clearfix"></div>
+            </div>
+            <div class="row contactusMap">
+                <div style="width:100%;border:#ccc solid 1px;" id="dituContent"></div>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
     //地图事件设置函数：
     function setMapEvent(){
         map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
-        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+        //map.enableScrollWheelZoom();//启用地图滚轮放大缩小
         map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
         map.enableKeyboard();//启用键盘上下左右键移动地图
     }
@@ -68,7 +68,7 @@
     }
 
     //标注点数组
-    var markerArr = [{title:"上海杰尼机电技术有限公司",content:"上海杰尼机电技术有限公司",point:"121.394994|31.015018",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+    var markerArr = [{title:"<h4><font color=\"red\">上海杰尼机电技术有限公司</font></h4>",content:"上海杰尼机电技术有限公司",point:"121.394994|31.015018",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
 		 ];
     //创建marker
     function addMarker(){
