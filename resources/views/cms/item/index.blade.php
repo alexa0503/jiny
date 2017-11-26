@@ -39,7 +39,9 @@
                                             <th>缩略图</th>
                                             <th>产品名称</th>
                                             <th>所属分类</th>
-                                            <th>创建时间</th>
+                                            <th>推荐</th>
+                                            <th>推荐</th>
+                                            <th>热销</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -51,7 +53,9 @@
                                             </td>
                                             <td>{{ $row->name }}</td>
                                             <td>{{ $row->category->name }}</td>
-                                            <td>{{ $row->created_at }}</td>
+                                            <td>{{ $row->sort_id }}</td>
+                                            <td>{{ $row->recommended_id ? : '-' }}</td>
+                                            <td>{{ $row->hot_id ? : '-' }}</td>
                                             <td>
                                                 <a href="{{route('item.edit',['id'=>$row->id])}}" class="label label-info">编辑</a>
                                                 <a href="{{route('item.destroy',['id'=>$row->id])}}" class="delete label label-info">删除</a></td>

@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="content  slick" id="slick-three">
-                @foreach ($items1 as $item)
+                @foreach ($items2 as $item)
                 <div class="col-md-4 text-center">
                     <a href="{{route('item', $item->id)}}"><img src="{{asset($item->thumb)}}" class="center-block img-responsive" /></a><span>{{$item->name}}</span>
                 </div>

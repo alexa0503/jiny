@@ -18,12 +18,13 @@ Route::group(['middleware' => ['web']], function () {
         $categories = App\Category::orderBy('sort_id', 'ASC')->get();
         $page = App\Page::find(1);
 
-        $items1 = App\Item::all();
+        $items1 = App\Item::whereNotNull('recommended_id')->orderBy('recommended_id', 'ASC')->get();
+        $items2 = App\Item::whereNotNull('hot_id')->orderBy('hot_id', 'ASC')->get();
         return view('index',[
           //'categories'=>$categories,
           'page' => $page,
           'items1' => $items1,
-          'items2' => $items1,
+          'items2' => $items2,
         ]);
     });
     Route::get('/culture', function () {

@@ -82,7 +82,7 @@
                                     <label class="help-block" for="standard"></label>
                                 </div>
                             </div>
-                            
+
                             <!-- End .form-group  -->
                             <div class="form-group">
                                 <label for="text" class="col-lg-2 col-md-3 control-label">案例分享</label>
@@ -108,6 +108,22 @@
                                 <label for="" class="col-lg-2 col-md-3 control-label">排序</label>
                                 <div class="col-lg-10 col-md-9">
                                     <input type="text" name="sort_id" class="form-control" value="{{$item->sort_id}}">
+                                    <label class="help-block" for=""></label>
+                                </div>
+                            </div>
+                            <!-- End .form-group  -->
+                            <div class="form-group">
+                                <label for="" class="col-lg-2 col-md-3 control-label">推荐[留空不显示,从小到大]</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <input type="text" name="recommended_id" class="form-control" value="{{$item->recommended_id}}">
+                                    <label class="help-block" for=""></label>
+                                </div>
+                            </div>
+                            <!-- End .form-group  -->
+                            <div class="form-group">
+                                <label for="" class="col-lg-2 col-md-3 control-label">热销[留空不显示,从小到大]</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <input type="text" name="hot_id" class="form-control" value="{{$item->hot_id}}">
                                     <label class="help-block" for=""></label>
                                 </div>
                             </div>
