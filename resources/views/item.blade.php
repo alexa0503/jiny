@@ -24,14 +24,28 @@
                 <div class=" hidden-md hidden-lg item-border">
                     <img src="{{asset($item->thumb)}}" class="img-responsive center-block img-item" />
                 </div>
-                <ul class="list-unstyled list-item">
-                    <li><span>名称：</span>{{$item->getAttributeBody('a1')}}</li>
-                    <li><span>型号：</span>{{$item->getAttributeBody('a2')}}</li>
-                    <li><span>压力：</span>{{$item->getAttributeBody('a3')}}</li>
-                    <li><span>流量：</span>{{$item->getAttributeBody('a4')}}</li>
-                    <li><span>功率：</span>{{$item->getAttributeBody('a5')}}</li>
-                    <li><span>驱动：</span>{{$item->getAttributeBody('a6')}}</li>
-                </ul>
+                <div class="rows">
+                    <div class="col-md-6 col-lg-6">
+                        <ul class="list-unstyled list-item">
+                            <li><span>类别：</span>{{$item->getAttributeBody('a1')}}</li>
+                            <li><span>型号：</span>{{$item->getAttributeBody('a2')}}</li>
+                            <li><span>品牌：</span>{{$item->getAttributeBody('a3')}}</li>
+                            <li><span>驱动方式：</span>{{$item->getAttributeBody('a4')}}</li>
+                            <li><span>安装方式：</span>{{$item->getAttributeBody('a5')}}</li>
+                            <li><span>订货号：</span>{{$item->getAttributeBody('a6')}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <ul class="list-unstyled list-item">
+                            <li><span>工作压力：</span>{{$item->getAttributeBody('b1')}}</li>
+                            <li><span>马达功率：</span>{{$item->getAttributeBody('b2')}}</li>
+                            <li><span>包装尺寸：</span>{{$item->getAttributeBody('b3')}}</li>
+                            <li><span>工作流量：</span>{{$item->getAttributeBody('b4')}}</li>
+                            <li><span>设备重量：</span>{{$item->getAttributeBody('b5')}}</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
             <div class="clearfix"></div>
         </div>
@@ -61,7 +75,7 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-        
+
     </div>
 </div>
 @endsection
