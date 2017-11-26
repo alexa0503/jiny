@@ -110,6 +110,10 @@ $().ready(function(){
         $('#'+id).slick('slickNext');
         return false;
     })
+    $('#row-cases iframe').each(function(){
+        var w = $(this).width();
+        $(this).height(0.5625*w);
+    })
 })
 </script>
 @endsection
