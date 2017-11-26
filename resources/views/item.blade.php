@@ -61,23 +61,7 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-        <h4>可选配置</h4>
-        <div class="item-choosable">
-            <div class="slick" id="slick-choosable">
-                @foreach( $item->options as $option)
-                @php
-                $_item = \App\Item::find($option);
-                @endphp
-                <div class="col-md-2 col-xs-4 col-sm-4  text-center">
-                    <a href="/item"><img src="{{asset($_item->thumb)}}" class="img-responsive" /></a>
-                </div>
-                @endforeach
-            </div>
-            @if(count($item->options)>6)
-            <a class="arrow-prev" data-target-id="slick-choosable" href="#"><img src="/images/arrow-prev.png" /></a>
-            <a class="arrow-next" data-target-id="slick-choosable" href="#"><img src="/images/arrow-next.png" /></a>
-            @endif
-        </div>
+        
     </div>
 </div>
 @endsection
