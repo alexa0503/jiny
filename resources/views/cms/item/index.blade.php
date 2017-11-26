@@ -31,7 +31,6 @@
                                     </select>
                                 </div>
                             </form>
-
                             <div class="panel-controls panel-controls-right"><a href="#" class="panel-refresh"><i class="fa fa-circle-o"></i></a><a href="#" class="toggle panel-minimize"><i class="fa fa-angle-up"></i></a><a href="#" class="panel-close"><i class="fa fa-times"></i></a></div></div>
                             <div class="panel-body">
                                 <table id="basic-datatables" class="table table-striped table-bordered" cellspacing="0" width="100%">

@@ -8,7 +8,6 @@ class Item extends Model
 {
     protected $casts = [
         'cases'=>'array',
-        'options'=>'array'
     ];
     public function itemAttributes()
     {

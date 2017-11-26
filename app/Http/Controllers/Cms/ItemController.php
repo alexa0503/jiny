@@ -67,7 +67,7 @@ class ItemController extends Controller
             $item->body = '';
             $item->category_id = $request->input('category');
             $item->cases = $request->input('cases');
-            $item->options = $request->input('options') ? : [];
+            $item->sort_id = $request->input('sort_id');
             $item->save();
 
             foreach(config('custom.attributes') as $name => $attribute){
@@ -115,7 +115,6 @@ class ItemController extends Controller
             'attributes' => config('custom.attributes'),
             'categories' => $categories,
             'item'=>$item,
-            'options' => \App\Item::all(),
         ]);
     }
 
@@ -139,8 +138,8 @@ class ItemController extends Controller
             $item->standard = $request->input('standard');
             $item->body = '';
             $item->cases = $request->input('cases');
-            $item->options = $request->input('options') ? : [];
             $item->category_id = $request->input('category');
+            $item->sort_id = $request->input('sort_id');
             $item->save();
 
             \App\ItemAttribute::where('item_id',$item->id)->delete();
