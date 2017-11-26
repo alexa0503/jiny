@@ -100,7 +100,7 @@ header {
 }
 
 .culture .content {
-  padding: 15px 36px 50px;
+  padding: 15px 36px 20px;
   font-size: 15px;
   color: #342427;
   line-height: 30px;
@@ -112,7 +112,7 @@ header {
 }
 
 .culture .img-culture {
-  padding: 0 0 50px;
+  padding: 0 0 20px;
 }
 
 .contactus .contactusMap {
