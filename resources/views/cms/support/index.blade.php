@@ -28,7 +28,6 @@
                                         <th>描述</th>
                                         <th>排序</th>
                                         @if(Request::segment(3) == 2)<th>附件</th>@endif
-                                        <th>内容管理</th>
                                         <th>操作</th>
                                     </tr>
                                 </thead>
@@ -41,10 +40,7 @@
                                         <td>{{ str_limit($row->desc,40) }}</td>
                                         <td>{{ $row->sort_id }}</td>
                                         @if(Request::segment(3) == 2)<td><a href="{{ asset($row->attachment) }}" class="label label-info">下载</a></td>@endif
-                                        <td>
-                                            <a href="{{route('support.body.create',$row->id)}}" class="label label-info">新增</a>
-                                            <a href="{{route('support.body.index',$row->id)}}" class="label label-info">查看</a>
-                                        </td>
+                                        
                                         <td>
                                             <a href="{{route('support.type.edit',['type'=>$row->type_id,'id'=>$row->id])}}" class="label label-info">编辑</a>
                                             <a href="{{route('support.type.destroy',['type'=>$row->type_id,'id'=>$row->id])}}" class="delete label label-info">删除</a></td>

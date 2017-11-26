@@ -4,32 +4,13 @@
     <div class="row">
         <h2>{{$support->title}}</h2>
         <div class="content">
-            @if( count($support->bodies) > 0)
-            @foreach($support->bodies as $k=> $body)
-            @if( $k%2 == 0)
-            <div class="row">
-                <div class="col-md-6">
-                    <img class="img-responsive" src="{{asset($body->image)}}">
-                </div>
-                <div class="col-md-6 support-desc">
-                    <h4>{{$body->title}}</h4>
-                    {!! $body->txt !!}
-                </div>
-            </div>
-            @else
-            <div class="row">
-                <div class="col-md-6 support-desc">
-                    <h4>{{$body->title}}</h4>
-                    {!! $body->txt !!}
-                </div>
-                <div class="col-md-6">
-                    <img class="img-responsive" src="{{asset($body->image)}}">
-                </div>
-            </div>
-            @endif
-            @endforeach
-            @endif
+            {!! $support->body !!}
         </div>
+        @if($support->attachment AND $support->type_id == 2)
+        <div class="rows text-center">
+            <a href="{{$support->attachment}}" class="btn-lg btn btn-primary">样本下载</a>
+        </div>
+        @endif
     </div>
 </div>
 @endsection

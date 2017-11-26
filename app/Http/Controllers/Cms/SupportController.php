@@ -48,6 +48,7 @@ class SupportController extends Controller
             $support->desc = $request->input('desc');
             $support->thumb = $request->input('thumb');
             $support->attachment = $request->input('attachment');
+            $support->body = $request->input('body');
             $support->save();
             return response([]);
         } catch (Exception $e) {
@@ -99,6 +100,7 @@ class SupportController extends Controller
         $support->desc = $request->input('desc');
         $support->thumb = $request->input('thumb');
         $support->attachment = $request->input('attachment');
+        $support->body = $request->input('body');
         //$support->body = '';
         $support->save();
         return response([]);

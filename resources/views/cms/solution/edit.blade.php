@@ -126,7 +126,6 @@ $(document).ready(function() {
     });
     file_config.uploadUrl = '{{url("cms/file/upload/file2")}}';
     file_config.allowedFileTypes = ["image","video"]
-    //file_config.allowedFileExtensions = ["jpg","jpeg","gif","png","mp4"]
     file_config.initialPreview = ["{{asset($solution->image)}}"];
     file_config.initialPreviewConfig = [
         {caption: "", size: "{{ filesize(public_path($solution->image)) }}", width: "400px", url: "{{url('cms/file/delete')}}", key: 1,extra:{name:'{{$solution->image}}'}}

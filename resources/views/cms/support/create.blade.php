@@ -54,7 +54,14 @@
                                 </div>
                             </div>
                             @endif
-
+                            <!-- End .form-group  -->
+                            <div class="form-group">
+                                <label for="" class="col-lg-2 col-md-3 control-label">内容</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <textarea name="body" class="form-control article-ckeditor" rows="20" placeholder="请输入"></textarea>
+                                    <label class="help-block" for=""></label>
+                                </div>
+                            </div>
 
                             <!-- End .form-group  -->
                             <div class="form-group">
@@ -88,8 +95,15 @@
 </div>
 @endsection
 @section('scripts')
+<script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+<script src="{{asset('assets/cms/js/jquery.form.js')}}"></script>
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script src="{{asset('/vendor/unisharp/laravel-ckeditor/adapters/jquery.js')}}"></script>
 <script>
 $(document).ready(function() {
+    $('.article-ckeditor').ckeditor({
+        filebrowserBrowseUrl: '{!! url("/filemanager?type=items") !!}'
+    });
     $('.select2').select2();
     var fileConfig = {
         theme: 'explorer',

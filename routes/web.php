@@ -65,8 +65,8 @@ Route::group(['middleware' => ['web']], function () {
     })->name('solution');
     //技术支持
     Route::get('supports', function(){
-        $supports[0] = App\Support::where('type_id', 1)->get();
-        $supports[1] = App\Support::where('type_id', 2)->get();
+        $supports[0] = App\Support::where('type_id', 1)->orderBy('sort_id', 'ASC')->get();
+        $supports[1] = App\Support::where('type_id', 2)->orderBy('sort_id', 'ASC')->get();
         return view('supports.index',['supports'=>$supports]);
     });
     Route::get('support/{id}', function($id){
@@ -75,11 +75,11 @@ Route::group(['middleware' => ['web']], function () {
     })->name('support');
     //新闻
     Route::get('news', function(){
-        $posts = App\Post::all();
+        $posts = App\Support::where('type_id', 3)->orderBy('sort_id', 'ASC')->get();
         return view('news.index',['posts'=>$posts]);
     });
     Route::get('news/{id}', function($id){
-        $post = App\Post::find($id);
+        $post = App\Support::find($id);
         return view('news.show',['post'=>$post]);
     })->name('post');
 });

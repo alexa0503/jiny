@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h2>新闻咨询</h2>
+            <h2>新闻资讯</h2>
             @foreach ($posts as $post)
             <div class="rows">
                 <h3>{{$post->name}}</h3>
