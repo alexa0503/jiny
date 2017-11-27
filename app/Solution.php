@@ -9,6 +9,9 @@ class Solution extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+    protected $casts = [
+        'videos'=>'array',
+    ];
     public function category()
     {
         return $this->belongsTo('App\SolutionCategory');

@@ -25,7 +25,7 @@ class Solution extends FormRequest
      {
          return [
              'name' => 'required|max:120',
-             'attachment' => 'required',
+             //'attachment' => 'required',
              'image' => 'required',
              'sort_id'=>'required|numeric',
          ];
@@ -39,7 +39,7 @@ class Solution extends FormRequest
      {
          return [
              'name.required' => '请输入名称',
-             'attachment.required'=>'请上传缩略图',
+             //'attachment.required'=>'请上传附件',
              'image.required'=>'请上传详图',
              'sort_id.required'=>'请输入排序',
              'sort_id.numeric'=>'排序只能为数字',

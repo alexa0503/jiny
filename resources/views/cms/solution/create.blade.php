@@ -66,6 +66,33 @@
                             </div>
                             <!-- End .form-group  -->
                             <div class="form-group">
+                                <label for="text" class="col-lg-2 col-md-3 control-label">视频</label>
+                                <div class="col-lg-10 col-md-9">
+                                    @for($i=0; $i<6; $i++)
+                                    <div class="row" style="margin-bottom:10px;">
+                                        <div class="col-lg-2 col-md-2">
+                                            视频{{$i+1}}:
+                                        </div>
+                                        <div class="col-lg-4 col-md-4">
+                                            <input type="text" name="videos[{{$i}}][title]" class="form-control" value="" placeholder="输入标题">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="input-group">
+                                              <span class="input-group-btn">
+                                                <a data-input="inputCase{{$i}}" data-preview="holder2" class="lfm btn btn-primary">
+                                                  <i class="fa fa-file-o"></i> 选择
+                                                </a>
+                                              </span>
+                                              <input name="videos[{{$i}}][url]" id="inputCase{{$i}}" class="form-control" type="text" value="" name="filepath" placeholder="输入视频URL/或者点击左侧上传">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endfor
+                                    <label class="help-block" for="optional"></label>
+                                </div>
+                            </div>
+                            <!-- End .form-group  -->
+                            <div class="form-group">
                                 <label for="text" class="col-lg-2 col-md-3 control-label">排序</label>
                                 <div class="col-lg-10 col-md-9">
                                     <input type="text" name="sort_id" class="form-control" value="999">

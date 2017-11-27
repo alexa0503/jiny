@@ -54,6 +54,15 @@ class SolutionController extends Controller
         $solution->desc = $request->input('desc');
         $solution->image = $request->input('image');
         $solution->attachment = $request->input('attachment');
+        $videos = [];
+        if( $request->input('videos') && is_array($request->input('videos')) ){
+            foreach($request->input('videos') as $video){
+                if( isset($video['url']) || isset($video['title']) ){
+                    $videos[] = $video;
+                }
+            }
+        }
+        $solution->videos = $videos;
         $solution->save();
         return response([]);
     }
@@ -101,6 +110,15 @@ class SolutionController extends Controller
         $solution->desc = $request->input('desc');
         $solution->image = $request->input('image');
         $solution->attachment = $request->input('attachment');
+        $videos = [];
+        if( $request->input('videos') && is_array($request->input('videos')) ){
+            foreach($request->input('videos') as $video){
+                if( isset($video['url']) || isset($video['title']) ){
+                    $videos[] = $video;
+                }
+            }
+        }
+        $solution->videos = $videos;
         $solution->save();
         return response([]);
     }
