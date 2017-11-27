@@ -34,17 +34,30 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //var_dump(implode(',',array_keys(config('custom.templates'))));
         $categories = \App\Category::all();
 
-        return view('cms.item.create', [
-            'attributes' => config('custom.attributes'),
-            'categories' => $categories,
-            'templates' => config('custom.templates'),
-            'options' => \App\Item::all(),
-        ]);
+
+
+        if( null != $request->input('id') ){
+            $item = \App\Item::find($request->input('id'));
+
+
+            return view('cms.item.copy', [
+                'attributes' => config('custom.attributes'),
+                'categories' => $categories,
+                'item'=>$item,
+            ]);
+        }
+        else{
+            return view('cms.item.create', [
+                'attributes' => config('custom.attributes'),
+                'categories' => $categories,
+            ]);
+        }
+
     }
 
     /**

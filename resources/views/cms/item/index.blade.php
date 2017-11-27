@@ -57,6 +57,7 @@
                                             <td>{{ $row->recommended_id ? : '-' }}</td>
                                             <td>{{ $row->hot_id ? : '-' }}</td>
                                             <td>
+                                                <a href="{{route('item.create',['id'=>$row->id])}}" class="label label-info">复制</a>
                                                 <a href="{{route('item.edit',['id'=>$row->id])}}" class="label label-info">编辑</a>
                                                 <a href="{{route('item.destroy',['id'=>$row->id])}}" class="delete label label-info">删除</a></td>
                                             </tr>
