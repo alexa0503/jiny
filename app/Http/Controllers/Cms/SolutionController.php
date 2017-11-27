@@ -33,7 +33,7 @@ class SolutionController extends Controller
      */
     public function create()
     {
-        $categories = \App\category::all();
+        $categories = \App\SolutionCategory::all();
         return view('cms.solution.create', [
             'categories' => $categories
         ]);
@@ -87,7 +87,7 @@ class SolutionController extends Controller
     public function edit($id)
     {
         $solution = \App\Solution::find($id);
-        $categories = \App\category::all();
+        $categories = \App\SolutionCategory::all();
         return view('cms.solution.edit', [
            'solution' => $solution,
            'categories' => $categories,
