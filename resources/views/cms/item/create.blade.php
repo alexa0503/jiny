@@ -95,7 +95,14 @@
                                             <input type="text" name="cases[$i][title]" class="form-control" value="" placeholder="输入标题">
                                         </div>
                                         <div class="col-lg-6 col-md-6">
-                                            <input type="text" name="cases[{{$i}}][url]" class="form-control" value="" placeholder="输入视频URL">
+                                            <div class="input-group">
+                                              <span class="input-group-btn">
+                                                <a data-input="inputCase{{$i}}" data-preview="holder2" class="lfm btn btn-primary">
+                                                  <i class="fa fa-file-o"></i> 选择
+                                                </a>
+                                              </span>
+                                              <input name="cases[{{$i}}][url]" id="inputCase{{$i}}" class="form-control" type="text" value="" name="filepath" placeholder="输入视频URL/或者点击左侧上传">
+                                            </div>
                                         </div>
                                     </div>
                                     @endfor
@@ -156,7 +163,7 @@
 <script src="{{asset('/vendor/unisharp/laravel-ckeditor/adapters/jquery.js')}}"></script>
 <script>
 $(document).ready(function() {
-    //$('#thumb-explorer').filemanager('image',{prefix:'{!! url("/filemanager") !!}'});
+    $('.lfm').filemanager('files',{prefix:'{!! url("/filemanager") !!}'});
     $('.article-ckeditor').ckeditor({
         filebrowserBrowseUrl: '{!! url("/filemanager?type=items") !!}'
     });

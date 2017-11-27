@@ -61,13 +61,20 @@
         <div class="item-description-01">
             {!! $item->standard !!}
         </div>
+        @if (count($item->cases) > 0)
         <h4>案例分享</h4>
         <div class="item-description-01">
             <div class="row" id="row-cases">
                 @foreach($item->cases as $case)
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     @if( isset($case["url"]) AND isset($case["title"]) )
-                    <iframe src='{{$case["url"]}}' frameborder=0 allowfullscreen></iframe>
+                    @if(stripos(url($case["url"]), url("/")) !==false )
+                    <video style="width:100%" src="{{url($case['url'])}}" controls="controls">
+                    您的浏览器不支持 video 标签。
+                    </video>
+                    @else
+                    <iframe src="{{url($case['url'])}}" frameborder=0 allowfullscreen></iframe>
+                    @endif
                     <h5>{{$case["title"]}}</h5>
                     @endif
                 </div>
@@ -75,6 +82,7 @@
                 <div class="clearfix"></div>
             </div>
         </div>
+        @endif
 
     </div>
 </div>
@@ -114,6 +122,7 @@ $().ready(function(){
         var w = $(this).width();
         $(this).height(0.5625*w);
     })
+    
 })
 </script>
 @endsection
