@@ -66,7 +66,15 @@ class ItemController extends Controller
             $item->standard = $request->input('standard');
             $item->body = '';
             $item->category_id = $request->input('category');
-            $item->cases = $request->input('cases');
+            $cases = [];
+            if( $request->input('cases') && is_array($request->input('cases')) ){
+                foreach($request->input('cases') as $case){
+                    if( isset($case['url']) || isset($case['title']) ){
+                        $cases[] = $case;
+                    }
+                }
+            }
+            $item->cases = $cases;
             $item->sort_id = $request->input('sort_id');
             $item->recommended_id = $request->input('recommended_id') ? : NULL;
             $item->hot_id = $request->input('hot_id') ? : NULL;
@@ -139,7 +147,15 @@ class ItemController extends Controller
             $item->detail = $request->input('detail');
             $item->standard = $request->input('standard');
             $item->body = '';
-            $item->cases = $request->input('cases');
+            $cases = [];
+            if( $request->input('cases') && is_array($request->input('cases')) ){
+                foreach($request->input('cases') as $case){
+                    if( isset($case['url']) || isset($case['title']) ){
+                        $cases[] = $case;
+                    }
+                }
+            }
+            $item->cases = $cases;
             $item->category_id = $request->input('category');
             $item->sort_id = $request->input('sort_id');
             $item->recommended_id = $request->input('recommended_id') ? : NULL;
