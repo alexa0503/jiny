@@ -10,7 +10,7 @@
             <img src="{{asset($solution->image)}}" class="img-responsive" />
             @endif
             <div class="solutions-desc">
-                {{$solution->desc}}
+                {!! $solution->body !!}
             </div>
             @if (count($solution->videos) > 0)
             <h4>视频</h4>
