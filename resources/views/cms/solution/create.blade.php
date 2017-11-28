@@ -8,7 +8,7 @@
             <!-- Start .page-content-inner -->
             <div id="page-header" class="clearfix">
                 <div class="page-header">
-                    <h2>解决方案 - 编辑</h2>
+                    <h2>解决方案 - 新增</h2>
                 </div>
             </div>
             <!-- Start .row -->
@@ -46,6 +46,15 @@
                                     <label class="help-block" for="desc"></label>
                                 </div>
                             </div>
+
+                            <!-- End .form-group  -->
+                            <div class="form-group">
+                                <label for="" class="col-lg-2 col-md-3 control-label">内容</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <textarea name="body" class="form-control article-ckeditor" rows="20" placeholder="请输入"></textarea>
+                                    <label class="help-block" for=""></label>
+                                </div>
+                            </div>
                             <!-- End .form-group  -->
                             <div class="form-group">
                                 <label class="col-lg-2 col-md-3 control-label" for="">详情图</label>
@@ -53,15 +62,6 @@
                                     <input name="image" value="" type="hidden" />
                                     <input id="image-explorer" name="file2" type="file" multiple >
                                     <label class="help-block" for="image"></label>
-                                </div>
-                            </div>
-                            <!-- End .form-group  -->
-                            <div class="form-group">
-                                <label class="col-lg-2 col-md-3 control-label" for="">附件</label>
-                                <div class="col-lg-10 col-md-9">
-                                    <input name="attachment" value="" type="hidden" />
-                                    <input id="attachment-explorer" name="file1" type="file" multiple >
-                                    <label class="help-block" for="attachment"></label>
                                 </div>
                             </div>
                             <!-- End .form-group  -->
@@ -123,8 +123,16 @@
 </div>
 @endsection
 @section('scripts')
+<script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+<script src="{{asset('assets/cms/js/jquery.form.js')}}"></script>
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script src="{{asset('/vendor/unisharp/laravel-ckeditor/adapters/jquery.js')}}"></script>
 <script>
 $(document).ready(function() {
+    $('.lfm').filemanager('files',{prefix:'{!! url("/filemanager") !!}'});
+    $('.article-ckeditor').ckeditor({
+        filebrowserBrowseUrl: '{!! url("/filemanager?type=files") !!}'
+    });
     var file_config = {
         theme: 'explorer',
         uploadUrl: '{{url("cms/file/upload/file1")}}',
@@ -139,11 +147,6 @@ $(document).ready(function() {
             showUpload: true,
         }
     };
-    $("#attachment-explorer").fileinput(file_config).on('filebatchuploadsuccess', function(event, data) {
-        $('input[name="attachment"]').val(data.response.initialPreviewConfig[0].value);
-    }).on('filedeleted',function () {
-        $('input[name="attachment"]').val('');
-    });
     file_config.uploadUrl = '{{url("cms/file/upload/file2")}}';
     file_config.allowedFileTypes = ["image","video"]
     //file_config.allowedFileExtensions = ["jpg","jpeg","gif","png","mp4"]

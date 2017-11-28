@@ -53,7 +53,8 @@ class SolutionController extends Controller
         $solution->sort_id = $request->input('sort_id');
         $solution->desc = $request->input('desc');
         $solution->image = $request->input('image');
-        $solution->attachment = $request->input('attachment');
+        //$solution->attachment = $request->input('attachment');
+        $solution->body = $request->input('body');
         $videos = [];
         if( $request->input('videos') && is_array($request->input('videos')) ){
             foreach($request->input('videos') as $video){
@@ -109,7 +110,8 @@ class SolutionController extends Controller
         $solution->sort_id = $request->input('sort_id');
         $solution->desc = $request->input('desc');
         $solution->image = $request->input('image');
-        $solution->attachment = $request->input('attachment');
+        //$solution->attachment = $request->input('attachment');
+        $solution->body = $request->input('body');
         $videos = [];
         if( $request->input('videos') && is_array($request->input('videos')) ){
             foreach($request->input('videos') as $video){

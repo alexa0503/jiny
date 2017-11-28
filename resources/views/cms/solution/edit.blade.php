@@ -46,6 +46,15 @@
                                     <label class="help-block" for="desc"></label>
                                 </div>
                             </div>
+
+                            <!-- End .form-group  -->
+                            <div class="form-group">
+                                <label for="" class="col-lg-2 col-md-3 control-label">内容</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <textarea name="body" class="form-control article-ckeditor" rows="20" placeholder="请输入">{!! $solution->body !!}</textarea>
+                                    <label class="help-block" for=""></label>
+                                </div>
+                            </div>
                             <!-- End .form-group  -->
                             <div class="form-group">
                                 <label class="col-lg-2 col-md-3 control-label" for="">详情图</label>
@@ -53,15 +62,6 @@
                                     <input name="image" value="{{$solution->image}}" type="hidden" />
                                     <input id="image-explorer" name="file2" type="file" multiple >
                                     <label class="help-block" for="image"></label>
-                                </div>
-                            </div>
-                            <!-- End .form-group  -->
-                            <div class="form-group">
-                                <label class="col-lg-2 col-md-3 control-label" for="">附件</label>
-                                <div class="col-lg-10 col-md-9">
-                                    <input name="attachment" value="{{$solution->attachment}}" type="hidden" />
-                                    <input id="attachment-explorer" name="file1" type="file" multiple >
-                                    <label class="help-block" for="attachment"></label>
                                 </div>
                             </div>
                             <!-- End .form-group  -->
@@ -91,6 +91,7 @@
                                     <label class="help-block" for="optional"></label>
                                 </div>
                             </div>
+
                             <!-- End .form-group  -->
                             <div class="form-group">
                                 <label for="text" class="col-lg-2 col-md-3 control-label">排序</label>
@@ -124,9 +125,15 @@
 @endsection
 @section('scripts')
 <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+<script src="{{asset('assets/cms/js/jquery.form.js')}}"></script>
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script src="{{asset('/vendor/unisharp/laravel-ckeditor/adapters/jquery.js')}}"></script>
 <script>
 $(document).ready(function() {
     $('.lfm').filemanager('files',{prefix:'{!! url("/filemanager") !!}'});
+    $('.article-ckeditor').ckeditor({
+        filebrowserBrowseUrl: '{!! url("/filemanager?type=items") !!}'
+    });
     $('.select2').select2();
     var file_config = {
         theme: 'explorer',
@@ -148,11 +155,6 @@ $(document).ready(function() {
             {previewAsData: false,caption: "附件",size: "{{ filesize(public_path($solution->attachment)) }}", width: "400px", url: "{{url('cms/file/delete')}}", downloadUrl: '{{asset($solution->attachment)}}', key: 1,extra:{name:'{{$solution->attachment}}'}}
         ]
     };
-    $("#attachment-explorer").fileinput(file_config).on('filebatchuploadsuccess', function(event, data) {
-        $('input[name="attachment"]').val(data.response.initialPreviewConfig[0].value);
-    }).on('filedeleted',function () {
-        $('input[name="attachment"]').val('');
-    });
     file_config.uploadUrl = '{{url("cms/file/upload/file2")}}';
     file_config.allowedFileTypes = ["image","video"]
     file_config.initialPreview = ["{{asset($solution->image)}}"];
