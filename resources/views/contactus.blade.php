@@ -13,7 +13,7 @@
                     <p>传真：021-5486 8661</p>
                 </div>
                 <div class="col-md-8">
-                    <p>mail：<a href="mailto:sales@jiny.cn">sales@jiny.cn</a></p>
+                    <p>Email：<a href="mailto:sales@jiny.cn">sales@jiny.cn</a></p>
                     <p>地址：上海市闵行区景谷路398-2号</p>
                     <p>邮编：200245</p>
                     <p>网址：http://www.jiny.cn</p>
