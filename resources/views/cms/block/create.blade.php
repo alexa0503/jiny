@@ -1,4 +1,4 @@
-$name@extends('cms.layout')
+@extends('cms.layout')
 @section('content')
     @php
     $name = Request::get('name') ? : 'graphic';
