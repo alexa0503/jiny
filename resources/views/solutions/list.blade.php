@@ -3,7 +3,7 @@
 <div class="container solutions">
     <div class="row">
         <h2>{{$category->name}}</h2>
-        <img src="{{$category->image}}" class="img-responsive" />
+        <img src="{{asset($category->image)}}" class="img-responsive" />
         <div class="row solutions-desc">
             @foreach ($category->solutions as $solution)
             <div class="col-md-6">
