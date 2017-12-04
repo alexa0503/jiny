@@ -20,10 +20,7 @@
         <h4>{{$block->description}}</h4>
         <div class="img-culture"><img src="{{asset($block->header_image)}}" class="img-responsive"  /></div>
         <div class="content">
-            @php
-            $content = explode("\n",$block->content);
-            @endphp
-            <p>{!! implode('</p><p>', $content)!!}</p>
+            {!! $block->content !!}
         </div>
     </div>
     @endforeach
