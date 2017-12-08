@@ -17,12 +17,14 @@
             <div class="solutions-videos">
                 <div class="row" id="row-cases">
                     @foreach($solution->videos as $video)
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="height:170px;overflow:hidden;position:relative;">
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                         @if( isset($video["url"]) AND isset($video["title"]) )
                         @if(stripos(url($video["url"]), url("/")) !==false )
-                        <video style="bottom:0;left:0;position:absolute;width:100%;" src="{{url($video['url'])}}" controls="controls">
-                        您的浏览器不支持 video 标签。
-                        </video>
+                        <div style="overflow:hidden;position:relative;">
+                            <video style="bottom:0;left:0;position:absolute;width:100%;" src="{{url($video['url'])}}" controls="controls">
+                            您的浏览器不支持 video 标签。
+                            </video>
+                        </div>
                         @else
                         <iframe src="{{url($video['url'])}}" frameborder=0 allowfullscreen></iframe>
                         @endif
@@ -58,8 +60,13 @@
 <script>
 $().ready(function(){
     $('.solutions-videos iframe').each(function(){
-        var w = $(this).width();
+        var w = $(this).parent('div').width();
+        $(this).width(w);
         $(this).height(0.5625*w);
+    })
+    $('.solutions-videos video').each(function(){
+        var w = $(this).parent('div').width();
+        $(this).parent('div').height(0.5625*w);
     })
 });
 </script>

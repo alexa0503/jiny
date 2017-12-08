@@ -69,9 +69,11 @@
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="height:170px;overflow:hidden;position:relative;">
                     @if( isset($case["url"]) AND isset($case["title"]) )
                     @if(stripos(url($case["url"]), url("/")) !==false )
-                    <video style="bottom:0;left:0;position:absolute;width:100%;" src="{{url($case['url'])}}" controls="controls">
-                    您的浏览器不支持 video 标签。
-                    </video>
+                    <div style="overflow:hidden;position:relative;">
+                        <video style="bottom:0;left:0;position:absolute;width:100%;" src="{{url($video['url'])}}" controls="controls">
+                            您的浏览器不支持 video 标签。
+                        </video>
+                    </div>
                     @else
                     <iframe src="{{url($case['url'])}}" frameborder=0 allowfullscreen></iframe>
                     @endif
@@ -118,9 +120,15 @@ $().ready(function(){
         $('#'+id).slick('slickNext');
         return false;
     })
+
     $('#row-cases iframe').each(function(){
-        var w = $(this).width();
+        var w = $(this).parent('div').width();
+        $(this).width(w);
         $(this).height(0.5625*w);
+    })
+    $('#row-cases video').each(function(){
+        var w = $(this).parent('div').width();
+        $(this).parent('div').height(0.5625*w);
     })
 
 })
