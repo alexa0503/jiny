@@ -17,10 +17,10 @@
             <div class="solutions-videos">
                 <div class="row" id="row-cases">
                     @foreach($solution->videos as $video)
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="height:170px;overflow:hidden;position:relative;">
                         @if( isset($video["url"]) AND isset($video["title"]) )
                         @if(stripos(url($video["url"]), url("/")) !==false )
-                        <video style="width:100%" src="{{url($video['url'])}}" controls="controls">
+                        <video style="bottom:0;left:0;position:absolute;width:100%;" src="{{url($video['url'])}}" controls="controls">
                         您的浏览器不支持 video 标签。
                         </video>
                         @else
