@@ -66,10 +66,10 @@
         <div class="item-description-01">
             <div class="row" id="row-cases">
                 @foreach($item->cases as $case)
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="height:170px;overflow:hidden;position:relative;">
                     @if( isset($case["url"]) AND isset($case["title"]) )
                     @if(stripos(url($case["url"]), url("/")) !==false )
-                    <video style="width:100%" src="{{url($case['url'])}}" controls="controls">
+                    <video style="bottom:0;left:0;position:absolute;width:100%;" src="{{url($case['url'])}}" controls="controls">
                     您的浏览器不支持 video 标签。
                     </video>
                     @else
@@ -122,7 +122,7 @@ $().ready(function(){
         var w = $(this).width();
         $(this).height(0.5625*w);
     })
-    
+
 })
 </script>
 @endsection
