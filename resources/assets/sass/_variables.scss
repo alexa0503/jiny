@@ -448,6 +448,20 @@ footer .copyright p {
 .item-choosable .arrow-prev img,.item-choosable .arrow-next img {
     border: 0px solid #fff!important;
 }
+.navbar-inverse .navbar-nav a {
+    color: #fff;
+    background-color: #cf000f;
+}
+.nav>li, .nav>li>a, .nav>li>ul>li, .nav>li>ul>li>a {
+    position: relative;
+    display: block;
+}
+.nav>li>ul>li>a {
+    padding-left: 60px;
+}
+.nav>li>ul {
+    padding-left: 0;
+}
 @media (min-width: 992px) {
     .homepage-topper-01 .homepage-list {
         width: 200px;

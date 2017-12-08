@@ -3,7 +3,7 @@
 <div class="nav-header-01">
     <div class="container">
         <div class="row">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" id="topper">
             <li class="active"><a href="#culture">企业文化</a></li>
             <li class="split"><span>|</span></li>
             <li><a href="#block14">品牌资源</a></li>
@@ -40,11 +40,11 @@
 @section('scripts')
 <script>
 $().ready(function(){
-    $('.navbar-nav li a').on('touchend', function(){
+    $('#topper li a').on('touchend', function(){
         var id = $(this).attr('href').replace('#','');
         $('.culture .row').addClass('hidden-xs');
         $('#'+id).parents('.row').removeClass('hidden-xs');
-        $('.navbar-nav li').removeClass('active');
+        $('#topper li').removeClass('active');
         $(this).parents('li').addClass('active');
         return false;
     })

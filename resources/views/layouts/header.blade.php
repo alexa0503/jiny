@@ -34,11 +34,11 @@
         <div class="collapse navbar-collapse" id="menu">
           <ul class="nav navbar-nav">
             <li><a href="/">首页</a></li>
-            <li class="hidden-md hidden-lg">
-                <a href="/items">产品中心</a>
-                    <ul>
+            <li class="hidden-md hidden-lg" id="subItemsMenu">
+                <a href="#">产品中心</a>
+                    <ul class="hidden hidden-md hidden-lg">
                         @foreach ( session('categories') as $category)
-                        <li class="hidden-md hidden-lg"><a href="{{route('items',$category->id)}}">{{$category->name}}</a></li>
+                        <li><a href="{{route('items',$category->id)}}">{{$category->name}}</a></li>
                         @endforeach
                     </ul>
             </li>

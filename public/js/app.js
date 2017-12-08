@@ -1,1 +1,1 @@
-$().ready(function(){$("#items-button").on("click",function(){return $("#items-menu").hasClass("hidden")?$("#items-menu").removeClass("hidden"):$("#items-menu").addClass("hidden"),!1})});
+$().ready(function(){$("#items-button").on("click",function(){return $("#items-menu").hasClass("hidden")?$("#items-menu").removeClass("hidden"):$("#items-menu").addClass("hidden"),!1}),$("#subItemsMenu>a").on("click",function(){return $("#subItemsMenu ul").hasClass("hidden")?$("#subItemsMenu ul").removeClass("hidden"):$("#subItemsMenu ul").addClass("hidden"),!1})});

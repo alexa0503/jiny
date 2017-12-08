@@ -8,4 +8,13 @@ $().ready(function(){
         }
         return false;
     })
+    $('#subItemsMenu>a').on('click', function(){
+        if( $('#subItemsMenu ul').hasClass('hidden') ){
+            $('#subItemsMenu ul').removeClass('hidden');
+        }
+        else{
+            $('#subItemsMenu ul').addClass('hidden');
+        }
+        return false;
+    })
 });
