@@ -13,14 +13,32 @@
 
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Image;
+
 Route::group(['middleware' => ['web']], function () {
+    /*
+    Route::get('dir', function () {
+        $directory = public_path('files/1/');
+        $mydir = dir($directory);
+        while ($file = $mydir->read()) {
+            if ((!is_dir("$directory/$file")) and ($file != '.') and ($file != '.')) {
+                var_dump($file);
+                $path = "$directory/$file";
+                $img = Image::make($path);
+                $img->insert(public_path('images/mask.png'), 'bottom-left', 10, 10);
+                $img->save($path);
+            }
+        }
+        $mydir->close();
+    });
+    */
     Route::get('/', function () {
         $categories = App\Category::orderBy('sort_id', 'ASC')->get();
         $page = App\Page::find(1);
 
         $items1 = App\Item::whereNotNull('recommended_id')->orderBy('recommended_id', 'ASC')->get();
         $items2 = App\Item::whereNotNull('hot_id')->orderBy('hot_id', 'ASC')->get();
-        return view('index',[
+        return view('index', [
           //'categories'=>$categories,
           'page' => $page,
           'items1' => $items1,
@@ -29,7 +47,7 @@ Route::group(['middleware' => ['web']], function () {
     });
     Route::get('/culture', function () {
         $page = App\Page::find(2);
-        return view('culture',['page'=>$page]);
+        return view('culture', ['page'=>$page]);
     });
     Route::get('/contactus', function () {
         return view('contactus');
@@ -46,42 +64,42 @@ Route::group(['middleware' => ['web']], function () {
     //解决方案
     Route::get('/solutions', function () {
         $categories = App\SolutionCategory::all();
-        return view('solutions.index',[
+        return view('solutions.index', [
             'categories'=>$categories,
         ]);
     });
     //解决方案列表
     Route::get('/solutions/{id}', function ($id) {
         $category = App\SolutionCategory::find($id);
-        return view('solutions.list',[
+        return view('solutions.list', [
             'category'=>$category,
         ]);
     })->name('solutions');
     //具体解决方案
     Route::get('/solution/{id}', function ($id) {
         $solution = App\Solution::find($id);
-        return view('solutions.show',[
+        return view('solutions.show', [
             'solution'=>$solution,
         ]);
     })->name('solution');
     //技术支持
-    Route::get('supports', function(){
+    Route::get('supports', function () {
         $supports[0] = App\Support::where('type_id', 1)->orderBy('sort_id', 'ASC')->get();
         $supports[1] = App\Support::where('type_id', 2)->orderBy('sort_id', 'ASC')->get();
-        return view('supports.index',['supports'=>$supports]);
+        return view('supports.index', ['supports'=>$supports]);
     });
-    Route::get('support/{id}', function($id){
+    Route::get('support/{id}', function ($id) {
         $support = App\Support::find($id);
-        return view('supports.show',['support'=>$support]);
+        return view('supports.show', ['support'=>$support]);
     })->name('support');
     //新闻
-    Route::get('news', function(){
+    Route::get('news', function () {
         $posts = App\Support::where('type_id', 3)->orderBy('sort_id', 'ASC')->get();
-        return view('news.index',['posts'=>$posts]);
+        return view('news.index', ['posts'=>$posts]);
     });
-    Route::get('news/{id}', function($id){
+    Route::get('news/{id}', function ($id) {
         $post = App\Support::find($id);
-        return view('news.show',['post'=>$post]);
+        return view('news.show', ['post'=>$post]);
     })->name('post');
 });
 //Route::get('/v/{vue_capture?}', 'IndexController@index')->where('vue_capture', '[\/\w\.-]*');

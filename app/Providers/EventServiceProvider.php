@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Unisharp\Laravelfilemanager\Events\ImageWasUploaded;
+use App\Listeners\HasUploadedImageListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Event' => [
             'App\Listeners\EventListener',
         ],
+        ImageWasUploaded::class => [
+            HasUploadedImageListener::class,
+        ],
+
     ];
 
     /**
