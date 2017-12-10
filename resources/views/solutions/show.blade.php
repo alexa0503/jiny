@@ -36,17 +36,38 @@
                 </div>
             </div>
             @endif
+            @if (count($solution->items) > 0)
+            <h4 style="margin-top:40px;">推荐产品</h4>
+
+            <div class="items-list row">
+                @foreach($solution->items as $item)
+                <div class="col-md-4">
+                    <a href="{{route('item', $item->id)}}"><img src="{{asset($item->thumb)}}" class="img-responsive center-block" /></a>
+                    <h5>{{$item->name}}</h5>
+                    <div class="item-description rows hidden-xs hidden-sm">
+                        <ul>
+                            <li><span>型号：{{$item->getAttributeBody('a2')}}</span></li>
+                            <li><span>功率：{{$item->getAttributeBody('b2')}}</span></li>
+                            <li><span>压力：{{$item->getAttributeBody('b1')}}</span></li>
+                            <li><span>流量：{{$item->getAttributeBody('b4')}}</span></li>
+                        </ul>
+                    </div>
+                </div>
+                @endforeach
+                <div class="clearfix"></div>
+            </div>
+            @endif
             <div class="text-center">
-                <!--<a href="http://service.weibo.com/share/share.php?appkey=&title={{urlencode($solution->name)}}&url={{urlencode(url()->current())}}&pic=&searchPic=false&style=simple" target="_blank">微博分享</a>-->
                 <div class="bdsharebuttonbox">
-                <a href="#" class="bds_weixin" data-cmd="weixin"></a>
-                <a href="#" class="bds_tsina" data-cmd="tsina"></a>
-                <a href="#" class="bds_tqq" data-cmd="tqq"></a>
-                    <a href="#" class="bds_qzone" data-cmd="qzone"></a>
-                    <a href="#" class="bds_renren" data-cmd="renren"></a>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
                     <a href="#" class="bds_more" data-cmd="more"></a>
                 </div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"{{$solution->name}}","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["weixin","tsina","tqq","qzone","renren"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+                <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"{{$solution->name}}","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
             </div>
             <!--<div class="text-center">
                 <a href="{{$solution->attachment}}" class="btn btn-primary" download="{{$solution->attachment}}">文档下载</a>

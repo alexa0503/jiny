@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Cms;
 use App\Http\Requests\Solution;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class SolutionController extends Controller
 {
@@ -16,7 +17,7 @@ class SolutionController extends Controller
     public function index(Request $request)
     {
         $model = \App\Solution::orderby('sort_id', 'ASC');
-        if( null != $request->category ){
+        if (null != $request->category) {
             $model->where('category_id', $request->category);
         }
         $rows = $model->paginate(20);
@@ -35,7 +36,8 @@ class SolutionController extends Controller
     {
         $categories = \App\SolutionCategory::all();
         return view('cms.solution.create', [
-            'categories' => $categories
+            'categories' => $categories,
+            'items' => \App\Item::all(),
         ]);
     }
 
@@ -56,15 +58,23 @@ class SolutionController extends Controller
         //$solution->attachment = $request->input('attachment');
         $solution->body = $request->input('body') ?: '';
         $videos = [];
-        if( $request->input('videos') && is_array($request->input('videos')) ){
-            foreach($request->input('videos') as $video){
-                if( isset($video['url']) || isset($video['title']) ){
+        if ($request->input('videos') && is_array($request->input('videos'))) {
+            foreach ($request->input('videos') as $video) {
+                if (isset($video['url']) || isset($video['title'])) {
                     $videos[] = $video;
                 }
             }
         }
         $solution->videos = $videos;
         $solution->save();
+        $items = $request->input('items');
+        $data = [];
+        if (null != $items and is_array($items)) {
+            foreach ($items as $item) {
+                $data[] = ['solution_id'=>$solution->id,'item_id'=>$item,'sort_id'=>999];
+            }
+            DB::table('solution_has_items')->insert($data);
+        }
         return response([]);
     }
 
@@ -92,6 +102,7 @@ class SolutionController extends Controller
         return view('cms.solution.edit', [
            'solution' => $solution,
            'categories' => $categories,
+           'items' => \App\Item::all(),
         ]);
     }
 
@@ -113,15 +124,24 @@ class SolutionController extends Controller
         //$solution->attachment = $request->input('attachment');
         $solution->body = $request->input('body') ?: '';
         $videos = [];
-        if( $request->input('videos') && is_array($request->input('videos')) ){
-            foreach($request->input('videos') as $video){
-                if( isset($video['url']) || isset($video['title']) ){
+        if ($request->input('videos') && is_array($request->input('videos'))) {
+            foreach ($request->input('videos') as $video) {
+                if (isset($video['url']) || isset($video['title'])) {
                     $videos[] = $video;
                 }
             }
         }
         $solution->videos = $videos;
         $solution->save();
+        $items = $request->input('items');
+        $data = [];
+        DB::table('solution_has_items')->where('solution_id', $id)->delete();
+        if (null != $items and is_array($items)) {
+            foreach ($items as $item) {
+                $data[] = ['solution_id'=>$id,'item_id'=>$item,'sort_id'=>999];
+            }
+            DB::table('solution_has_items')->insert($data);
+        }
         return response([]);
     }
 

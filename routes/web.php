@@ -13,25 +13,8 @@
 
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use Image;
 
 Route::group(['middleware' => ['web']], function () {
-    /*
-    Route::get('dir', function () {
-        $directory = public_path('files/1/');
-        $mydir = dir($directory);
-        while ($file = $mydir->read()) {
-            if ((!is_dir("$directory/$file")) and ($file != '.') and ($file != '.')) {
-                var_dump($file);
-                $path = "$directory/$file";
-                $img = Image::make($path);
-                $img->insert(public_path('images/mask.png'), 'bottom-left', 10, 10);
-                $img->save($path);
-            }
-        }
-        $mydir->close();
-    });
-    */
     Route::get('/', function () {
         $categories = App\Category::orderBy('sort_id', 'ASC')->get();
         $page = App\Page::find(1);
@@ -94,11 +77,12 @@ Route::group(['middleware' => ['web']], function () {
     })->name('support');
     //新闻
     Route::get('news', function () {
-        $posts = App\Support::where('type_id', 3)->orderBy('sort_id', 'ASC')->get();
+        //$posts = App\Support::where('type_id', 3)->orderBy('sort_id', 'ASC')->get();
+        $posts = App\Post::orderBy('sort_id', 'ASC')->paginate(10);
         return view('news.index', ['posts'=>$posts]);
     });
     Route::get('news/{id}', function ($id) {
-        $post = App\Support::find($id);
+        $post = App\Post::find($id);
         return view('news.show', ['post'=>$post]);
     })->name('post');
 });

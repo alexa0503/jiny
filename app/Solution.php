@@ -16,4 +16,24 @@ class Solution extends Model
     {
         return $this->belongsTo('App\SolutionCategory');
     }
+    public function items()
+    {
+        return $this->belongsToMany('App\Item', 'solution_has_items', 'solution_id', 'item_id');
+    }
+    public function getItemIdsAttribute()
+    {
+        $ids = $this->items->map(function ($item) {
+            return $item->id;
+        })->toArray();
+        if (null == $ids) {
+            return [];
+        }
+        return $ids;
+    }
+    /*
+    public function items()
+    {
+        return $this->morphedByMany('App\Solution', 'solution_has_items');
+    }
+    */
 }

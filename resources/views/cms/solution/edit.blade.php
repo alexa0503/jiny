@@ -91,7 +91,19 @@
                                     <label class="help-block" for="optional"></label>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label for="" class="col-lg-2 col-md-3 control-label">推荐产品</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <select name="items[]" class="form-control select2" multiple>
+                                        @foreach($items as $item)
+                                        <option value="{{$item->id}}"@if(in_array($item->id, $solution->item_ids)){{ 'selected="selected"'}}@endif>
+                                            {{$item->name}} - {{$item->category->name}}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                    <label class="help-block" for=""></label>
+                                </div>
+                            </div>
                             <!-- End .form-group  -->
                             <div class="form-group">
                                 <label for="text" class="col-lg-2 col-md-3 control-label">排序</label>
@@ -134,7 +146,7 @@ $(document).ready(function() {
     $('.article-ckeditor').ckeditor({
         filebrowserBrowseUrl: '{!! url("/filemanager?type=items") !!}'
     });
-    $('.select2').select2();
+    $('.select2').select2({placeholder:'请选择'});
     var file_config = {
         theme: 'explorer',
         uploadUrl: '{{url("cms/file/upload/file1")}}',

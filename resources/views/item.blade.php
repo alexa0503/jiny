@@ -66,7 +66,7 @@
         <div class="item-description-01">
             <div class="row" id="row-cases">
                 @foreach($item->cases as $case)
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="height:170px;overflow:hidden;position:relative;">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     @if( isset($case["url"]) AND isset($case["title"]) )
                     @if(stripos(url($case["url"]), url("/")) !==false )
                     <div style="overflow:hidden;position:relative;">

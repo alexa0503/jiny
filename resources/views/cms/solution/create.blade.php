@@ -91,12 +91,25 @@
                                     <label class="help-block" for="optional"></label>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="" class="col-lg-2 col-md-3 control-label">推荐产品</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <select name="items[]" class="form-control select2" multiple>
+                                        @foreach($items as $item)
+                                        <option value="{{$item->id}}">
+                                            {{$item->name}} - {{$item->category->name}}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                    <label class="help-block" for=""></label>
+                                </div>
+                            </div>
                             <!-- End .form-group  -->
                             <div class="form-group">
                                 <label for="text" class="col-lg-2 col-md-3 control-label">排序</label>
                                 <div class="col-lg-10 col-md-9">
                                     <input type="text" name="sort_id" class="form-control" value="999">
-                                    <label class="help-block" for="description"></label>
+                                    <label class="help-block" for=""></label>
                                 </div>
                             </div>
                             <!-- End .form-group  -->
@@ -104,7 +117,7 @@
                                 <label class="col-lg-2 col-md-3 control-label"></label>
                                 <div class="col-lg-10 col-md-9">
                                     <button class="btn btn-default ml15" type="submit">提 交</button>
-                                    <a class="btn btn-default ml15" href="{{url('admin/page/index')}}">返回</a>
+                                    <a class="btn btn-default ml15" href="{{url('admin/solution/index')}}">返回</a>
                                 </div>
                             </div>
                             <!-- End .form-group  -->
@@ -129,6 +142,7 @@
 <script src="{{asset('/vendor/unisharp/laravel-ckeditor/adapters/jquery.js')}}"></script>
 <script>
 $(document).ready(function() {
+    $('.select2').select2({placeholder:'请选择'});
     $('.lfm').filemanager('files',{prefix:'{!! url("/filemanager") !!}'});
     $('.article-ckeditor').ckeditor({
         filebrowserBrowseUrl: '{!! url("/filemanager?type=files") !!}'
@@ -155,7 +169,6 @@ $(document).ready(function() {
     }).on('filedeleted',function () {
         $('input[name="image"]').val('');
     });
-    $('.select2').select2();
     $('#form').ajaxForm({
         dataType: 'json',
         success: function() {
