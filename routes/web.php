@@ -46,10 +46,11 @@ Route::group(['middleware' => ['web']], function () {
     })->name('item');
     //解决方案
     Route::get('/solutions', function () {
-        $categories = App\SolutionCategory::all();
-        return view('solutions.index', [
-            'categories'=>$categories,
-        ]);
+        if (Request::ajax()) {
+            $categories = App\SolutionCategory::paginate(8);
+            return $categories;
+        }
+        return view('solutions.index');
     });
     //解决方案列表
     Route::get('/solutions/{id}', function ($id) {

@@ -77,7 +77,6 @@
 </div>
 @endsection
 @section('scripts')
-<script type="text/javascript" src="{{asset('js/share.js')}}" charset="utf-8"></script>
 <script>
 $().ready(function(){
     $('.solutions-videos iframe').each(function(){
