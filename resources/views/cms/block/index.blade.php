@@ -30,7 +30,6 @@
                                         <th>标题</th>
                                         <th>排序</th>
                                         <th>是否发布</th>
-                                        <th>创建时间</th>
                                         <th>操作</th>
                                     </tr>
                                     </thead>
