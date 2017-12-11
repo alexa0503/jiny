@@ -8,7 +8,7 @@
             <!-- Start .page-content-inner -->
             <div id="page-header" class="clearfix">
                 <div class="page-header">
-                    <h2>@if(Request::segment(3) == 1){{'技术资料'}}@else{{'样本下载'}}@endif - 新增</h2>
+                    <h2>新闻资讯 - 编辑</h2>
                 </div>
             </div>
             <!-- Start .row -->
@@ -18,11 +18,11 @@
                     <div class="panel panel-default">
                         <!-- Start .panel -->
                         <div class="panel-body pt0 pb0">
-                            {{ Form::open(array('route' => ['support.type.store', Request::segment(3)], 'class'=>'form-horizontal group-border stripped', 'id'=>'form')) }}
+                            {{ Form::open(array('route' => ['post.update', $post->id], 'class'=>'form-horizontal group-border stripped', 'method'=>'PUT', 'id'=>'form')) }}
                             <div class="form-group">
                                 <label for="text" class="col-lg-2 col-md-3 control-label">标题</label>
                                 <div class="col-lg-10 col-md-9">
-                                    <input type="text" name="title" class="form-control" value="">
+                                    <input type="text" name="title" class="form-control" value="{{$post->title}}">
                                     <label class="help-block" for="title"></label>
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label for="text" class="col-lg-2 col-md-3 control-label">描述</label>
                                 <div class="col-lg-10 col-md-9">
-                                    <textarea name="desc" class="form-control" rows="6"></textarea>
+                                    <textarea name="desc" class="form-control" rows="6">{!! $post->desc !!}</textarea>
                                     <label class="help-block" for="desc"></label>
                                 </div>
                             </div>
@@ -38,36 +38,25 @@
                             <div class="form-group">
                                 <label class="col-lg-2 col-md-3 control-label" for="">缩略图</label>
                                 <div class="col-lg-10 col-md-9">
-                                    <input name="thumb" value="" type="hidden" />
-                                    <input id="thumb-explorer" name="file2" type="file" multiple >
+                                    <input name="thumb" value="{{$post->thumb}}" type="hidden" />
+                                    <input id="thumb-explorer" name="file1" type="file" multiple >
                                     <label class="help-block" for="thumb"></label>
-                                </div>
-                            </div>
-                            <!-- End .form-group  -->
-                            @if(Request::segment(3) == 2)
-                            <div class="form-group">
-                                <label class="col-lg-2 col-md-3 control-label" for="">附件</label>
-                                <div class="col-lg-10 col-md-9">
-                                    <input name="attachment" value="" type="hidden" />
-                                    <input id="attachment-explorer" name="file1" type="file" multiple >
-                                    <label class="help-block" for="attachment"></label>
-                                </div>
-                            </div>
-                            @endif
-                            <!-- End .form-group  -->
-                            <div class="form-group">
-                                <label for="" class="col-lg-2 col-md-3 control-label">内容</label>
-                                <div class="col-lg-10 col-md-9">
-                                    <textarea name="body" class="form-control article-ckeditor" rows="20" placeholder="请输入"></textarea>
-                                    <label class="help-block" for=""></label>
                                 </div>
                             </div>
 
                             <!-- End .form-group  -->
                             <div class="form-group">
+                                <label for="" class="col-lg-2 col-md-3 control-label">内容</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <textarea name="body" class="form-control article-ckeditor" rows="20" placeholder="请输入">{{$post->body}}</textarea>
+                                    <label class="help-block" for=""></label>
+                                </div>
+                            </div>
+                            <!-- End .form-group  -->
+                            <div class="form-group">
                                 <label for="text" class="col-lg-2 col-md-3 control-label">排序</label>
                                 <div class="col-lg-10 col-md-9">
-                                    <input type="text" name="sort_id" class="form-control" value="999">
+                                    <input type="text" name="sort_id" class="form-control" value="{{$post->sort_id}}">
                                     <label class="help-block" for="description"></label>
                                 </div>
                             </div>
@@ -115,6 +104,7 @@ $(document).ready(function() {
         browseLabel:'选择文件',
         initialPreviewFileType:'image',
         allowedPreviewTypes:null,
+        allowedFileTypes:["image","video"],
         //previewFileIcon: '<i class="fa fa-file"></i>',
         previewFileIconSettings: {
            'doc': '<i class="fa fa-file-word-o text-primary"></i>',
@@ -161,15 +151,10 @@ $(document).ready(function() {
             showUpload: false,
         }
     };
-
-    $("#attachment-explorer").fileinput(fileConfig).on('filebatchuploadsuccess', function(event, data) {
-        $('input[name="attachment"]').val(data.response.initialPreviewConfig[0].value);
-    }).on('filedeleted',function () {
-        $('input[name="attachment"]').val('');
-    });
-    fileConfig.uploadUrl = '{{url("cms/file/upload/file2")}}';
-    fileConfig.allowedFileTypes = ["image","video"]
-
+    @if($post->thumb)
+    fileConfig.initialPreview = '{{asset($post->thumb)}}';
+    fileConfig.initialPreviewConfig = {caption: "", size: "{{ filesize(public_path($post->thumb)) }}", width: "400px", url: "{{url('cms/file/delete')}}", key: 1,extra:{name:'{{$post->thumb}}'}}
+    @endif
     $("#thumb-explorer").fileinput(fileConfig).on('filebatchuploadsuccess', function(event, data) {
         $('input[name="thumb"]').val(data.response.initialPreviewConfig[0].value);
     }).on('filedeleted',function () {
@@ -180,7 +165,7 @@ $(document).ready(function() {
         success: function() {
             $('#form .form-group .help-block').empty();
             $('#form .form-group').removeClass('has-error');
-            location.href='{{route("support.type.index",Request::segment(3))}}';
+            location.href='{{route("post.index")}}';
         },
         error: function(xhr){
             if( xhr.status != 422){

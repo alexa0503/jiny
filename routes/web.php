@@ -103,6 +103,7 @@ Route::group(['middleware' => ['role:superadmin,global privileges','web'], 'pref
         'category' => 'Cms\CategoryController',
         'solution_category' => 'Cms\SolutionCategoryController',
         'solution' => 'Cms\SolutionController',
+        'post' => 'Cms\PostController',
         'support.type' => 'Cms\SupportController',
         'support.body' => 'Cms\SupportBodyController',
     ]);
