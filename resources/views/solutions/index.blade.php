@@ -30,7 +30,7 @@ function page()
         var html = '';
         $.each(json.data,function(index,item){
             html += '<div class="col-md-3 solutions-list">';
-            html += '<a href=""><img src="/'+item.thumb+'" class="img-responsive" /></a>'
+            html += '<a href="/solutions/'+item.id+'"><img src="/'+item.thumb+'" class="img-responsive" /></a>'
             html += '<h4>'+item.name+'</h4>'
             html += '<p>'+item.desc+'</p></div>';
         })
