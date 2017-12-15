@@ -111,9 +111,21 @@
                             </div>
                             <!-- End .form-group  -->
                             <div class="form-group">
+                                <label for="text" class="col-lg-2 col-md-3 control-label">可选配置</label>
+                                <div class="col-lg-10 col-md-9">
+                                    <select name="options[]" class="select2 form-control" multiple="multiple">
+                                        @foreach($options as $option)
+                                        <option value="{{$option->id}}">{{$option->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <label class="help-block" for=""></label>
+                                </div>
+                            </div>
+                            <!-- End .form-group  -->
+                            <div class="form-group">
                                 <label for="" class="col-lg-2 col-md-3 control-label">排序[从小到大]</label>
                                 <div class="col-lg-10 col-md-9">
-                                    <input type="text" name="sort_id" class="form-control" value="">
+                                    <input type="text" name="sort_id" class="form-control" value="999">
                                     <label class="help-block" for=""></label>
                                 </div>
                             </div>

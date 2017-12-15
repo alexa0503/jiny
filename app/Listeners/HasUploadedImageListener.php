@@ -28,10 +28,11 @@ class HasUploadedImageListener
     public function handle(ImageWasUploaded $event)
     {
         $path = $event->path();
-        //var_dump(public_path($path));
-        //your code, for example resizing and cropping
-        $img = Image::make($path);
-        $img->insert(public_path('images/mask.png'), 'bottom-left', 10, 10);
-        $img->save($path);
+        $mimetype = exif_imagetype($path);
+        if ($mimetype == IMAGETYPE_GIF || $mimetype == IMAGETYPE_JPEG || $mimetype == IMAGETYPE_PNG || $mimetype == IMAGETYPE_BMP) {
+            $img = Image::make($path);
+            $img->insert(public_path('images/mask.png'), 'bottom-left', 10, 10);
+            $img->save($path);
+        }
     }
 }

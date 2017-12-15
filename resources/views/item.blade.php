@@ -70,7 +70,7 @@
                     @if( isset($case["url"]) AND isset($case["title"]) )
                     @if(stripos(url($case["url"]), url("/")) !==false )
                     <div style="overflow:hidden;position:relative;">
-                        <video style="bottom:0;left:0;position:absolute;width:100%;" src="{{url($video['url'])}}" controls="controls">
+                        <video style="bottom:0;left:0;position:absolute;width:100%;" src="{{url($case['url'])}}" controls="controls">
                             您的浏览器不支持 video 标签。
                         </video>
                     </div>
@@ -85,6 +85,26 @@
             </div>
         </div>
         @endif
+        @if(count($item->options) > 0)
+        <h4>可选配置</h4>
+        <div class="item-choosable" style="margin-bottom:60px;">
+            <div class="slick" id="slick-choosable">
+                @foreach( $item->options as $option)
+                @php
+                $_item = \App\Item::find($option);
+                @endphp
+                <div class="col-md-2 col-xs-4 col-sm-4  text-center">
+                    <a href="/item/{{$_item->id}}"><img src="{{asset($_item->thumb)}}" class="img-responsive" /></a>
+                </div>
+                @endforeach
+            </div>
+            <div class="clearfix"></div>
+            @if(count($item->options)>6)
+            <a class="arrow-prev" data-target-id="slick-choosable" href="#"><img src="/images/arrow-prev.png" /></a>
+            <a class="arrow-next" data-target-id="slick-choosable" href="#"><img src="/images/arrow-next.png" /></a>
+            @endif
+        </div>
+        @endif
 
     </div>
 </div>
@@ -93,7 +113,7 @@
 <script src="{{asset('/plugins/slick/slick.min.js')}}" type="text/javascript"></script>
 <script>
 $().ready(function(){
-    if($( window ).width() < 768 ){
+    if($( window ).width() < 768 && $('.slick div').length > 3 ){
         $('.slick').slick({
             infinite: true,
             arrows: false,
@@ -102,7 +122,7 @@ $().ready(function(){
             slidesToShow:3
         });
     }
-    else{
+    else if($('.slick div').length > 6){
         $('.slick').slick({
             infinite: true,
             arrows: false,

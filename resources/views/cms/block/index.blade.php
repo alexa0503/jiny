@@ -40,7 +40,6 @@
                                         <td>{{ $row->title }}</td>
                                         <td>{{ $row->sort_id }}</td>
                                         <td>{{ $row->is_posted == '1' ? '是' : '否' }}</td>
-                                        <td>{{ $row->created_at }}</td>
                                         <td>
                                             <a href="{{route('page.block.edit',['page'=>$row->page_id,'id'=>$row->id])}}" class="label label-info">编辑</a>
                                             <a href="{{route('page.block.destroy',['page'=>$row->page_id,'id'=>$row->id])}}" class="delete label label-info">删除</a></td>

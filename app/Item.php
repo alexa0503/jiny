@@ -8,6 +8,7 @@ class Item extends Model
 {
     protected $casts = [
         'cases'=>'array',
+        'options'=>'array'
     ];
     public function itemAttributes()
     {
@@ -15,7 +16,7 @@ class Item extends Model
     }
     public function getItemAttribute($name)
     {
-        $attributes = $this->itemAttributes->filter(function($value, $key) use($name){
+        $attributes = $this->itemAttributes->filter(function ($value, $key) use ($name) {
             return $value->name == $name;
         })->all();
         return count($attributes) > 0 ? array_values($attributes)[0] : (object)(['name'=>'','body'=>'']);

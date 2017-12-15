@@ -16,10 +16,9 @@ class ItemController extends Controller
      */
     public function index(Request $request)
     {
-        if( null != $request->get('category')){
-            $rows = \App\Item::where('category_id',$request->get('category'))->paginate(20);
-        }
-        else{
+        if (null != $request->get('category')) {
+            $rows = \App\Item::where('category_id', $request->get('category'))->paginate(20);
+        } else {
             $rows = \App\Item::paginate(20);
         }
 
@@ -41,23 +40,23 @@ class ItemController extends Controller
 
 
 
-        if( null != $request->input('id') ){
+        if (null != $request->input('id')) {
             $item = \App\Item::find($request->input('id'));
 
 
             return view('cms.item.copy', [
                 'attributes' => config('custom.attributes'),
                 'categories' => $categories,
+                'options' => \App\Item::all(),
                 'item'=>$item,
             ]);
-        }
-        else{
+        } else {
             return view('cms.item.create', [
                 'attributes' => config('custom.attributes'),
+                'options' => \App\Item::all(),
                 'categories' => $categories,
             ]);
         }
-
     }
 
     /**
@@ -69,32 +68,32 @@ class ItemController extends Controller
      */
     public function store(ItemPost $request)
     {
-
         DB::beginTransaction();
-        try{
+        try {
             $item = new \App\Item();
             $item->name = $request->input('name');
-            $item->thumb = $request->input('thumb');
+            $item->thumb = $request->input('thumb')?:'';
             $item->detail = $request->input('detail');
             $item->standard = $request->input('standard');
             $item->body = '';
             $item->category_id = $request->input('category');
             $cases = [];
-            if( $request->input('cases') && is_array($request->input('cases')) ){
-                foreach($request->input('cases') as $case){
-                    if( isset($case['url']) || isset($case['title']) ){
+            if ($request->input('cases') && is_array($request->input('cases'))) {
+                foreach ($request->input('cases') as $case) {
+                    if (isset($case['url']) || isset($case['title'])) {
                         $cases[] = $case;
                     }
                 }
             }
             $item->cases = $cases;
-            $item->sort_id = $request->input('sort_id');
-            $item->recommended_id = $request->input('recommended_id') ? : NULL;
-            $item->hot_id = $request->input('hot_id') ? : NULL;
+            $item->sort_id = $request->input('sort_id')?:999;
+            $item->recommended_id = $request->input('recommended_id') ? : null;
+            $item->hot_id = $request->input('hot_id') ? : null;
+            $item->options = $request->input('options') ? : [];
             $item->save();
 
-            foreach(config('custom.attributes') as $name => $attribute){
-                if(null != $request->input('attributes') && null != $request->input('attributes')[$name] ){
+            foreach (config('custom.attributes') as $name => $attribute) {
+                if (null != $request->input('attributes') && null != $request->input('attributes')[$name]) {
                     $model = new \App\ItemAttribute;
                     $model->name = $name;
                     $model->item_id = $item->id;
@@ -103,7 +102,7 @@ class ItemController extends Controller
                 }
             }
             DB::commit();
-        }catch (Exception $e){
+        } catch (Exception $e) {
             DB::rollBack();
             return response(['thumbnail' => $e->getMessage()], 422);
         }
@@ -138,6 +137,7 @@ class ItemController extends Controller
             'attributes' => config('custom.attributes'),
             'categories' => $categories,
             'item'=>$item,
+            'options' => \App\Item::all(),
         ]);
     }
 
@@ -154,30 +154,31 @@ class ItemController extends Controller
         $item = \App\Item::find($id);
 
         DB::beginTransaction();
-        try{
+        try {
             $item->name = $request->input('name');
-            $item->thumb = $request->input('thumb');
+            $item->thumb = $request->input('thumb')?:'';
             $item->detail = $request->input('detail');
             $item->standard = $request->input('standard');
             $item->body = '';
             $cases = [];
-            if( $request->input('cases') && is_array($request->input('cases')) ){
-                foreach($request->input('cases') as $case){
-                    if( isset($case['url']) || isset($case['title']) ){
+            if ($request->input('cases') && is_array($request->input('cases'))) {
+                foreach ($request->input('cases') as $case) {
+                    if (isset($case['url']) || isset($case['title'])) {
                         $cases[] = $case;
                     }
                 }
             }
             $item->cases = $cases;
             $item->category_id = $request->input('category');
-            $item->sort_id = $request->input('sort_id');
-            $item->recommended_id = $request->input('recommended_id') ? : NULL;
-            $item->hot_id = $request->input('hot_id') ? : NULL;
+            $item->sort_id = $request->input('sort_id')?:999;
+            $item->recommended_id = $request->input('recommended_id') ? : null;
+            $item->hot_id = $request->input('hot_id') ? : null;
+            $item->options = $request->input('options') ? : [];
             $item->save();
 
-            \App\ItemAttribute::where('item_id',$item->id)->delete();
-            foreach(config('custom.attributes') as $name => $attribute){
-                if(null != $request->input('attributes') && null != $request->input('attributes')[$name] ){
+            \App\ItemAttribute::where('item_id', $item->id)->delete();
+            foreach (config('custom.attributes') as $name => $attribute) {
+                if (null != $request->input('attributes') && null != $request->input('attributes')[$name]) {
                     $model = new \App\ItemAttribute;
                     $model->name = $name;
                     $model->item_id = $item->id;
@@ -186,7 +187,7 @@ class ItemController extends Controller
                 }
             }
             DB::commit();
-        }catch (Exception $e){
+        } catch (Exception $e) {
             DB::rollBack();
             return Response(['thumbnail' => $e->getMessage()], 422);
         }
@@ -203,12 +204,12 @@ class ItemController extends Controller
     public function destroy($id)
     {
         DB::beginTransaction();
-        try{
+        try {
             //\App\Category::where('item_id', $id)->delete();
             \App\ItemAttribute::where('item_id', $id)->delete();
             \App\Item::destroy($id);
             DB::commit();
-        }catch (Exception $e){
+        } catch (Exception $e) {
             DB::rollBack();
             return Response(['ret'=>1001,'msg'=>$e->getMessage()]);
         }
