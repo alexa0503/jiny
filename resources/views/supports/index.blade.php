@@ -1,17 +1,19 @@
 @extends('layouts.app')
 @section('content')
-<div class="nav-header-01 hidden-xs">
+<div class="nav-header-01 hidden-sm hidden-md hidden-lg">
     <div class="container">
-        <div class="row">
+        <div class="row" id="topper">
             <ul class="nav navbar-nav">
-            <li><a href="#supports">技术资料</a></li>
+            <li class="active"><a href="#supports">技术资料</a></li>
+            <li class="split"><span></span></li>
+            <li><a href="#downloads">样本下载</a></li>
           </ul>
         </div>
     </div>
 </div>
 <div class="container supports">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8" id="supports">
             <h2>技术资料</h2>
             @foreach ($supports[0] as $k => $support)
             <div class="rows">
@@ -35,12 +37,11 @@
             </div>
             @endforeach
         </div>
-        <div class="col-md-4 hidden-xs">
+        <div class="col-md-4 hidden-xs" id="downloads">
             <h2>样本下载</h2>
-            <h5>分类一</h5>
             @foreach ($supports[1] as $support)
             <div class="rows">
-                <h4 class="media-heading"><a href="{{route('support', $support->id)}}">{{$support->title}}</a></h4>
+                <h3 class="media-heading"><a href="{{route('support', $support->id)}}">{{$support->title}}</a></h3>
                 <p>{{$support->desc}}</p>
             </div>
             @endforeach
@@ -49,4 +50,16 @@
 </div>
 @endsection
 @section('scripts')
+<script>
+$().ready(function(){
+    $('#topper li a').on('click', function(){
+        $('#downloads,#supports').addClass('hidden-xs');
+        var id = $(this).attr('href').replace('#','');
+        $('#'+id).removeClass('hidden-xs');
+        $('#topper li').removeClass('active');
+        $(this).parents('li').addClass('active');
+        return false;
+    })
+})
+</script>
 @endsection

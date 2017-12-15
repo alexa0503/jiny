@@ -10,7 +10,7 @@
                 </a>
                 <ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
                     @foreach ( session('categories') as $category1)
-                    <li><a href="{{route('items',$category->id)}}">{{$category1->name}}</a></li>
+                    <li><a href="{{route('items',$category1->id)}}">{{$category1->name}}</a></li>
                     @endforeach
                 </ul>
             </li>

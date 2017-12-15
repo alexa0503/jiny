@@ -71,7 +71,13 @@ $().ready(function(){
     });
 
     if($( window ).width() < 768 ){
-        $('.slick').slick({
+        $('#slick-one').slick({
+            infinite: true,
+            arrows: false,
+            autoplay:true,
+            swipe:true
+        });
+        $('#slick-two,#slick-three').slick({
             infinite: true,
             arrows: false,
             autoplay:false,
