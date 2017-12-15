@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('css/app.css?_=20171215')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/plugins/slick/slick.css">
     <link rel="stylesheet" type="text/css" href="/plugins/slick/slick-theme.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
