@@ -28,6 +28,9 @@ Route::group(['middleware' => ['web']], function () {
           'items2' => $items2,
         ]);
     });
+    Route::get('/zh-cn', function () {
+        return redirect('/');
+    });
     Route::get('/culture', function () {
         $page = App\Page::find(2);
         return view('culture', ['page'=>$page]);
@@ -46,7 +49,7 @@ Route::group(['middleware' => ['web']], function () {
     })->name('item');
     //解决方案
     Route::get('/solutions', function () {
-        if (Request::ajax()) {
+        if (Request::ajax() && Request::input('page') != null) {
             $categories = App\SolutionCategory::paginate(8);
             return $categories;
         }

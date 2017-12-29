@@ -41,8 +41,10 @@
             <h2>样本下载</h2>
             @foreach ($supports[1] as $support)
             <div class="rows">
-                <h3 class="media-heading"><a href="{{route('support', $support->id)}}">{{$support->title}}</a></h3>
-                <p>{{$support->desc}}</p>
+                <h3><a href="{{route('support', $support->id)}}">{{$support->title}}</a></h3>
+                @if($support->thumb)<a href="{{route('support', $support->id)}}"><img style="margin-right:10px;" src="{{$support->thumb}}" class="img-responsive" align="left" /></a>@endif
+                <p><a href="{{route('support', $support->id)}}" style="color:#333;">{{$support->desc}}</a></p>
+                <div class="clearfix"></div>
             </div>
             @endforeach
         </div>

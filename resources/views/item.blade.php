@@ -38,9 +38,9 @@
                     <div class="col-md-6 col-lg-6">
                         <ul class="list-unstyled list-item">
                             <li><span>工作压力：</span>{{$item->getAttributeBody('b1')}}</li>
+                            <li><span>工作流量：</span>{{$item->getAttributeBody('b4')}}</li>
                             <li><span>马达功率：</span>{{$item->getAttributeBody('b2')}}</li>
                             <li><span>包装尺寸：</span>{{$item->getAttributeBody('b3')}}</li>
-                            <li><span>工作流量：</span>{{$item->getAttributeBody('b4')}}</li>
                             <li><span>设备重量：</span>{{$item->getAttributeBody('b5')}}</li>
                         </ul>
                     </div>

@@ -19,7 +19,7 @@ $().ready(function(){
     })
 });
 var current_page = 1;
-var page_url = '/solutions';
+var page_url = '/solutions?page=1';
 function page()
 {
     if(page_url == null || page_url == ''){

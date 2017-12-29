@@ -4,7 +4,7 @@
                 <div class="text-right language">
                     <span class="active">中文</span>
                     <span class="divider">|</span>
-                    <a href="/">English</a>
+                    <a href="http://www.jiny.cn/en/">English</a>
                 </div>
             </div>
             <div class="row">

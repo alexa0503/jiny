@@ -12,7 +12,7 @@
             </div>
             <div class="homepage-kv">
                 @foreach ($page->kvs as $kv)
-                <div><img src="{{asset($kv->header_image)}}" class="img-responsive" /></div>
+                <div><a href="{{$kv->link}}"><img src="{{asset($kv->header_image)}}" class="img-responsive" /></a></div>
                 @endforeach
             </div>
         </div>
