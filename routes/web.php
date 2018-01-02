@@ -31,6 +31,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/zh-cn', function () {
         return redirect('/');
     });
+    Route::get('/zh-cn/index.html', function () {
+        return redirect('/');
+    });
     Route::get('/culture', function () {
         $page = App\Page::find(2);
         return view('culture', ['page'=>$page]);
