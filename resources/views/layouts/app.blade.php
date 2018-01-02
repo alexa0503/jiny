@@ -6,6 +6,12 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <meta name="keywords" content="上海杰尼,高压清洗机,洗舱机,防爆高压清洗机,除漆,除锈,环卫清洗">
     <meta name="description" content="上海杰尼机电技术有限公司专业提供各类高压清洗机,船用洗舱机,清砂机,除锈机,防爆高压清洗机,旋转喷头,水沙喷头,高压水枪,试压泵,高压柱塞泵,高压软管等,广泛应用于化工、工业、工程车、环卫、管道等清洗。">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
     <link href="{{asset('css/app.css?_=20171215')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/plugins/slick/slick.css">
     <link rel="stylesheet" type="text/css" href="/plugins/slick/slick-theme.css">
