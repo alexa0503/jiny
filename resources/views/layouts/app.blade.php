@@ -4,8 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <meta name="keywords" content="上海杰尼,高压清洗机,洗舱机,防爆高压清洗机,除漆,除锈,环卫清洗">
-    <meta name="description" content="上海杰尼机电技术有限公司专业提供各类高压清洗机,船用洗舱机,清砂机,除锈机,防爆高压清洗机,旋转喷头,水沙喷头,高压水枪,试压泵,高压柱塞泵,高压软管等,广泛应用于化工、工业、工程车、环卫、管道等清洗。">
+@php
+    $site_configs = App\SiteConfig::all();
+@endphp
+@foreach($site_configs as $site_config)
+    <meta name="{{ $site_config->name }}" content="{{ $site_config->body }}">
+@endforeach
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="touch-icon-iphone.png">

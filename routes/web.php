@@ -16,7 +16,7 @@ use Spatie\Permission\Models\Permission;
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', function () {
-        $categories = App\Category::orderBy('sort_id', 'ASC')->get();
+        //$categories = App\Category::orderBy('sort_id', 'ASC')->get();
         $page = App\Page::find(1);
 
         $items1 = App\Item::whereNotNull('recommended_id')->orderBy('recommended_id', 'ASC')->get();
