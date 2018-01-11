@@ -100,6 +100,7 @@ Route::group(['middleware' => ['role:superadmin,global privileges','web'], 'pref
     Route::get('/', function () {
         return redirect('/cms/dashboard');
     });
+    Route::put('/site/update', 'Cms\IndexController@siteUpdate');
     Route::get('/dashboard', 'Cms\IndexController@index');
     Route::post('file/delete', 'Cms\FileController@delete');
     Route::post('file/upload/{name?}', 'Cms\FileController@upload');
