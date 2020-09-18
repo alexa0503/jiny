@@ -60,7 +60,7 @@
                                 <label class="col-lg-2 col-md-3 control-label"></label>
                                 <div class="col-lg-10 col-md-9">
                                     <button class="btn btn-default ml15" type="submit">提 交</button>
-                                    <a class="btn btn-default ml15" href="{{url('admin/page/index')}}">返回</a>
+                                    <a class="btn btn-default ml15" href="javascript:window.history.go(-1);">返回</a>
                                 </div>
                             </div>
                             <!-- End .form-group  -->

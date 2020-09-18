@@ -63,7 +63,7 @@
                                     <div class="form-group">
                                         <div class="col-lg-10 col-md-9 col-lg-offset-2 col-md-offset-3">
                                             <button class="btn btn-default ml15" type="submit">提 交</button>
-                                            <a class="btn btn-default ml15" href="{{url('admin/page/index')}}">返回</a>
+                                            <a class="btn btn-default ml15" href="javascript:window.history.go(-1);">返回</a>
                                         </div>
                                     </div>
                                     {{ Form::close() }}
