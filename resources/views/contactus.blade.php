@@ -8,12 +8,10 @@
             <div class="rows">
                 <div class="col-md-4">
                     <p>销售热线：400-8833-700</p>
-                    <p>客户经理：王艳、杨国辉</p>
                     <p>电话：021-5486 8522</p>
                     <p>传真：021-5486 8661</p>
                 </div>
                 <div class="col-md-8">
-                    <p>Email：<a href="mailto:sales@xianlicleaning.com">sales@xianlicleaning.com</a></p>
                     <p>地址：上海市闵行区景谷路398-2号</p>
                     <p>邮编：200245</p>
                     <p>网址：http://www.xianlicleaning.cn</p>
@@ -68,7 +66,7 @@
     }
 
     //标注点数组
-    var markerArr = [{title:"<h4><font color=\"red\">上海杰尼机电技术有限公司</font></h4>",content:"上海杰尼机电技术有限公司",point:"121.394994|31.015018",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+    var markerArr = [{title:"<h4><font color=\"#0779bf\">{{ env('APP_NAME') }}</font></h4>",content:"{{ env('APP_NAME') }}",point:"121.394994|31.015018",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
 		 ];
     //创建marker
     function addMarker(){
@@ -120,7 +118,7 @@
     }
     //创建一个Icon
     function createIcon(json){
-        var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+        var icon = new BMap.Icon("http://api.map.baidu.com/lbsapi/creatmap/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
         return icon;
     }
 
