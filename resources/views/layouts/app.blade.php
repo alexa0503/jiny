@@ -16,7 +16,7 @@
     <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
     <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
     <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
-    <link href="{{asset('css/app.css?_=20171215')}}" rel="stylesheet">
+    <link href="{{mix('css/app.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/plugins/slick/slick.css">
     <link rel="stylesheet" type="text/css" href="/plugins/slick/slick-theme.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">

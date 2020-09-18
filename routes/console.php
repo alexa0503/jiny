@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Inspiring;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use Illuminate\Foundation\Inspiring;
 |
 */
 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 Artisan::command('convert', function () {
     $directory = public_path('files/1/news/');
     $mydir = dir($directory);
@@ -29,10 +32,10 @@ Artisan::command('convert', function () {
 });
 Artisan::command('inspire', function () {
     /*
-    $contents = file_get_contents('http://jiny.cn/zh-cn/news/?page=7');
+    $contents = file_get_contents('http://xianlicleaning.com/zh-cn/news/?page=7');
     preg_match_all('/href="(\/zh-cn\/news\/.+)"/i', $contents, $matches);
     foreach ($matches[1] as $k=> $link) {
-        $news_contents = file_get_contents('http://jiny.cn'.$link);
+        $news_contents = file_get_contents('http://xianlicleaning.com'.$link);
         preg_match_all('/<div class="topic">(.*)<\/div>/i', $news_contents, $matches1);
         preg_match_all('/<div class="content-article">([\s\S]*)<\/div>\s+<\/div>\s+<\/div>\s+<footer>/i', $news_contents, $matches2);
         $title = $matches1[1][0];
@@ -42,7 +45,7 @@ Artisan::command('inspire', function () {
             if (strpos($url, 'http') === 0) {
                 $img_url = urlencode($url);
             } else {
-                $img_url = urlencode('http://jiny.cn'.$url);
+                $img_url = urlencode('http://xianlicleaning.com'.$url);
             }
             $a = array("%3A", "%2F", "%40", "%3D", "%3F","%26","%3B");
             $b = array(":", "/", "@", "=", "?","&",";");
@@ -62,3 +65,20 @@ Artisan::command('inspire', function () {
     */
     //$this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+Artisan::command('admin:init', function () {
+    if (\App\User::count() == 0) {
+        $role = Role::create(['name' => 'superadmin']);
+        Permission::create(['name' => 'global privileges']);
+        $role->givePermissionTo('global privileges');
+        $user = new \App\User();
+        $user->name = 'admin';
+        $user->email = 'admin@admin.com';
+        $user->password = bcrypt('admin@2020');
+        $user->save();
+        //$user = \App\User::find(1);
+        $user->givePermissionTo('global privileges');
+        $user->assignRole(['superadmin']);
+        $user->roles()->pluck('name');
+    }
+});

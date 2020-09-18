@@ -3,7 +3,7 @@
 <div class="container contactus">
     <div class="row">
         <h2>联系我们</h2>
-        <h4>上海杰尼机电技术有限公司</h4>
+        <h4>{{ env('APP_NAME') }}</h4>
         <div class="rows">
             <div class="rows">
                 <div class="col-md-4">
@@ -13,10 +13,10 @@
                     <p>传真：021-5486 8661</p>
                 </div>
                 <div class="col-md-8">
-                    <p>Email：<a href="mailto:sales@jiny.cn">sales@jiny.cn</a></p>
+                    <p>Email：<a href="mailto:sales@xianlicleaning.com">sales@xianlicleaning.com</a></p>
                     <p>地址：上海市闵行区景谷路398-2号</p>
                     <p>邮编：200245</p>
-                    <p>网址：http://www.jiny.cn</p>
+                    <p>网址：http://www.xianlicleaning.cn</p>
                 </div>
                 <div class="clearfix"></div>
             </div>

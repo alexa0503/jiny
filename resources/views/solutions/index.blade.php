@@ -3,7 +3,7 @@
 <div class="container solutions">
     <div class="row">
         <h2>解决方案</h2>
-        <div class="content">
+        <div class="content row">
         </div>
         <div class="clearfix"></div>
         <div class="row text-center row-more"><button class="btn btn-primary">更多方案</button></div>
@@ -29,10 +29,16 @@ function page()
     $.getJSON(page_url,function(json){
         var html = '';
         $.each(json.data,function(index,item){
-            html += '<div class="col-md-3 solutions-list">';
+            if(index%4==0){
+                html += '<div class="row">';
+            }
+            html += '<div class="col-xs-3 solutions-list">';
             html += '<a href="/solutions/'+item.id+'"><img src="/'+item.thumb+'" class="img-responsive" /></a>'
             html += '<h4>'+item.name+'</h4>'
             html += '<p>'+item.desc+'</p></div>';
+            if(index%4==3 || index == json.data.length - 1){
+                html += '</div>';
+            }
         })
         page_url = json.next_page_url;
         if(json.next_page_url == null){

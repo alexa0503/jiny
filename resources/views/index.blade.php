@@ -10,25 +10,29 @@
                     @endforeach
                 </ul>
             </div>
+            @if($page && $page->kvs)
             <div class="homepage-kv">
                 @foreach ($page->kvs as $kv)
                 <div><a href="{{$kv->link}}"><img src="{{asset($kv->header_image)}}" class="img-responsive" /></a></div>
                 @endforeach
             </div>
+            @endif
         </div>
     </div>
     <div class="row">
         <div class="col-one">
-            <div class="nav"><span>最新应用</span><div class="pull-right hidden-xs"><a href="#" class="btn-prev" data-target-id="slick-one"><img style="margin-right:55px;" src="{{asset('/images/btn-prev.jpg')}}" /></a><a href="#" class="btn-next" data-target-id="slick-one"><img src="{{asset('/images/btn-next.jpg')}}" /></a></div></div>
+            <div class="nav"><span>最新应用</span><div class="pull-right hidden-xs"><a href="#" class="btn-prev" data-target-id="slick-one"><img style="margin-right:55px;" src="{{asset('/images/btn-prev.jpg')}}" height="27" /></a><a href="#" class="btn-next" data-target-id="slick-one"><img src="{{asset('/images/btn-next.jpg')}}"  height="27" /></a></div></div>
+            @if($page && $page->kvs)
             <div class="content hidden-sm slick" id="slick-one">
                 @foreach ($page->latest as $row)
                 <div class="col-md-4"><a href="{{$row->link}}"><img src="{{$row->header_image}}" class="img-responsive" /><span class="center">{{$row->title}}</span></a></div>
                 @endforeach
             </div>
+            @endif
         </div>
         <div class="col-two">
             <div class="nav"><span>新品推荐</span>
-                <div class="pull-right"><a href="#" class="btn-prev" data-target-id="slick-two"><img style="margin-right:55px;" src="{{asset('/images/btn-prev.jpg')}}" /></a><a href="#" class="btn-next" data-target-id="slick-two"><img src="{{asset('/images/btn-next.jpg')}}" /></a>
+                <div class="pull-right"><a href="#" class="btn-prev" data-target-id="slick-two"><img style="margin-right:55px;" src="{{asset('/images/btn-prev.jpg')}}" height="27" /></a><a href="#" class="btn-next" data-target-id="slick-two"><img src="{{asset('/images/btn-next.jpg')}}"  height="27" /></a>
                 </div>
             </div>
             <div class="content  slick" id="slick-two">
@@ -43,7 +47,7 @@
         </div>
         <div class="col-two">
             <div class="nav"><span>热销产品</span>
-                <div class="pull-right"><a href="#" class="btn-prev" data-target-id="slick-three"><img style="margin-right:55px;" src="{{asset('/images/btn-prev.jpg')}}" /></a><a href="#" class="btn-next" data-target-id="slick-three"><img src="{{asset('/images/btn-next.jpg')}}" /></a>
+                <div class="pull-right"><a href="#" class="btn-prev" data-target-id="slick-three"><img style="margin-right:55px;" src="{{asset('/images/btn-prev.jpg')}}" height="27" /></a><a href="#" class="btn-next" data-target-id="slick-three"><img src="{{asset('/images/btn-next.jpg')}}"  height="27" /></a>
                 </div>
             </div>
             <div class="content  slick" id="slick-three">

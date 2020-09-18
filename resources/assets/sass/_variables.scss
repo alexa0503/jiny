@@ -42,7 +42,7 @@ $navbar-inverse-link-hover-bg:#a6010d;
 $navbar-margin-bottom: 5px;
 // Buttons
 $btn-default-color: $text-color;
-$btn-primary-bg:#e40011;
+$btn-primary-bg:#3a9ed9;
 $btn-primary-color:#FFF;
 $btn-border-radius-large:0;
 
@@ -67,7 +67,7 @@ header {
     font-size: 12px;
 }
 .language span.active {
-    color:#e40011;
+    color:#6b6b6b;
 }
 .language a,.language a:hover,.language a:active,.language a:focus {
     color:#221715;
@@ -75,9 +75,6 @@ header {
 .language .divider {
     padding-left: 10px;
     padding-right: 10px;
-}
-.homepage-topper-01 {
-
 }
 .homepage-list .list-group .list-group-item,.homepage-list .list-group .list-group-item a {
     color:#221715;
@@ -113,12 +110,12 @@ header {
 .culture h2,.contactus h2,.items h2,.item h2 {
     color:#342427;
     margin-left: 15px;
-    border-left: #e40011 solid 2px;
+    border-left: #3a9ed9 solid 2px;
     padding-left: 15px;
     font-size: 24px;
 }
 .culture h4,.contactus h4 {
-    color: #e40011;
+    color: #3a9ed9;
     font-size: 18px;
     margin-left: 15px;
     margin-top: 30px;
@@ -187,7 +184,7 @@ header {
     line-height: 36px;
 }
 .item .list-item li span {
-    color:#e40011;
+    color:#3a9ed9;
 }
 .item-detail h3 {
     height: 48px;
@@ -202,10 +199,7 @@ header {
 }
 .item-detail h4 span {
     padding-left: 10px;
-    color: #e40011;
-}
-.item-detail .item-description-01 {
-
+    color: #3a9ed9;
 }
 .item-detail .item-choosable {
     margin-top: 20px;
@@ -220,7 +214,7 @@ header {
 .solutions h2 {
     color:#342427;
     margin-left: 23px;
-    border-left: #e40011 solid 2px;
+    border-left: #3a9ed9 solid 2px;
     padding-left: 15px;
     font-size: 28px;
     line-height: 28px;
@@ -247,12 +241,6 @@ header {
 .solutions .solutions-list {
     margin-top: 20px;
 }
-.solutions .solutions-list h4 {
-
-}
-.solutions .solutions-list p {
-
-}
 .solutions .row-more {
     margin: 40px 0;
 }
@@ -266,7 +254,7 @@ header {
 .supports h2,.support h2 {
     color:#342427;
     margin-left: 15px;
-    border-left: #e40011 solid 2px;
+    border-left: #3a9ed9 solid 2px;
     padding-left: 15px;
     font-size: 28px;
     line-height: 28px;
@@ -306,8 +294,6 @@ header {
     background: #bcbab9;
     padding-top: 20px;
     padding-bottom: 0px;
-}
-.support .content {
 }
 .support .content .media {
     padding-top: 40px;
@@ -354,13 +340,13 @@ footer .part1 p {
 }
 footer .part1 h4 {
     font-size: 24px;
-    color: #e40011;
+    color: #3a9ed9;
 }
 footer .part2 p {
     font-size: 14px;
 }
 footer .copyright {
-    background: #ed0000;
+    background: #7a7a7a;
     border-top: 1px solid #fff;
     padding: 60px 0 40px 0;
     color: #fff;
@@ -370,6 +356,9 @@ footer .copyright {
 }
 footer .copyright p {
     margin-bottom: 5px;
+}
+footer .copyright p a {
+    color: #fff;
 }
 .col-two {
     margin-top:-20px;
@@ -390,6 +379,7 @@ footer .copyright p {
     height: 60px;
     line-height: 60px;
     background: url(/images/bkg-triangle.jpg) 0 0 no-repeat;
+    background-size: auto 100%;
     color: #fff;
     margin-top: 50px;
     font-size:27px;
@@ -450,7 +440,12 @@ footer .copyright p {
 }
 .navbar-inverse .navbar-nav a {
     color: #fff;
-    background-color: #cf000f;
+}
+.navbar-inverse .navbar-nav a:hover{
+    background-color: #0176bc!important;
+}
+.navbar-inverse {
+    background-color: #0176bc;
 }
 .nav>li, .nav>li>a, .nav>li>ul>li, .nav>li>ul>li>a {
     position: relative;
